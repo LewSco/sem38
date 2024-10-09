@@ -9,13 +9,13 @@ public class Main
     public static void main(String[] args)
     {
         // Create new Application
-        Main a = new Main();
+        Main _main = new Main();
 
         // Connect to database
-        a.connect();
+        _main.connect();
 
         // Disconnect from database
-        a.disconnect();
+        _main.disconnect();
     }
 
     /**
