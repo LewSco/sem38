@@ -10,29 +10,35 @@ public class CountryList
     Database _database;
 
 
+    // class constructor
     public CountryList(Database database)
     {
         // we initialise the list
         _list = new ArrayList<>();
-        _database = database;
+        _database = database; // store the database reference
     }
 
 
+    // function for getting the list of countries in the world ordered for population
     public void GetWorldList()
     {
-        _list.clear();
+        _list.clear(); // clear the list of any previous queries
 
+        // set up our query statement
         String query =
                 "SELECT Name " +
                         "FROM country " +
                         "ORDER BY Population DESC";
 
+        // get the results from the database
         ResultSet results = _database.Query(query);
 
         try
         {
+            // this moves through the results until there are no more
             while (results.next())
             {
+                // add each country to the list
                 _list.add(results.getString("Name"));
             }
         }
@@ -45,13 +51,16 @@ public class CountryList
 
     }
 
+    // display the list
     public void Display()
     {
+
         System.out.println("List of countries:");
 
-        for (String country : _list)
+        // seems like the java equivalent of a foreach loop
+        for (String country : _list) // foreach (String country in _list)
         {
-            System.out.println(country);
+            System.out.println(country);  // Console.WriteLine(country);
         }
     }
 }

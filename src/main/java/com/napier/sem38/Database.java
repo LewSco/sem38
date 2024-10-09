@@ -2,6 +2,7 @@ package com.napier.sem38;
 
 import java.sql.*;
 
+// initially suggested by declan (he was right all along)
 public class Database
 {
     /**
