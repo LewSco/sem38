@@ -94,6 +94,10 @@ public class Main
         // try to query the database
         try
         {
+
+            if (query == null || query.isEmpty())
+                throw new Exception("Query statement is null or empty!");
+
             // create sql statement
             Statement stmt = con.createStatement();
 
@@ -101,7 +105,7 @@ public class Main
             resultSet = stmt.executeQuery(query);
 
             if (resultSet == null)
-                throw new Exception("Query returned null!");
+                throw new Exception("Query results returned null!");
 
         }
         catch (Exception exception) // if an error occurs then we
