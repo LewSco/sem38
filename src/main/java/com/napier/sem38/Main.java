@@ -18,6 +18,8 @@ public class Main
         _main.disconnect();
     }
 
+
+
     /**
      * Connection to MySQL database.
      */
@@ -81,5 +83,35 @@ public class Main
                 System.out.println("Error closing connection to database");
             }
         }
+    }
+
+    // function for querying the database
+    public ResultSet Query(String query)
+    {
+        // set up a results set with a null value
+        ResultSet resultSet = null;
+
+        // try to query the database
+        try
+        {
+            // create sql statement
+            Statement stmt = con.createStatement();
+
+            // we query the database using the String parameter provided
+            resultSet = stmt.executeQuery(query);
+
+            if (resultSet == null)
+                throw new Exception("Query returned null!");
+
+        }
+        catch (Exception exception) // if an error occurs then we
+        {
+            // print the error message
+            System.out.print(exception.getMessage());
+            System.out.print("Query Failed!"); // and tell the user the query failed
+        }
+
+        // we return the results set even if its null
+        return resultSet;
     }
 }
