@@ -1,8 +1,14 @@
 package com.napier.sem38;
 
 import java.sql.*;
+import java.util.Scanner;
 
 public class Main {
+    /**
+     * Main method for the application.
+     * Instantiates, runs and displays all of the currently existing classes.
+     * @param args
+     */
     public static void main(String[] args) {
         Database _database = new Database(); // Initialize database connection
         CountryList _countryList = new CountryList(_database); // Initialize the country list

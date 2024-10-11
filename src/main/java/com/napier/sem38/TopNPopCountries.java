@@ -6,12 +6,16 @@ import java.util.List;
 
 public class TopNPopCountries
 {
+    //variables
     int n = 0;
     List<String> _list; //list for storing the countries
     Database _database;
 
-
-    // class constructor
+    /**
+     * Class Constructor
+     * Assigns the database and instantiates list.
+     * @param database
+     */
     public TopNPopCountries(Database database)
     {
         // we initialise the list
@@ -19,8 +23,11 @@ public class TopNPopCountries
         _database = database; // store the database reference
     }
 
-
-    // function for getting the list of countries in the world ordered for population
+    /**
+     * Queries the database to find the top n most populated countries.
+     * Stores the results in an array list.
+     * @param n
+     */
     public void GetTopPopCountries(int n)
     {
         this.n = n;
@@ -53,7 +60,9 @@ public class TopNPopCountries
 
     }
 
-    // display the list
+    /**
+     * Display each element in the list
+     */
     public void Display()
     {
 

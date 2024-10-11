@@ -10,7 +10,11 @@ public class CountryList
     Database _database;
 
 
-    // class constructor
+    /**
+     * Class Constructor
+     * Assigns the database and instantiates list.
+     * @param database
+     */
     public CountryList(Database database)
     {
         // we initialise the list
@@ -20,6 +24,10 @@ public class CountryList
 
 
     // function for getting the list of countries in the world ordered for population
+    /**
+     * Queries the database to find countries sorted by population.
+     * Stores the results in the array list variable.
+     */
     public void GetWorldList()
     {
         _list.clear(); // clear the list of any previous queries
@@ -52,6 +60,9 @@ public class CountryList
     }
 
     // display the list
+    /**
+     * Displays all elements in array list (query results if assigned)
+     */
     public void Display()
     {
 

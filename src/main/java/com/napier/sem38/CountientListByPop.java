@@ -9,12 +9,24 @@ public class CountientListByPop {
         private List<String> _list;
 
         // Constructor to initialize the database
+
+        /**
+         * Constructor for the class
+         * Assigns database variable and instantiates list
+         * @param database
+         */
         public CountientListByPop(Database database) {
                 _database = database;
                 _list = new ArrayList<>();
         }
 
         // Method for fetching countries by population in a continent
+
+        /**
+         * Queries the database to sort by population for a given continent.
+         * Stores the results in an array list
+         * @param continent
+         */
         public void getCountriesByPopulation(String continent) {
                 _list.clear(); // clear the list for fresh data
 
@@ -37,6 +49,10 @@ public class CountientListByPop {
         }
 
         // Display the list
+
+        /**
+         * Loops through and displays all elements in the array list
+         */
         public void Display() {
                 System.out.println("Continent List By Population:");
                 for (String country : _list) {
