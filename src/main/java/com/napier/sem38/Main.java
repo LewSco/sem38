@@ -14,6 +14,12 @@ public class Main
         // Connect to database
         a.connect();
 
+        //Get an instance with the db connection for CountientListByPop
+        CountientListByPop listByPop = new CountientListByPop(a.con);
+
+        // Execute the query and display results (This is a test using Asia)
+        listByPop.getCountriesByPopulation("Asia");
+
         // Disconnect from database
         a.disconnect();
     }
