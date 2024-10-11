@@ -1,8 +1,14 @@
 package com.napier.sem38;
 
 import java.sql.*;
+import java.util.Scanner;
 
 public class Main {
+    /**
+     * Main method for the application.
+     * Instantiates, runs and displays all of the currently existing classes.
+     * @param args
+     */
     public static void main(String[] args) {
         Database _database = new Database(); // Initialize database connection
         CountryList _countryList = new CountryList(_database); // Initialize the country list
@@ -14,6 +20,22 @@ public class Main {
 
         // Get world list ordered by population
         _countryList.GetWorldList();
+
+        String line = "";
+        while(line == "" || line == null)
+        {
+            try
+            {
+                Thread.sleep(1000);
+                Scanner sc = new Scanner(System.in);
+                line = sc.nextLine();
+            }
+            catch(Exception e)
+            {
+                System.out.println(e);
+            }
+        }
+        System.out.println(line);
 
         // Get top N populated countries
         _topNPopCountries.GetTopPopCountries(3);
