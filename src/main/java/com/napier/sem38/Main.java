@@ -21,22 +21,6 @@ public class Main {
         // Get world list ordered by population
         _countryList.GetWorldList();
 
-        String line = "";
-        while(line == "" || line == null)
-        {
-            try
-            {
-                Thread.sleep(1000);
-                Scanner sc = new Scanner(System.in);
-                line = sc.nextLine();
-            }
-            catch(Exception e)
-            {
-                System.out.println(e);
-            }
-        }
-        System.out.println(line);
-
         // Get top N populated countries
         _topNPopCountries.GetTopPopCountries(3);
 
