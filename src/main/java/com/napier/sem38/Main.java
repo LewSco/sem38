@@ -35,7 +35,7 @@ public class Main {
         _countryList.GetWorldList(_number);
 
         // Display results
-        System.out.println("\nList of " + _number + " of the worlds countries by population:");
+        System.out.println("\nList of the worlds countries by population up to " +_number+ ":");
         _countryList.Display();
 
         // Get world list ordered by population up to n number of countries
