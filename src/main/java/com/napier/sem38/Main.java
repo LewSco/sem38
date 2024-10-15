@@ -56,8 +56,6 @@ public class Main {
         System.out.println("\nList of countries in " + _name + " by population:");
         _countryList.Display();
 
-
-
         // disconnect from database
         _database.disconnect();
     }
