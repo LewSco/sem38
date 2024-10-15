@@ -21,7 +21,6 @@ public class CountryList
         _database = database; // store the database reference
     }
 
-
     //region World Functions
 
     /**

@@ -11,42 +11,54 @@ public class Main {
      */
     public static void main(String[] args)
     {
-        // Initialize database connection
+        // initialize database connection
         Database _database = new Database();
 
-        // Initialize the list
+        // initialize the list
         CountryList _countryList = new CountryList(_database);
 
+        // variables for storing names and numbers
         int _number;
         String _name;
 
-        // Connect to database
+        // connect to database
         _database.connect();
 
-        // Get world list ordered by population
+        // get world list of countries ordered by population
         _countryList.GetWorldList();
 
-        // Display results
+        // display results
         System.out.println("\nList of the worlds countries by population:");
         _countryList.Display();
 
-        // Get world list ordered by population up to n number of countries
+        // get world list of countries ordered by population up to n number of countries
         _number = 4;
         _countryList.GetWorldList(_number);
 
-        // Display results
+        // display results
         System.out.println("\nList of the worlds countries by population up to " +_number+ ":");
         _countryList.Display();
 
-        // Get world list ordered by population up to n number of countries
+        // get continent list of countries ordered by population
         _name = "Asia";
         _countryList.GetContinentList(_name);
 
-        // Display results
+        // display results
         System.out.println("\nList of countries in " + _name + " by population:");
         _countryList.Display();
 
-        // Disconnect from database
+        // get region list of countries ordered by population
+        _name = "Caribbean";
+        _countryList.GetRegionList(_name);
+
+        // display the list
+        _name = "the " + _name;
+        System.out.println("\nList of countries in " + _name + " by population:");
+        _countryList.Display();
+
+
+
+        // disconnect from database
         _database.disconnect();
     }
 }
