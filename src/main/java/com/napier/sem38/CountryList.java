@@ -24,7 +24,7 @@ public class CountryList
     //region World Functions
 
     /**
-     * Queries the database to find countries sorted by population.
+     * Queries the database to find countries in the world sorted by population.
      * Stores the results in the array list variable.
      */
     public void GetWorldList()
@@ -99,7 +99,7 @@ public class CountryList
     //region Continent
 
     /**
-     * Queries the database to find countries sorted by population.
+     * Queries the database to find countries in a continent sorted by population.
      * Stores the results in the array list variable.
      */
     public void GetContinentList(String continent)
@@ -110,6 +110,46 @@ public class CountryList
         String query = "SELECT Name, Population " +
                 "FROM country " +
                 "WHERE Continent = '" + continent + "' " +
+                "ORDER BY Population DESC";
+
+        // get the results from the database
+        ResultSet results = _database.Query(query);
+
+        try
+        {
+
+            // this moves through the results until there are no more
+            while (results.next())
+            {
+                // add each country to the list
+                _list.add(results.getString("Name"));
+            }
+        }
+        catch(Exception exception)
+        {
+            // print error messages
+            System.out.println(exception.getMessage());
+            System.out.println("Error retrieving data from ResultSet!");
+        }
+
+    }
+
+    //endregion
+
+    //region Region
+
+    /**
+     * Queries the database to find countries in a region sorted by population.
+     * Stores the results in the array list variable.
+     */
+    public void GetRegionList(String region)
+    {
+        _list.clear(); // clear the list of any previous queries
+
+        // SQL query to get countries in a continent ordered by population
+        String query = "SELECT Name, Population " +
+                "FROM country " +
+                "WHERE Region = '" + region + "' " +
                 "ORDER BY Population DESC";
 
         // get the results from the database
