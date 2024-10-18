@@ -16,6 +16,7 @@ public class Main {
 
         // initialize the list
         CountryList _countryList = new CountryList(_database);
+        CityList _cityList = new CityList(_database);
 
         // variables for storing names and numbers
         int _number;
@@ -55,6 +56,13 @@ public class Main {
         _name = "the " + _name;
         System.out.println("\nList of countries in " + _name + " by population:");
         _countryList.Display();
+
+        //Issue 15 GitHub
+        _name = "Caribbean";
+        _cityList.citiesInRegionLargetoSmall(_name);
+
+        System.out.println("\nList of cities in " + _name + " by population:");
+        _cityList.Display();
 
         // disconnect from database
         _database.disconnect();
