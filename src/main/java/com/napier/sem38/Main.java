@@ -1,8 +1,5 @@
 package com.napier.sem38;
 
-import java.sql.*;
-import java.util.Scanner;
-
 public class Main {
     /**
      * Main method for the application.
@@ -16,6 +13,7 @@ public class Main {
 
         // initialize the list
         CountryList _countryList = new CountryList(_database);
+        PopulationList _populationList = new PopulationList(_database);
 
         // variables for storing names and numbers
         int _number;
@@ -55,6 +53,9 @@ public class Main {
         _name = "the " + _name;
         System.out.println("\nList of countries in " + _name + " by population:");
         _countryList.Display();
+
+        // get and print world population
+        System.out.println("World Population: " + _populationList.GetWorldPop());
 
         // disconnect from database
         _database.disconnect();
