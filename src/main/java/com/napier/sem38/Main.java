@@ -16,6 +16,7 @@ public class Main {
 
         // initialize the list
         CountryList _countryList = new CountryList(_database);
+        PopulationList _populationList = new PopulationList(_database);
         CityList _cityList = new CityList(_database);
 
         // variables for storing names and numbers
@@ -63,6 +64,9 @@ public class Main {
 
         System.out.println("\nList of cities in " + _name + " by population:");
         _cityList.Display();
+
+        // get and print world population
+        System.out.println("World Population: " + _populationList.GetWorldPop());
 
         // disconnect from database
         _database.disconnect();
