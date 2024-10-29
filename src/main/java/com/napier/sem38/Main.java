@@ -59,8 +59,17 @@ public class Main {
         _countryList.Display();
 
         //Issue 15 GitHub
+        //Get the cities in a region ordered by population
         _name = "Caribbean";
         _cityList.citiesInRegionLargetoSmall(_name);
+
+        System.out.println("\nList of cities in " + _name + " by population:");
+        _cityList.Display();
+
+        //Issue 14 GitHub
+        // Get cities in a continent (e.g., "Asia") ordered by population
+        _name = "Asia";
+        _cityList.citiesInContinentLargetoSmall(_name);
 
         System.out.println("\nList of cities in " + _name + " by population:");
         _cityList.Display();
