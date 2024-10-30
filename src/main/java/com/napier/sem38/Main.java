@@ -20,7 +20,14 @@ public class Main {
         String _name;
 
         // connect to database
-        _database.connect();
+        if (args.length < 1)
+        {
+            _database.connect("localhost:33060", 30000);
+        }
+        else
+        {
+            _database.connect(args[0], Integer.parseInt(args[1]));
+        }
 
         // get world list of countries ordered by population
         _countryList.GetWorldList();

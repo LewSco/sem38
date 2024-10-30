@@ -13,7 +13,7 @@ public class Database
     /**
      * Connect to the MySQL database.
      */
-    public void connect()
+    public void connect(String location, int delay)
     {
         try
         {
@@ -33,9 +33,10 @@ public class Database
             try
             {
                 // Wait a bit for db to start
-                Thread.sleep(30000);
+                Thread.sleep(delay);
+
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://database:3306/world?useSSL=false", "root", "example");
+                con = DriverManager.getConnection("jdbc:mysql://" + location + "/world?useSSL=false", "root", "example");
                 System.out.println("Successfully connected");
                 break;
             }
