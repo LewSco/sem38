@@ -2,7 +2,6 @@ package com.napier.sem38;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Class for retrieving population data from the world database
