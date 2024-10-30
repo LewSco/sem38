@@ -11,6 +11,7 @@ public class MainTest
     static void Initialise()
     {
         _database = new Database();
+        _database.connect();
     }
 
     @Test
