@@ -6,7 +6,7 @@ public class Main {
     /**
      * Main method for the application.
      * Instantiates, runs and displays all of the currently existing classes.
-     * @param args
+     * @param args arguments
      */
     public static void main(String[] args)
     {
@@ -63,12 +63,11 @@ public class Main {
 
         // get region list of countries ordered by population
         _name = "Caribbean";
-        _countryList.GetRegionList(_name);
-
+        _countryRegionList = _countryList.GetRegionList(_name);
         // display the list
         _name = "the " + _name;
-        System.out.println("\nList of countries in " + _name + " by population:");
-        _countryList.Display();
+        _countryList.Display("List of countries in " + _name + " by population:",
+                _countryRegionList);
 
         // get world population
         _worldPop = _populationSum.GetWorldPop();
