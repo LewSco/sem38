@@ -1,5 +1,7 @@
 package com.napier.sem38;
 
+import java.util.List;
+
 public class Main {
     /**
      * Main method for the application.
@@ -11,9 +13,18 @@ public class Main {
         // initialize database connection
         Database _database = new Database();
 
-        // initialize the list
+        // initialize the class instances
         CountryList _countryList = new CountryList(_database);
         PopulationSum _populationSum = new PopulationSum(_database);
+
+        // country lists
+        List<String> _countryWorldList;
+        List<String> _countryWorldListN;
+        List<String> _countryContinentList;
+        List<String> _countryRegionList;
+
+        // populations
+        Long _worldPop;
 
         // variables for storing names and numbers
         int _number;
@@ -30,39 +41,38 @@ public class Main {
         }
 
         // get world list of countries ordered by population
-        _countryList.GetWorldList();
-
-        // display results
-        System.out.println("\nList of the worlds countries by population:");
-        _countryList.Display();
+        _countryWorldList = _countryList.GetWorldList();
+        // display the list
+        _countryList.Display("\nList of the worlds countries by population",
+                _countryWorldList);
 
         // get world list of countries ordered by population up to n number of countries
         _number = 4;
-        _countryList.GetWorldList(_number);
-
+        _countryWorldListN = _countryList.GetWorldList(_number);
         // display results
-        System.out.println("\nList of the worlds countries by population up to " +_number+ ":");
-        _countryList.Display();
+        _countryList.Display("\nList of the worlds countries by population up to " + _number,
+                _countryWorldListN);
 
         // get continent list of countries ordered by population
         _name = "Asia";
-        _countryList.GetContinentList(_name);
-
+        _countryContinentList = _countryList.GetContinentList(_name);
         // display results
-        System.out.println("\nList of countries in " + _name + " by population:");
-        _countryList.Display();
+        _countryList.Display("\nList of countries in " + _name + " by population",
+                _countryContinentList);
 
         // get region list of countries ordered by population
         _name = "Caribbean";
-        _countryList.GetRegionList(_name);
-
+        _countryRegionList = _countryList.GetRegionList(_name);
         // display the list
         _name = "the " + _name;
-        System.out.println("\nList of countries in " + _name + " by population:");
-        _countryList.Display();
+        _countryList.Display("\nList of countries in " + _name + " by population",
+                _countryRegionList);
 
-        // get and print world population
-        System.out.println("World Population: " + _populationSum.GetWorldPop());
+        // get world population
+        _worldPop = _populationSum.GetWorldPop();
+        // print world population
+        _populationSum.Display("World Population",
+                _worldPop);
 
         // disconnect from database
         _database.disconnect();
