@@ -129,7 +129,9 @@ public class CountryList
             while (results.next())
             {
                 // add each country to the list
-                _list.add(results.getString("Name"));
+                list.add(results.getString("Name") +
+                        " with a population of " +
+                        results.getString("Population"));
             }
         }
         catch(Exception exception)
@@ -139,6 +141,8 @@ public class CountryList
             System.out.println("Error retrieving data from ResultSet!");
         }
 
+        // return the resulting list
+        return list;
     }
 
     //endregion
@@ -149,9 +153,10 @@ public class CountryList
      * Queries the database to find countries in a region sorted by population.
      * Stores the results in the array list variable.
      */
-    public void GetRegionList(String region)
+    public List<String> GetRegionList(String region)
     {
-        _list.clear(); // clear the list of any previous queries
+        // initialise the return list
+        List<String> list = new ArrayList<>();
 
         // SQL query to get countries in a continent ordered by population
         String query = "SELECT Name, Population " +
@@ -169,7 +174,9 @@ public class CountryList
             while (results.next())
             {
                 // add each country to the list
-                _list.add(results.getString("Name"));
+                list.add(results.getString("Name") +
+                        " with a population of " +
+                        results.getString("Population"));
             }
         }
         catch(Exception exception)
@@ -179,6 +186,8 @@ public class CountryList
             System.out.println("Error retrieving data from ResultSet!");
         }
 
+        // return the resulting list
+        return list;
     }
 
     //endregion
