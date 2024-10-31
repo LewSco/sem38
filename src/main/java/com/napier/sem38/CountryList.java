@@ -4,10 +4,16 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * class used to store methods for getting and displaying lists of countries
+ */
 public class CountryList
 {
     Database _database;
 
+    /**
+     * extra constructor used for unit testing
+     */
     public CountryList()
     {
 
@@ -204,6 +210,26 @@ public class CountryList
      */
     public void Display(String listName, List<String> list)
     {
+        // to catch the errors from testing
+        try
+        {
+            if (listName == null)
+                throw new Exception("listName is null");
+            if (listName.isEmpty())
+                throw new Exception("listName is empty");
+            if (list == null)
+                throw new Exception("list is null");
+            if (list.isEmpty())
+                throw new Exception("list is empty");
+        }
+        catch(Exception exception)
+        {
+            // print error messages
+            System.out.println("Display Error: \n" + exception.getMessage());
+            return;
+        }
+
+        // print the name of the list
         System.out.println(listName + ":");
         // seems like the java equivalent of a foreach loop
         for (String country : list) // foreach (String country in _list)
