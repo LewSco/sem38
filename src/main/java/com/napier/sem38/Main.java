@@ -16,6 +16,7 @@ public class Main {
         // initialize the class instances
         CountryList _countryList = new CountryList(_database);
         PopulationSum _populationSum = new PopulationSum(_database);
+        CityList _cityList = new CityList(_database);
 
         // country lists
         List<String> _countryWorldList;
@@ -62,17 +63,34 @@ public class Main {
 
         // get region list of countries ordered by population
         _name = "Caribbean";
-        _countryRegionList = _countryList.GetRegionList(_name);
+        _countryList.GetRegionList(_name);
+
         // display the list
         _name = "the " + _name;
-        _countryList.Display("\nList of countries in " + _name + " by population",
-                _countryRegionList);
+        System.out.println("\nList of countries in " + _name + " by population:");
+        _countryList.Display();
 
         // get world population
         _worldPop = _populationSum.GetWorldPop();
         // print world population
         _populationSum.Display("World Population",
                 _worldPop);
+
+        //Issue 14 GitHub
+        // Get cities in a continent (e.g., "Asia") ordered by population
+        _name = "Asia";
+        _cityList.citiesInContinentLargetoSmall(_name);
+
+        System.out.println("\nList of cities in " + _name + " by population:");
+        _cityList.Display();
+
+        //Issue 15 GitHub
+        //Get the cities in a region ordered by population
+        _name = "Caribbean";
+        _cityList.citiesInRegionLargetoSmall(_name);
+
+        System.out.println("\nList of cities in " + _name + " by population:");
+        _cityList.Display();
 
         // disconnect from database
         _database.disconnect();
