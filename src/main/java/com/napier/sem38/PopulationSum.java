@@ -9,6 +9,11 @@ public class PopulationSum
 {
     Database _database;
 
+    public PopulationSum()
+    {
+
+    }
+
     /**
      * Class Constructor
      * Assigns the database and initialises the array list.

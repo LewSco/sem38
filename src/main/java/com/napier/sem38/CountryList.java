@@ -8,6 +8,11 @@ public class CountryList
 {
     Database _database;
 
+    public CountryList()
+    {
+
+    };
+
     /**
      * Class Constructor
      * Assigns the database.
