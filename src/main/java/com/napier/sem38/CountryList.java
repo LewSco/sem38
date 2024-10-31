@@ -6,19 +6,17 @@ import java.util.List;
 
 public class CountryList
 {
-    List<String> _list; // list for storing the countries
     Database _database;
 
     /**
      * Class Constructor
-     * Assigns the database and instantiates list.
+     * Assigns the database.
      * @param database
      */
     public CountryList(Database database)
     {
-        // we initialise the list
-        _list = new ArrayList<>();
-        _database = database; // store the database reference
+        // store the database reference
+        _database = database;
     }
 
     //region World Functions
@@ -27,13 +25,14 @@ public class CountryList
      * Queries the database to find countries in the world sorted by population.
      * Stores the results in the array list variable.
      */
-    public void GetWorldList()
+    public List<String> GetWorldList()
     {
-        _list.clear(); // clear the list of any previous queries
+        // initialise the return list
+        List<String> list = new ArrayList<>();
 
         // set up our query statement
         String query =
-                "SELECT Name " +
+                "SELECT Name, Population " +
                         "FROM country " +
                         "ORDER BY Population DESC";
 
@@ -46,7 +45,9 @@ public class CountryList
             while (results.next())
             {
                 // add each country to the list
-                _list.add(results.getString("Name"));
+                list.add(results.getString("Name") +
+                        " with a population of " +
+                        results.getString("Population"));
             }
         }
         catch(Exception exception)
@@ -56,6 +57,7 @@ public class CountryList
             System.out.println("Error retrieving data from ResultSet!");
         }
 
+        return list;
     }
 
     /**
@@ -63,13 +65,14 @@ public class CountryList
      * Stores the results in an array list.
      * @param n
      */
-    public void GetWorldList(int n)
+    public List<String> GetWorldList(int n)
     {
-        _list.clear(); // clear the list of any previous queries
+        // initialise the return list
+        List<String> list = new ArrayList<>();
 
         // set up our query statement
         String query =
-                "SELECT Name " +
+                "SELECT Name, Population " +
                         "FROM country " +
                         "ORDER BY Population DESC LIMIT " + n;
 
@@ -81,8 +84,9 @@ public class CountryList
             // this moves through the results until there are no more
             while (results.next())
             {
-                // add each country to the list
-                _list.add(results.getString("Name"));
+                list.add(results.getString("Name") +
+                        " with a population of " +
+                        results.getString("Population"));
             }
         }
         catch(Exception exception)
@@ -92,6 +96,8 @@ public class CountryList
             System.out.println("Error retrieving data from ResultSet!");
         }
 
+        // return the resulting list
+        return list;
     }
 
     //endregion
@@ -102,9 +108,10 @@ public class CountryList
      * Queries the database to find countries in a continent sorted by population.
      * Stores the results in the array list variable.
      */
-    public void GetContinentList(String continent)
+    public List<String> GetContinentList(String continent)
     {
-        _list.clear(); // clear the list of any previous queries
+        // initialise the return list
+        List<String> list = new ArrayList<>();
 
         // SQL query to get countries in a continent ordered by population
         String query = "SELECT Name, Population " +
@@ -181,10 +188,11 @@ public class CountryList
     /**
      * Displays all elements in array list (query results if assigned)
      */
-    public void Display()
+    public void Display(String listName, List<String> list)
     {
+        System.out.println(listName + ":");
         // seems like the java equivalent of a foreach loop
-        for (String country : _list) // foreach (String country in _list)
+        for (String country : list) // foreach (String country in _list)
         {
             System.out.println(country);  // Console.WriteLine(country);
         }
