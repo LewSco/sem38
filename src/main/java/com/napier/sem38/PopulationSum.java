@@ -56,4 +56,13 @@ public class PopulationSum
         return pop;
     }
     //endregion
+
+    //region Display
+
+    public void Display(String sumName, long population)
+    {
+        System.out.println(sumName + ": " + population);
+    }
+
+    //end region
 }
