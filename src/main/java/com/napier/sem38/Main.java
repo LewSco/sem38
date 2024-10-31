@@ -13,7 +13,7 @@ public class Main {
 
         // initialize the list
         CountryList _countryList = new CountryList(_database);
-        PopulationList _populationList = new PopulationList(_database);
+        PopulationSum _populationSum = new PopulationSum(_database);
 
         // variables for storing names and numbers
         int _number;
@@ -62,7 +62,7 @@ public class Main {
         _countryList.Display();
 
         // get and print world population
-        System.out.println("World Population: " + _populationList.GetWorldPop());
+        System.out.println("World Population: " + _populationSum.GetWorldPop());
 
         // disconnect from database
         _database.disconnect();
