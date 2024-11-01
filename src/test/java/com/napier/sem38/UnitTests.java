@@ -196,7 +196,7 @@ public class UnitTests
     @Test
     void PopulationSumDisplayNumberNegative()
     {
-        _populationSum.Display("",
+        _populationSum.Display("Test Sum",
                 -123);
     }
 
@@ -206,7 +206,7 @@ public class UnitTests
     @Test
     void PopulationSumDisplayNumberZero()
     {
-        _populationSum.Display("",
+        _populationSum.Display("Test Sum",
                 0);
     }
 }
