@@ -65,6 +65,44 @@ public class PopulationSum
     }
     //endregion
 
+
+    //region Continent Population
+    /**
+     * Queries the database to find the population of a specific continent.
+     * @param continent the continent for which to calculate the population sum
+     * @return the total population of the specified continent as a long integer
+     */
+    public long GetContinentPop(String continent)
+    {
+        long pop = -1;
+
+        // SQL query to calculate the population of a continent
+        String query = "SELECT SUM(Population) AS ContinentPop " +
+                "FROM country " +
+                "WHERE Continent = '" + continent + "';";
+
+        try
+        {
+            // Get results from database
+            ResultSet results = _database.Query(query);
+
+            // Parse results
+            if (results.next())
+            {
+                pop = results.getLong("ContinentPop");
+            }
+        }
+        catch (Exception exception)
+        {
+            // Print error messages
+            System.out.println(exception.getMessage());
+            System.out.println("Error retrieving continent population data!");
+        }
+
+        return pop;
+    }
+    //endregion
+
     //region Display
 
     /**
@@ -96,5 +134,5 @@ public class PopulationSum
         System.out.println(sumName + ": " + population);
     }
 
-    //end region
+    //endregion
 }

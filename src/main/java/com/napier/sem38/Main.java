@@ -26,6 +26,7 @@ public class Main {
 
         // populations
         Long _worldPop;
+        Long _continentPop;
 
         // variables for storing names and numbers
         int _number;
@@ -86,6 +87,12 @@ public class Main {
         _name = "Caribbean";
         _cityList.Display("List of cities in " + _name + " by population:",
                 _cityList.citiesInRegionLargetoSmall(_name));
+
+        //GitIssue 33
+        //Get and display the population in a continent
+        _name = "Asia";
+        _continentPop = _populationSum.GetContinentPop(_name);
+        _populationSum.Display("Population of " + _name, _continentPop);
 
         // disconnect from database
         _database.disconnect();
