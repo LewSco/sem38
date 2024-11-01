@@ -1,6 +1,7 @@
 package com.napier.sem38;
 
 import java.util.List;
+import java.util.Scanner; //This allows input into the Database
 
 public class Main {
     /**
@@ -115,6 +116,14 @@ public class Main {
         _districtPop = _populationSum.GetDistrictPop(_name);
         _populationSum.Display("Population of the District " + _name, _districtPop);
 
+        // Ask the user for the number of top populated capitals they want to retrieve
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the number of top populated capitals to retrieve: ");
+        int n = scanner.nextInt();
+
+        // Retrieve and display the top N populated capitals
+        List<String> topNCapitals = _cityList.GetTopNPopulatedCapitals(n);
+        _cityList.Display("Top " + n + " Populated Capital Cities", topNCapitals);
 
         // disconnect from database
         _database.disconnect();

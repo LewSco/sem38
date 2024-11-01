@@ -19,7 +19,7 @@ public class CityList
     /**
      * Class Constructor
      * Assigns the database and instantiates list.
-     * @param database
+     * @param database reference to database
      */
     public CityList(Database database)
     {
@@ -104,6 +104,37 @@ public class CityList
 
         return list;
     }
+
+    public List<String> GetTopNPopulatedCapitals(int n) {
+        List<String> list = new ArrayList<>();
+
+        // SQL query to get the top N populated capital cities
+        String query = "SELECT city.Name, city.Population " +
+                "FROM city " +
+                "JOIN country ON city.ID = country.Capital " +
+                "ORDER BY city.Population DESC " +
+                "LIMIT " + n;
+
+        // Execute the query and retrieve results
+        ResultSet results = _database.Query(query);
+
+        try {
+            // Iterate through the results
+            while (results.next()) {
+                // Get the city name and population, and add it to the list
+                String cityName = results.getString("Name");
+                int population = results.getInt("Population");
+                list.add(cityName + " - Population: " + population);
+            }
+        } catch (Exception exception) {
+            // Print error messages if any
+            System.out.println(exception.getMessage());
+            System.out.println("Error retrieving data from ResultSet!");
+        }
+
+        return list;
+    }
+
 
     /**
      * Displays all elements in the array list (query results if assigned)
