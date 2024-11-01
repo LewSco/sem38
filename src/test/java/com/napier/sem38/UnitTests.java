@@ -14,6 +14,7 @@ public class UnitTests
 
     static CountryList _countryList;
     static PopulationSum _populationSum;
+    static CityList _cityList;
 
     /**
      * Initialise Method
@@ -24,6 +25,7 @@ public class UnitTests
     {
         _countryList = new CountryList();
         _populationSum = new PopulationSum();
+        _cityList = new CityList();
     }
 
     /**
@@ -89,6 +91,72 @@ public class UnitTests
     {
         List<String> testList = new ArrayList<>();
         _countryList.Display("Test List",
+                testList);
+    }
+
+    /**
+     * Test to check the CityList display method works with an expected input.
+     */
+    @Test
+    void CityListDisplayExpectedInput()
+    {
+        List<String> testList = new ArrayList<>();
+        testList.add("City1 with a population of 24 peps");
+        testList.add("City2 with a population of 20 peps");
+        testList.add("City3 with a population of 12 peps");
+
+        _cityList.Display("Test List",
+                testList);
+    }
+
+    /**
+     * Test to check the CityList display method works with a null listName param.
+     */
+    @Test
+    void CityListDisplayNameNull()
+    {
+        List<String> testList = new ArrayList<>();
+        testList.add("City1 with a population of 24 peps");
+        testList.add("City2 with a population of 20 peps");
+        testList.add("City3 with a population of 12 peps");
+
+        _cityList.Display(null,
+                testList);
+    }
+
+    /**
+     * Test to check the CityList display method works with an empty string listName param.
+     */
+    @Test
+    void CityListDisplayNameEmpty()
+    {
+        List<String> testList = new ArrayList<>();
+        testList.add("City1 with a population of 24 peps");
+        testList.add("City2 with a population of 20 peps");
+        testList.add("City3 with a population of 12 peps");
+
+        _cityList.Display("",
+                testList);
+    }
+
+    /**
+     * Test to check the CityList display method works with a null list param.
+     */
+    @Test
+    void CityListDisplayListNull()
+    {
+        _cityList.Display("Test List",
+                null);
+    }
+
+    /**
+     * Test to check the CityList display method works with an empty listName param.
+     */
+    @Test
+    void CityListDisplayListEmpty()
+    {
+        List<String> testList = new ArrayList<>();
+        _cityList.Display("Test List",
                 testList);
     }
 

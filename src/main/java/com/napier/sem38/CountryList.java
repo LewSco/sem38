@@ -57,7 +57,7 @@ public class CountryList
             {
                 // add each country to the list
                 list.add(results.getString("Name") +
-                        " with a population of " +
+                        " - Population: " +
                         results.getString("Population"));
             }
         }
@@ -96,7 +96,7 @@ public class CountryList
             while (results.next())
             {
                 list.add(results.getString("Name") +
-                        " with a population of " +
+                        " - Population: " +
                         results.getString("Population"));
             }
         }
@@ -141,7 +141,7 @@ public class CountryList
             {
                 // add each country to the list
                 list.add(results.getString("Name") +
-                        " with a population of " +
+                        " - Population: " +
                         results.getString("Population"));
             }
         }
@@ -186,7 +186,7 @@ public class CountryList
             {
                 // add each country to the list
                 list.add(results.getString("Name") +
-                        " with a population of " +
+                        " - Population: " +
                         results.getString("Population"));
             }
         }

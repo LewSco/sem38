@@ -76,20 +76,16 @@ public class Main {
                 _worldPop);
 
         //Issue 14 GitHub
-        // Get cities in a continent (e.g., "Asia") ordered by population
+        // Get and display cities in a continent (e.g., "Asia") ordered by population
         _name = "Asia";
-        _cityList.citiesInContinentLargetoSmall(_name);
-
-        System.out.println("\nList of cities in " + _name + " by population:");
-        _cityList.Display();
+        _cityList.Display("List of cities in " + _name + " by population:",
+                _cityList.citiesInContinentLargetoSmall(_name));
 
         //Issue 15 GitHub
-        //Get the cities in a region ordered by population
+        //Get and display the cities in a region ordered by population
         _name = "Caribbean";
-        _cityList.citiesInRegionLargetoSmall(_name);
-
-        System.out.println("\nList of cities in " + _name + " by population:");
-        _cityList.Display();
+        _cityList.Display("List of cities in " + _name + " by population:",
+                _cityList.citiesInRegionLargetoSmall(_name));
 
         // disconnect from database
         _database.disconnect();
