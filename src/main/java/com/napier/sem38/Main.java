@@ -27,6 +27,7 @@ public class Main {
         // populations
         Long _worldPop;
         Long _continentPop;
+        Long _countryPop;
 
         // variables for storing names and numbers
         int _number;
@@ -92,7 +93,15 @@ public class Main {
         //Get and display the population in a continent
         _name = "Asia";
         _continentPop = _populationSum.GetContinentPop(_name);
-        _populationSum.Display("Population of " + _name, _continentPop);
+        _populationSum.Display("Population of the Continent " + _name, _continentPop);
+
+        //GitIssue 35
+        // Get and Display the population of a country
+        _name = "France";
+        _countryPop = _populationSum.GetCountryPop(_name);
+        _populationSum.Display("Population of the Country " + _name, _countryPop);
+
+
 
         // disconnect from database
         _database.disconnect();
