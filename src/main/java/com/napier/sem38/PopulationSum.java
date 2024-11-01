@@ -139,8 +139,44 @@ public class PopulationSum
         return pop;
     }
     //endregion
+    //region District Population
+    /**
+     * Queries the database to find the population of a specific district.
+     * @param district the country for which to calculate the population
+     * @return the total population of the specified district as a long integer
+     */
+    public long GetDistrictPop(String district)
+    {
+        long pop = -1;
 
-    //region Country Population
+        // SQL query to calculate the population of a District
+        String query = "SELECT SUM(Population) AS DistrictPop " +
+                "FROM city " +
+                "WHERE district = '" + district + "';";
+
+        try
+        {
+            // Get results from database
+            ResultSet results = _database.Query(query);
+
+            // Parse results
+            if (results.next())
+            {
+                pop = results.getLong("DistrictPop");
+            }
+        }
+        catch (Exception exception)
+        {
+            // Print error messages
+            System.out.println(exception.getMessage());
+            System.out.println("Error retrieving country population data!");
+        }
+
+        return pop;
+    }
+    //endregion
+
+    //region Region Population
     /**
      * Queries the database to find the population of a specific region.
      * @param region the region for which to calculate the population sum
