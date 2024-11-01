@@ -28,6 +28,7 @@ public class Main {
         Long _worldPop;
         Long _continentPop;
         Long _countryPop;
+        Long _regionPop;
 
         // variables for storing names and numbers
         int _number;
@@ -101,6 +102,11 @@ public class Main {
         _countryPop = _populationSum.GetCountryPop(_name);
         _populationSum.Display("Population of the Country " + _name, _countryPop);
 
+        //GitIssue 34
+        // Get and Display the population of a Region
+        _name = "Caribbean";
+        _regionPop = _populationSum.GetRegionPop(_name);
+        _populationSum.Display("Population of the Region " + _name, _regionPop);
 
 
         // disconnect from database

@@ -140,6 +140,43 @@ public class PopulationSum
     }
     //endregion
 
+    //region Country Population
+    /**
+     * Queries the database to find the population of a specific region.
+     * @param region the region for which to calculate the population sum
+     * @return the total population of the specified region as a long integer
+     */
+    public long GetRegionPop(String region)
+    {
+        long pop = -1;
+
+        // SQL query to calculate the population of a region
+        String query = "SELECT SUM(Population) AS RegionPop " +
+                "FROM country " +
+                "WHERE Region = '" + region + "';";
+
+        try
+        {
+            // Get results from database
+            ResultSet results = _database.Query(query);
+
+            // Parse results
+            if (results.next())
+            {
+                pop = results.getLong("RegionPop");
+            }
+        }
+        catch (Exception exception)
+        {
+            // Print error messages
+            System.out.println(exception.getMessage());
+            System.out.println("Error retrieving country population data!");
+        }
+
+        return pop;
+    }
+    //endregion
+
     //region Display
 
     /**
