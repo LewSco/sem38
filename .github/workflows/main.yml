@@ -34,7 +34,7 @@ jobs:
       - name: Integration Tests
         run: |
           docker build -t Database/. 
-          docker run --name world-db -dp 33060:3306 database
+          docker run --name world -dp 33060:3306 database
           mvn -Dtest=com.napier.sem38.IntegrationTests test
           docker stop world-db
           docker rm world-db
