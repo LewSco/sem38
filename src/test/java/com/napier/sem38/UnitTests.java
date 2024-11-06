@@ -12,9 +12,7 @@ import java.util.List;
 public class UnitTests
 {
 
-    static CountryList _countryList;
-    static PopulationSum _populationSum;
-    static CityList _cityList;
+    static Display _display;
 
     /**
      * Initialise Method
@@ -23,190 +21,125 @@ public class UnitTests
     @BeforeAll
     static void Initialise()
     {
-        _countryList = new CountryList();
-        _populationSum = new PopulationSum();
-        _cityList = new CityList();
+        // call the display constructor
+        _display = new Display();
     }
 
     /**
-     * Test to check the CountryList display method works with an expected input.
+     * Test to check the display list Show() method works with an expected input.
      */
     @Test
-    void CountryListDisplayExpectedInput()
+    void DisplayListShowExpected()
     {
         List<String> testList = new ArrayList<>();
         testList.add("Country1 with a population of 24 peps");
         testList.add("Country2 with a population of 20 peps");
         testList.add("Country3 with a population of 12 peps");
 
-        _countryList.Display("Test List",
+        _display.Show("Test List",
                 testList);
     }
 
     /**
-     * Test to check the CountryList display method works with a null listName param.
+     * Test to check the display list Show() method works with a null listName param.
      */
     @Test
-    void CountryListDisplayNameNull()
+    void DisplayListShowNameNull()
     {
         List<String> testList = new ArrayList<>();
         testList.add("Country1 with a population of 24 peps");
         testList.add("Country2 with a population of 20 peps");
         testList.add("Country3 with a population of 12 peps");
 
-        _countryList.Display(null,
+        _display.Show(null,
                 testList);
     }
 
     /**
-     * Test to check the CountryList display method works with an empty string listName param.
+     * Test to check the display list Show() method works with an empty string listName param.
      */
     @Test
-    void CountryListDisplayNameEmpty()
+    void DisplayListShowNameEmpty()
     {
         List<String> testList = new ArrayList<>();
         testList.add("Country1 with a population of 24 peps");
         testList.add("Country2 with a population of 20 peps");
         testList.add("Country3 with a population of 12 peps");
 
-        _countryList.Display("",
+        _display.Show("",
                 testList);
     }
 
     /**
-     * Test to check the CountryList display method works with a null list param.
+     * Test to check the display list Show() method works with a null list param.
      */
     @Test
-    void CountryListDisplayListNull()
+    void DisplayListShowListNull()
     {
-        _countryList.Display("Test List",
-                null);
+        List<String> testList = null;
+        _display.Show("Test List",
+                testList);
     }
 
     /**
-     * Test to check the CountryList display method works with an empty listName param.
+     * Test to check the display list Show() method works with an empty name param.
      */
     @Test
-    void CountryListDisplayListEmpty()
+    void DisplayListShowListEmpty()
     {
         List<String> testList = new ArrayList<>();
-        _countryList.Display("Test List",
+        _display.Show("Test List",
                 testList);
     }
 
     /**
-     * Test to check the CityList display method works with an expected input.
+     * Test to check the display String Show() method works with expected inputs.
      */
     @Test
-    void CityListDisplayExpectedInput()
+    void DisplayStringShowDisplayExpected()
     {
-        List<String> testList = new ArrayList<>();
-        testList.add("City1 with a population of 24 peps");
-        testList.add("City2 with a population of 20 peps");
-        testList.add("City3 with a population of 12 peps");
-
-        _cityList.Display("Test List",
-                testList);
+        _display.Show("Test",
+                "102313123");
     }
 
     /**
-     * Test to check the CityList display method works with a null listName param.
+     * Test to check the display String Show() method works with a null name param.
      */
     @Test
-    void CityListDisplayNameNull()
+    void DisplayStringShowNameNull()
     {
-        List<String> testList = new ArrayList<>();
-        testList.add("City1 with a population of 24 peps");
-        testList.add("City2 with a population of 20 peps");
-        testList.add("City3 with a population of 12 peps");
-
-        _cityList.Display(null,
-                testList);
+        _display.Show(null,
+                "102313123");
     }
 
     /**
-     * Test to check the CityList display method works with an empty string listName param.
+     * Test to check the display String Show() method works with an empty name param.
      */
     @Test
-    void CityListDisplayNameEmpty()
+    void DisplayStringShowNameEmpty()
     {
-        List<String> testList = new ArrayList<>();
-        testList.add("City1 with a population of 24 peps");
-        testList.add("City2 with a population of 20 peps");
-        testList.add("City3 with a population of 12 peps");
-
-        _cityList.Display("",
-                testList);
+        _display.Show("",
+                "102313123");
     }
 
     /**
-     * Test to check the CityList display method works with a null list param.
+     * Test to check the display String Show() method works with a null result param.
      */
     @Test
-    void CityListDisplayListNull()
+    void DisplayStringShowResultNull()
     {
-        _cityList.Display("Test List",
-                null);
+        String result = null;
+        _display.Show("Test",
+                result);
     }
 
     /**
-     * Test to check the CityList display method works with an empty listName param.
+     * Test to check the String Show() method works with an empty result param.
      */
     @Test
-    void CityListDisplayListEmpty()
+    void DisplayStringShowResultEmpty()
     {
-        List<String> testList = new ArrayList<>();
-        _cityList.Display("Test List",
-                testList);
-    }
-
-    /**
-     * Test to check the PopulationSum display method works with expected inputs.
-     */
-    @Test
-    void PopulationSumDisplayExpectedInput()
-    {
-        _populationSum.Display("Test Sum",
-                102313123);
-    }
-
-    /**
-     * Test to check the PopulationSum display method works with a null sumName param.
-     */
-    @Test
-    void PopulationSumDisplayNameNull()
-    {
-        _populationSum.Display(null,
-                102313123);
-    }
-
-    /**
-     * Test to check the PopulationSum display method works with an empty sumName param.
-     */
-    @Test
-    void PopulationSumDisplayNameEmpty()
-    {
-        _populationSum.Display("",
-                102313123);
-    }
-
-    /**
-     * Test to check the PopulationSum display method works with a negative population param.
-     */
-    @Test
-    void PopulationSumDisplayNumberNegative()
-    {
-        _populationSum.Display("Test Sum",
-                -123);
-    }
-
-    /**
-     * Test to check the PopulationSum display method works with a Zero population param.
-     */
-    @Test
-    void PopulationSumDisplayNumberZero()
-    {
-        _populationSum.Display("Test Sum",
-                0);
+        _display.Show("Test",
+                "");
     }
 }
