@@ -33,11 +33,11 @@ jobs:
           distribution: 'adopt'
       - name: Integration Tests
         run: |
-          docker build -t database ./database 
-          docker run --name world-db -dp 33060:3306 database
+          docker build -t database ./world-db
+          docker run --name world -dp 33060:3306 database
           mvn -Dtest=com.napier.sem38.IntegrationTests test
-          docker stop world-db
-          docker rm world-db
+          docker stop world
+          docker rm world
           docker image rm database    
 
   build:
