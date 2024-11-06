@@ -36,7 +36,11 @@ public class Database
                 Thread.sleep(delay);
 
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://" + location + "/world?useSSL=false", "root", "example");
+                con = DriverManager.getConnection("jdbc:mysql://" +
+                                location +
+                                "/employees?allowPublicKeyRetrieval=true&useSSL=false",
+                        "root",
+                        "example");
                 System.out.println("Successfully connected");
                 break;
             }
