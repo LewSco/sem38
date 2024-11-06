@@ -57,14 +57,13 @@ public class PopulationSum
     }
     //endregion
 
-
     //region Continent Population
     /**
      * Queries the database to find the population of a specific continent.
      * @param continent the continent for which to calculate the population sum
      * @return the total population of the specified continent as a long integer
      */
-    public long GetContinentPop(String continent)
+    public Long GetContinentPop(String continent)
     {
         long pop = -1;
 
@@ -101,7 +100,7 @@ public class PopulationSum
      * @param country the country for which to calculate the population
      * @return the total population of the specified country as a long integer
      */
-    public long GetCountryPop(String country)
+    public Long GetCountryPop(String country)
     {
         long pop = -1;
 
@@ -131,13 +130,14 @@ public class PopulationSum
         return pop;
     }
     //endregion
+
     //region District Population
     /**
      * Queries the database to find the population of a specific district.
      * @param district the country for which to calculate the population
      * @return the total population of the specified district as a long integer
      */
-    public long GetDistrictPop(String district)
+    public Long GetDistrictPop(String district)
     {
         long pop = -1;
 
@@ -174,7 +174,7 @@ public class PopulationSum
      * @param region the region for which to calculate the population sum
      * @return the total population of the specified region as a long integer
      */
-    public long GetRegionPop(String region)
+    public Long GetRegionPop(String region)
     {
         long pop = -1;
 
