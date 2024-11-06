@@ -45,7 +45,7 @@ public class CountryList
         String query =
                 "SELECT Name, Population " +
                         "FROM country " +
-                        "ORDER BY Population DESC";
+                        "ORDER BY Population DESC;";
 
         // get the results from the database
         ResultSet results = _database.Query(query);

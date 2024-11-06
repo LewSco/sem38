@@ -13,7 +13,7 @@ public class Database
     /**
      * Connect to the MySQL database.
      */
-    public void connect(String location, int delay)
+    public void Connect(String location, int delay)
     {
         try
         {
@@ -55,7 +55,7 @@ public class Database
     /**
      * Disconnect from the MySQL database.
      */
-    public void disconnect()
+    public void Disconnect()
     {
         if (con != null)
         {

@@ -38,11 +38,11 @@ public class Main {
         // connect to database
         if (args.length < 1)
         {
-            _database.connect("localhost:33060", 30000);
+            _database.Connect("localhost:33060", 30000);
         }
         else
         {
-            _database.connect(args[0], Integer.parseInt(args[1]));
+            _database.Connect(args[0], Integer.parseInt(args[1]));
         }
 
         // get world list of countries ordered by population
@@ -121,6 +121,6 @@ public class Main {
         _cityList.Display("Top " + _number + " Populated Capital Cities", topNCapitals);
 
         // disconnect from database
-        _database.disconnect();
+        _database.Disconnect();
     }
 }
