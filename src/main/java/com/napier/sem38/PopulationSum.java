@@ -10,14 +10,6 @@ public class PopulationSum
     Database _database;
 
     /**
-     * extra constructor used for unit testing
-     */
-    public PopulationSum()
-    {
-
-    }
-
-    /**
      * Class Constructor
      * Assigns the database and initialises the array list.
      * @param database a reference to the database connection
@@ -211,38 +203,5 @@ public class PopulationSum
 
         return pop;
     }
-    //endregion
-
-    //region Display
-
-    /**
-     * function to display the population sum the user searched for
-     * @param sumName the name of the sum displayed to the user
-     * @param population the population the user searched for
-     */
-    public void Display(String sumName, long population)
-    {
-        // check for errors
-        try
-        {
-            if (sumName == null)
-                throw new Exception("sumName cannot be null");
-            if (sumName.isEmpty())
-                throw new Exception("sumName cannot be empty");
-            if (population == 0)
-                throw new Exception("population cannot be zero");
-            if (population < 0)
-                throw new Exception("population cannot be negative");
-        }
-        catch(Exception exception)
-        {
-            System.out.println("\nDisplay Error:\n" +exception.getMessage() + "\n");
-            return;
-        }
-
-        // print result
-        System.out.println(sumName + ": " + population);
-    }
-
     //endregion
 }
