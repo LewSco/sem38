@@ -106,6 +106,7 @@ public class Main {
         //Gitissue 39
         _name = "Belgium";
         _display.Show("Country Report " + _name, _countryList.CountryReport(_name));
+        _display.Show("All Country Reports", _countryList.CountryReport());
 
         // disconnect from database
         _database.Disconnect();

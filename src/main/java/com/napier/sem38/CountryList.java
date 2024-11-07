@@ -244,5 +244,47 @@ public class CountryList
         return report;
     }
 
+    public List<String> CountryReport()
+    {
+        // initialise the return list
+        List<String> list = new ArrayList<>();
+
+        // SQL query to get the country
+        String query = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital " +
+                "FROM country " +
+                "JOIN city ON country.Capital = city.ID;";
+
+        // get the results from the database
+        ResultSet results = _database.Query(query);
+
+        try
+        {
+
+            // this moves through the results until there are no more
+            while (results.next())
+            {
+                // add country data to list
+                list.add(
+                        "\n \t" + "Code: " + results.getString("Code") +
+                                "\n \t" + "Name: " + results.getString("Name") +
+                                "\n \t" + "Continent: " + results.getString("Continent") +
+                                "\n \t" + "Region: " + results.getString("Region") +
+                                "\n \t" + "Population: " + results.getString("Population") +
+                                "\n \t" + "Capital: " + results.getString("Capital")
+                );
+            }
+        }
+        catch(Exception exception)
+        {
+            // print error messages
+            System.out.println(exception.getMessage());
+            System.out.println("Error retrieving data from ResultSet!");
+        }
+
+        // return the resulting list
+        return list;
+    }
+
+
     //endregion
 }
