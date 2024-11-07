@@ -102,7 +102,7 @@ public class IntegrationTests
         List<String> expected = new ArrayList<>();
         expected.add("China - Population: 1277558000");
         expected.add("India - Population: 1013662000");
-        expected.add("Indonesia  - Population: 212107000");
+        expected.add("Indonesia - Population: 212107000");
         expected.add("Pakistan - Population: 156483000");
         expected.add("Bangladesh - Population: 129155000");
 
@@ -182,7 +182,7 @@ public class IntegrationTests
         List<String> expected = new ArrayList<>();
         expected.add("La Habana - Population: 2256000");
         expected.add("Santo Domingo de Guzmán - Population: 1609966");
-        expected.add("Port-au-Prince  - Population: 884472");
+        expected.add("Port-au-Prince - Population: 884472");
         expected.add("San Juan - Population: 434374");
         expected.add("Santiago de Cuba  - Population: 433180");
 
