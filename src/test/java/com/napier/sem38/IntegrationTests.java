@@ -129,7 +129,7 @@ public class IntegrationTests
         List<String> expected = new ArrayList<>();
         expected.add("La Habana - Population: 2256000");
         expected.add("Santo Domingo de Guzmán - Population: 1609966");
-        expected.add("Port-au-Prince  - Population: 884472");
+        expected.add("Port-au-Prince - Population: 884472");
 
         // check actual = expected
         assertEquals(expected, actual);
@@ -184,7 +184,7 @@ public class IntegrationTests
         expected.add("Santo Domingo de Guzmán - Population: 1609966");
         expected.add("Port-au-Prince - Population: 884472");
         expected.add("San Juan - Population: 434374");
-        expected.add("Santiago de Cuba  - Population: 433180");
+        expected.add("Santiago de Cuba - Population: 433180");
 
         // check actual = expected
         assertEquals(expected, actual);
