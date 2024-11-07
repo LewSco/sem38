@@ -103,6 +103,10 @@ public class Main {
         _display.Show("Top " + _number + " Populated Capital Cities",
                 _cityList.GetTopNPopulatedCapitals(_number).toString());
 
+        //Gitissue 39
+        _name = "Belgium";
+        _display.Show("Country Report " + _name, _countryList.CountryReport(_name));
+
         // disconnect from database
         _database.Disconnect();
     }

@@ -202,15 +202,16 @@ public class CountryList
      * population and capital of specified country.
      * Stores the results in the array list variable.
      */
-    public List<String> CountryReport(String countryName)
+    public String CountryReport(String countryName)
     {
         // initialise the return list
-        List<String> list = new ArrayList<>();
+        String report = "";
 
         // SQL query to get the country
-        String query = "SELECT Code, Name, Continent, Region, Population, Capital" +
+        String query = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital " +
                 "FROM country " +
-                "WHERE Name = '" + countryName  + "';";
+                "JOIN city ON country.Capital = city.ID " +
+                "WHERE country.Name = '" + countryName  + "';";
 
         // get the results from the database
         ResultSet results = _database.Query(query);
@@ -222,12 +223,14 @@ public class CountryList
             while (results.next())
             {
                 // add country data to list
-                list.add(results.getString("Code"));
-                list.add("  Name - " + results.getString("Name"));
-                list.add("  Continent - " + results.getString("Continent"));
-                list.add("  Region - " + results.getString("Region"));
-                list.add("  Population - " + results.getString("Population"));
-                list.add("  Capital - " + results.getString("Capital"));
+                report =
+                        "\n \t" + "Code: " + results.getString("Code") +
+                        "\n \t" + "Name: " + results.getString("Name") +
+                        "\n \t" + "Continent: " + results.getString("Continent") +
+                        "\n \t" + "Region: " + results.getString("Region") +
+                        "\n \t" + "Population: " + results.getString("Population") +
+                        "\n \t" + "Capital: " + results.getString("Capital")
+                        ;
             }
         }
         catch(Exception exception)
@@ -238,7 +241,7 @@ public class CountryList
         }
 
         // return the resulting list
-        return list;
+        return report;
     }
 
     //endregion
