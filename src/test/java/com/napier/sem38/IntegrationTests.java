@@ -200,6 +200,11 @@ public class IntegrationTests
         //get function output
         List<String> result = _cityList.citiesInRegionLargetoSmall("Asia");
 
+        if(result.size() < 3)
+        {
+            fail("not enought data returned from db");
+        }
+
         // store top 3 Cities in Asia
         List<String> actual = new ArrayList<>();
         actual.add(result.get(0));
