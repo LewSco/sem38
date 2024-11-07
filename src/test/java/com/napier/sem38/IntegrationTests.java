@@ -127,7 +127,7 @@ public class IntegrationTests
 
         // set expected output
         List<String> expected = new ArrayList<>();
-        expected.add("Cuba - Population: 1120100");
+        expected.add("Cuba - Population: 11201000");
         expected.add("Dominican Republic - Population: 8495000");
         expected.add("Haiti - Population: 8222000");
 
