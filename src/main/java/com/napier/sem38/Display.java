@@ -2,8 +2,14 @@ package com.napier.sem38;
 
 import java.util.List;
 
+/**
+ * class used to display the results of any queries.
+ */
 public class Display
 {
+    /**
+     * the constructor takes no parameters.
+     */
     public Display(){}
 
     /**
