@@ -119,7 +119,7 @@ public class IntegrationTests
         // get function output
         List<String> result = _countryList.GetRegionList("Caribbean");
 
-        // store top 5 countries
+        // store top 4 countries
         List<String> actual = new ArrayList<>();
         actual.add(result.get(0));
         actual.add(result.get(1));
@@ -127,9 +127,9 @@ public class IntegrationTests
 
         // set expected output
         List<String> expected = new ArrayList<>();
-        expected.add("La Habana - Population: 2256000");
-        expected.add("Santo Domingo de Guzmán - Population: 1609966");
-        expected.add("Port-au-Prince - Population: 884472");
+        expected.add("Cuba - Population: 1120100");
+        expected.add("Dominican Republic - Population: 8495000");
+        expected.add("Haiti - Population: 8222000");
 
         // check actual = expected
         assertEquals(expected, actual);
