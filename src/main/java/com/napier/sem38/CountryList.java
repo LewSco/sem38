@@ -194,4 +194,52 @@ public class CountryList
     }
 
     //endregion
+
+    //region Country Report
+
+    /**
+     * Queries the database to find code, name, continent, region,
+     * population and capital of specified country.
+     * Stores the results in the array list variable.
+     */
+    public List<String> CountryReport(String countryName)
+    {
+        // initialise the return list
+        List<String> list = new ArrayList<>();
+
+        // SQL query to get the country
+        String query = "SELECT Code, Name, Continent, Region, Population, Capital" +
+                "FROM country " +
+                "WHERE Name = '" + countryName  + "';";
+
+        // get the results from the database
+        ResultSet results = _database.Query(query);
+
+        try
+        {
+
+            // this moves through the results until there are no more
+            while (results.next())
+            {
+                // add country data to list
+                list.add(results.getString("Code"));
+                list.add("  Name - " + results.getString("Name"));
+                list.add("  Continent - " + results.getString("Continent"));
+                list.add("  Region - " + results.getString("Region"));
+                list.add("  Population - " + results.getString("Population"));
+                list.add("  Capital - " + results.getString("Capital"));
+            }
+        }
+        catch(Exception exception)
+        {
+            // print error messages
+            System.out.println(exception.getMessage());
+            System.out.println("Error retrieving data from ResultSet!");
+        }
+
+        // return the resulting list
+        return list;
+    }
+
+    //endregion
 }
