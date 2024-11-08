@@ -9,12 +9,13 @@ import java.util.List;
  */
 public class CountryList
 {
+    // field to store our reference to the database
     Database _database;
 
     /**
      * Class Constructor
      * Assigns the database.
-     * @param database
+     * @param database reference to the database
      */
     public CountryList(Database database)
     {
@@ -27,6 +28,7 @@ public class CountryList
     /**
      * Queries the database to find countries in the world sorted by population.
      * Stores the results in the array list variable.
+     * @return the list of countries.
      */
     public List<String> GetWorldList()
     {
@@ -66,7 +68,8 @@ public class CountryList
     /**
      * Queries the database to find the top n most populated countries in the world.
      * Stores the results in an array list.
-     * @param n
+     * @param n number we list up to
+     * @return the list of countries.
      */
     public List<String> GetWorldList(int n)
     {
@@ -110,6 +113,8 @@ public class CountryList
     /**
      * Queries the database to find countries in a continent sorted by population.
      * Stores the results in the array list variable.
+     * @param continent the continent to search.
+     * @return list of countries
      */
     public List<String> GetContinentList(String continent)
     {
@@ -155,6 +160,8 @@ public class CountryList
     /**
      * Queries the database to find countries in a region sorted by population.
      * Stores the results in the array list variable.
+     * @param region the region we are searching
+     * @return list of countries
      */
     public List<String> GetRegionList(String region)
     {

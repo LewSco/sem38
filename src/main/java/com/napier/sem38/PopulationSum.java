@@ -7,6 +7,7 @@ import java.sql.ResultSet;
  */
 public class PopulationSum
 {
+    // field to store our reference to the database
     Database _database;
 
     /**
@@ -22,7 +23,7 @@ public class PopulationSum
     //region World Functions
     /**
      * Queries the database to find world population.
-     * Returns world population as a long int.
+     * @return world population as a Long int.
      */
     public Long GetWorldPop()
     {
@@ -58,6 +59,7 @@ public class PopulationSum
     //endregion
 
     //region Continent Population
+
     /**
      * Queries the database to find the population of a specific continent.
      * @param continent the continent for which to calculate the population sum
