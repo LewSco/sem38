@@ -209,75 +209,27 @@ public class CountryList
      * population and capital of specified country.
      * Stores the results in the array list variable.
      */
-    public String CountryReport(String countryName)
+    private List<String> GetCountryReport(String query)
     {
-        // initialise the return list
-        String report = "";
-
-        // SQL query to get the country
-        String query = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital " +
-                "FROM country " +
-                "JOIN city ON country.Capital = city.ID " +
-                "WHERE country.Name = '" + countryName  + "';";
-
-        // get the results from the database
-        ResultSet results = _database.Query(query);
-
-        try
-        {
-
-            // this moves through the results until there are no more
-            while (results.next())
-            {
-                // add country data to list
-                report =
-                        "\n \t" + "Code: " + results.getString("Code") +
-                        "\n \t" + "Name: " + results.getString("Name") +
-                        "\n \t" + "Continent: " + results.getString("Continent") +
-                        "\n \t" + "Region: " + results.getString("Region") +
-                        "\n \t" + "Population: " + results.getString("Population") +
-                        "\n \t" + "Capital: " + results.getString("Capital")
-                        ;
-            }
-        }
-        catch(Exception exception)
-        {
-            // print error messages
-            System.out.println(exception.getMessage());
-            System.out.println("Error retrieving data from ResultSet!");
-        }
-
-        // return the resulting list
-        return report;
-    }
-
-    public List<String> CountryReport()
-    {
-        // initialise the return list
+        //initialise list of results
         List<String> list = new ArrayList<>();
 
-        // SQL query to get the country
-        String query = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital " +
-                "FROM country " +
-                "JOIN city ON country.Capital = city.ID;";
-
-        // get the results from the database
+        // get the results from the database using provided query
         ResultSet results = _database.Query(query);
 
         try
         {
-
             // this moves through the results until there are no more
             while (results.next())
             {
                 // add country data to list
                 list.add(
-                        "\n \t" + "Code: " + results.getString("Code") +
-                                "\n \t" + "Name: " + results.getString("Name") +
-                                "\n \t" + "Continent: " + results.getString("Continent") +
-                                "\n \t" + "Region: " + results.getString("Region") +
-                                "\n \t" + "Population: " + results.getString("Population") +
-                                "\n \t" + "Capital: " + results.getString("Capital")
+                        "\n\t" + "Code: " + results.getString("Code") +
+                                "\n\t" + "Name: " + results.getString("Name") +
+                                "\n\t" + "Continent: " + results.getString("Continent") +
+                                "\n\t" + "Region: " + results.getString("Region") +
+                                "\n\t" + "Population: " + results.getString("Population") +
+                                "\n\t" + "Capital: " + results.getString("Capital")
                 );
             }
         }
@@ -292,6 +244,29 @@ public class CountryList
         return list;
     }
 
+    public String CountryReport(String countryName)
+    {
+        // SQL query to get the country
+        String query = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital " +
+                "FROM country " +
+                "JOIN city ON country.Capital = city.ID " +
+                "WHERE country.Name = '" + countryName  + "';";
 
+        //return resulting list
+        return GetCountryReport(query).get(0);
+    }
+
+    public List<String> CountryReport()
+    {
+        // SQL query to get the country
+        String query = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital " +
+                "FROM country " +
+                "JOIN city ON country.Capital = city.ID;";
+
+        //get resulting list and get rid of the first line break
+        var list = GetCountryReport(query);
+        list.set(0, list.get(0).substring(1, list.get(0).length()-1));
+        return list;
+    }
     //endregion
 }
