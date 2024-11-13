@@ -38,7 +38,7 @@ public class Display
         }
 
         // print result
-        System.out.println(name + ": " + result);
+        System.out.println("\n" + name + ": " + result);
     }
 
     /**
@@ -71,7 +71,7 @@ public class Display
         }
 
         // print the name of the list
-        System.out.println(listName + ":");
+        System.out.println("\n" + listName + ":");
 
         // seems like the java equivalent of a foreach loop
         for (String thing : list) // foreach (String thing in _list)
