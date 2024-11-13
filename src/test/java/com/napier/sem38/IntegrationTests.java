@@ -33,6 +33,8 @@ public class IntegrationTests
         _populationSum = new PopulationSum(_database);
     }
 
+    //region Country
+
     /**
      * test checks world list function works as intended with no params
      */
@@ -57,11 +59,12 @@ public class IntegrationTests
         // check actual = expected
         assertEquals(expected, actual);
     }
+
     /**
      * test checks GetWorldList() with limits returns the expected number of countries that are searched for
      */
     @Test
-    void GetWorldListWithLimitTest()
+    void CountryWorldListWithLimitTest()
     {
         // get function output
         List<String> result = _countryList.GetWorldList(2);
@@ -135,6 +138,10 @@ public class IntegrationTests
         assertEquals(expected, actual);
     }
 
+    //endregion
+
+    //region City
+
     /**
      * test checks GetTopNPopulatedCapitals() returns the expected number of capital cities.
      */
@@ -165,7 +172,7 @@ public class IntegrationTests
      * test checks CitiesInRegionLargetoSmallTest() returns the expected number of capital cities.
      */
     @Test
-    void CitiesInRegionLargetoSmallTest()
+    void CitiesInRegionTest()
     {
         //get function output
         List<String> result = _cityList.citiesInRegionLargetoSmall("Caribbean");
@@ -195,7 +202,7 @@ public class IntegrationTests
      * test checks CitiesInRegionLargetoSmallTest() returns the expected number of cities.
      */
     @Test
-    void citiesInContientLargetoSmallTest()
+    void CitiesInContientTest()
     {
         String continent = "Asia";
         List<String> cities = _cityList.citiesInContinentLargetoSmall(continent);
@@ -206,6 +213,33 @@ public class IntegrationTests
         assertTrue(cities.get(0).contains("Population:"));
 
     }
+
+    @Test
+    void CityWorldListTest()
+    {
+        // get function output
+        List<String> result = _cityList.GetWorldList();
+
+
+        // store top 3 countries
+        List<String> actual = new ArrayList<>();
+        actual.add(result.get(0));
+        actual.add(result.get(1));
+        actual.add(result.get(2));
+
+        // set expected output
+        List<String> expected = new ArrayList<>();
+        expected.add("Jakarta - Population: 9604900");
+        expected.add("Tokyo - Population: 7980230");
+        expected.add("Delhi - Population: 7206704");
+
+        // check actual = expected
+        assertEquals(expected, actual);
+    }
+
+    //endregion
+
+    //region Population
 
     /**
      * test checks GetWorldPop() returns the expected results
@@ -238,6 +272,7 @@ public class IntegrationTests
         //check actual = expected
         assertEquals(expected, actual);
     }
+
     /**
      * test checks GetCountryPop() returns the expected results
      */
@@ -253,6 +288,7 @@ public class IntegrationTests
         //check actual = expected
         assertEquals(expected, actual);
     }
+
     /**
      * test checks GetRegionPop() returns the expected results
      */
@@ -284,5 +320,7 @@ public class IntegrationTests
         //check actual = expected
         assertEquals(expected, actual);
     }
+
+    //endregion
 
 }
