@@ -229,9 +229,9 @@ public class IntegrationTests
 
         // set expected output
         List<String> expected = new ArrayList<>();
-        expected.add("Jakarta - Population: 9604900");
-        expected.add("Tokyo - Population: 7980230");
-        expected.add("Delhi - Population: 7206704");
+        expected.add("Mumbai (Bombay) - Population: 10500000");
+        expected.add("Seoul - Population: 9981619");
+        expected.add("São Paulo - Population: 9968485");
 
         // check actual = expected
         assertEquals(expected, actual);
