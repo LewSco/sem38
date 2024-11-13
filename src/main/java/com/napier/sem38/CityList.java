@@ -20,6 +20,46 @@ public class CityList
     }
 
     /**
+     * Queries the database to find cities in the world sorted by population.
+     * Stores the results in the array list variable.
+     * @return the list of cities.
+     */
+    public List<String> GetWorldList()
+    {
+        // initialise the return list
+        List<String> list = new ArrayList<>();
+
+        // set up our query statement
+        String query =
+                "SELECT Name, Population " +
+                        "FROM city " +
+                        "ORDER BY Population DESC;";
+
+        // get the results from the database
+        ResultSet results = _database.Query(query);
+
+        try
+        {
+            // this moves through the results until there are no more
+            while (results.next())
+            {
+                // add each city to the list
+                list.add(results.getString("Name") +
+                        " - Population: " +
+                        results.getString("Population"));
+            }
+        }
+        catch(Exception exception)
+        {
+            // print error messages
+            System.out.println(exception.getMessage());
+            System.out.println("Error retrieving data from ResultSet!");
+        }
+
+        return list;
+    }
+
+    /**
      * Produce a list of all the cities in a region organized by largest population to smallest.
      * @param region the region to search
      * @return a list of the cities largest to small in population
