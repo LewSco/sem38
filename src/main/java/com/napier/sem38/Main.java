@@ -20,6 +20,7 @@ public class Main {
         CountryList _countryList = new CountryList(_database);
         PopulationSum _populationSum = new PopulationSum(_database);
         CityList _cityList = new CityList(_database);
+        Report _report = new Report(_database);
 
         // variables for storing names and numbers
         int _number;
@@ -105,8 +106,8 @@ public class Main {
 
         // GitIssue39
         _name = "Belgium";
-        _display.Show("Country Report " + _name, _countryList.CountryReport(_name));
-        _display.Show("All Country Reports", _countryList.CountryReport());
+        _display.Show("Country Report " + _name, _report.CountryReport(_name));
+        _display.Show("All Country Reports", _report.CountryReport());
 
         // GitIssue13
         _display.Show("List of the Worlds cities by population",_cityList.GetWorldList());
