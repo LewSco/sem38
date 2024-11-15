@@ -346,6 +346,25 @@ public class IntegrationTests
         assertEquals(expected, actual);
     }
 
+    /**
+     * Test checks if the correct report is returned for the supplied country name.
+     */
+    @Test
+    void CityReport()
+    {
+        // get report
+        String actual = _report.CityReport("Petare");
+        // set expected result
+        String expected =
+                "\n\t" + "Name: Petare" +
+                        "\n\t" + "Country: Venezuela" +
+                        "\n\t" + "District: Miranda" +
+                        "\n\t" + "Population: 488868";
+
+        // check the actual and expected are equal
+        assertEquals(expected, actual);
+    }
+
     //endregion
 
 }
