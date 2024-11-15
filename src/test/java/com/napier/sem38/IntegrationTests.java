@@ -375,7 +375,7 @@ public class IntegrationTests
         String actual = _report.CapitalReport("Brazil");
         // set expected result
         String expected =
-                "\n\t" + "Country: Brasília" +
+                "\n\t" + "Name: Brasília" +
                         "\n\t" + "District: Distrito Federal" +
                         "\n\t" + "Population: 1969868";
 
