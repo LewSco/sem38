@@ -103,7 +103,7 @@ public class Report
      * Queries the database to find name, country, district and
      * population of specified city.
      * Stores the results in the array list variable.
-     * @param query the query to send to the database to get the countries report.
+     * @param query the query to send to the database to get the city's report.
      * @return a list of strings containing the resulting city report/s.
      */
     private List<String> GetCityReport(String query)
