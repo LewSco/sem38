@@ -157,4 +157,64 @@ public class Report
     }
 
     //endregion
+
+    //region Capital
+
+    /**
+     * Queries the database to find name, district and
+     * population of the specified country's capital.
+     * Stores the results in the array list variable.
+     * @param query the query to send to the database to get the capital report.
+     * @return a list of strings containing the resulting capital report.
+     */
+    private String GetCapitalReport(String query)
+    {
+        //initialise list of results
+        List<String> reports = new ArrayList<>();
+
+        try
+        {
+            // get the results from the database using provided query
+            ResultSet results = _database.Query(query);
+
+            // this moves through the results until there are no more
+            while (results.next())
+            {
+                // add country data to list
+                reports.add(
+                        "\n\t" + "Name: " + results.getString("Name") +
+                                "\n\t" + "District: " + results.getString("District") +
+                                "\n\t" + "Population: " + results.getString("Population")
+                );
+            }
+        }
+        catch(Exception exception)
+        {
+            // print error messages
+            System.out.println(exception.getMessage());
+            System.out.println("Error retrieving data from ResultSet!");
+        }
+
+        // return the resulting list
+        return reports.get(0);
+    }
+
+    /**
+     * sets up a query using a supplied country name to get a report from the database for the capital city.
+     * @param countryName the name of the country you want a report on the capital of.
+     * @return a string containing the city report.
+     */
+    public String CapitalReport(String countryName)
+    {
+        // SQL query to get the country
+        String query = "SELECT city.Name, city.District, city.Population " +
+                "FROM city " +
+                "JOIN country ON country.Capital = city.ID " +
+                "WHERE country.Name = '" + countryName  + "';";
+
+        //return resulting list
+        return GetCapitalReport(query);
+    }
+
+    //endregion
 }

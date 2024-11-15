@@ -365,6 +365,20 @@ public class IntegrationTests
         assertEquals(expected, actual);
     }
 
+    @Test
+    void CapitalReport()
+    {
+        // get report
+        String actual = _report.CapitalReport("Brazil");
+        // set expected result
+        String expected =
+                "\n\t" + "Country: Brasília" +
+                        "\n\t" + "District: Distrito Federal" +
+                        "\n\t" + "Population: 1969868";
+
+        // check the actual and expected are equal
+        assertEquals(expected, actual);
+    }
     //endregion
 
 }

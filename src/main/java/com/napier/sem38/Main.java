@@ -115,6 +115,9 @@ public class Main {
         // GitIssue40
         _display.Show("Petare City Report", _report.CityReport("Petare"));
 
+        // GitIssue41
+        _display.Show("Brazil Capital Report", _report.CapitalReport("Brazil"));
+
         // disconnect from database
         _database.Disconnect();
     }

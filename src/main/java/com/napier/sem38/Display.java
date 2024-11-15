@@ -79,6 +79,4 @@ public class Display
             System.out.println(thing);  // Console.WriteLine(thing);
         }
     }
-
-
 }
