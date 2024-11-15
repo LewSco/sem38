@@ -25,11 +25,13 @@ public class Report
      * Queries the database to find code, name, continent, region,
      * population and capital of specified country.
      * Stores the results in the array list variable.
+     * @param query the query to send to the database to get the countries report.
+     * @return a String containing the resulting city report/s.
      */
-    private String GetCountryReport(String query)
+    private List<String> GetCountryReport(String query)
     {
         //initialise list of results
-        String report = "";
+        List<String> reports = new ArrayList<>();
 
         // get the results from the database using provided query
         ResultSet results = _database.Query(query);
@@ -40,13 +42,14 @@ public class Report
             while (results.next())
             {
                 // add country data to list
-                report =
+                reports.add(
                         "\n\t" + "Code: " + results.getString("Code") +
                                 "\n\t" + "Name: " + results.getString("Name") +
                                 "\n\t" + "Continent: " + results.getString("Continent") +
                                 "\n\t" + "Region: " + results.getString("Region") +
                                 "\n\t" + "Population: " + results.getString("Population") +
-                                "\n\t" + "Capital: " + results.getString("Capital");
+                                "\n\t" + "Capital: " + results.getString("Capital")
+                );
             }
         }
         catch(Exception exception)
@@ -57,9 +60,14 @@ public class Report
         }
 
         // return the resulting list
-        return report;
+        return reports;
     }
 
+    /**
+     * sets up a query using a supplied country name to get a report from the database
+     * @param countryName the name of the country you want a report on
+     * @return a string containing the country report.
+     */
     public String CountryReport(String countryName)
     {
         // SQL query to get the country
@@ -69,10 +77,14 @@ public class Report
                 "WHERE country.Name = '" + countryName  + "';";
 
         //return resulting list
-        return GetCountryReport(query);
+        return GetCountryReport(query).get(0);
     }
 
-    public String CountryReport()
+    /**
+     * function to get the country reports of all countries in the database.
+     * @return a list of strings containing the country reports.
+     */
+    public List<String> CountryReportList()
     {
         // SQL query to get the country
         String query = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital " +
