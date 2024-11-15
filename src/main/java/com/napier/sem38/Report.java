@@ -150,10 +150,10 @@ public class Report
         String query = "SELECT city.Name, country.Name AS Country, city.District, city.Population " +
                 "FROM city " +
                 "JOIN country ON country.Code = city.CountryCode " +
-                "WHERE country.Name = '" + cityName  + "';";
+                "WHERE city.Name = '" + cityName  + "';";
 
         //return resulting list
-        return GetCountryReport(query).get(0);
+        return GetCityReport(query).get(0);
     }
 
     //endregion

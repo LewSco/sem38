@@ -112,6 +112,9 @@ public class Main {
         // GitIssue13
         _display.Show("List of the Worlds cities by population",_cityList.GetWorldList());
 
+        // GitIssue40
+        _display.Show("Petare City Report", _report.CityReport("Petare"));
+
         // disconnect from database
         _database.Disconnect();
     }
