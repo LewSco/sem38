@@ -107,7 +107,7 @@ public class Main {
         // GitIssue39
         _name = "Belgium";
         _display.Show("Country Report " + _name, _report.CountryReport(_name));
-        _display.Show("All Country Reports", _report.CountryReport());
+        _display.Show("All Country Reports", _report.CountryReportList());
 
         // GitIssue13
         _display.Show("List of the Worlds cities by population",_cityList.GetWorldList());
