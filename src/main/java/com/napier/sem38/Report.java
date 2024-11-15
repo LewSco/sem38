@@ -26,10 +26,10 @@ public class Report
      * population and capital of specified country.
      * Stores the results in the array list variable.
      */
-    private List<String> GetCountryReport(String query)
+    private String GetCountryReport(String query)
     {
         //initialise list of results
-        List<String> list = new ArrayList<>();
+        String report = "";
 
         // get the results from the database using provided query
         ResultSet results = _database.Query(query);
@@ -40,14 +40,13 @@ public class Report
             while (results.next())
             {
                 // add country data to list
-                list.add(
+                report =
                         "\n\t" + "Code: " + results.getString("Code") +
                                 "\n\t" + "Name: " + results.getString("Name") +
                                 "\n\t" + "Continent: " + results.getString("Continent") +
                                 "\n\t" + "Region: " + results.getString("Region") +
                                 "\n\t" + "Population: " + results.getString("Population") +
-                                "\n\t" + "Capital: " + results.getString("Capital")
-                );
+                                "\n\t" + "Capital: " + results.getString("Capital");
             }
         }
         catch(Exception exception)
@@ -58,7 +57,7 @@ public class Report
         }
 
         // return the resulting list
-        return list;
+        return report;
     }
 
     public String CountryReport(String countryName)
@@ -70,10 +69,10 @@ public class Report
                 "WHERE country.Name = '" + countryName  + "';";
 
         //return resulting list
-        return GetCountryReport(query).get(0);
+        return GetCountryReport(query);
     }
 
-    public List<String> CountryReport()
+    public String CountryReport()
     {
         // SQL query to get the country
         String query = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital " +
@@ -81,9 +80,7 @@ public class Report
                 "JOIN city ON country.Capital = city.ID;";
 
         //get resulting list and get rid of the first line break
-        var list = GetCountryReport(query);
-        list.set(0, list.get(0).substring(1, list.get(0).length()-1));
-        return list;
+        return GetCountryReport(query);
     }
 
     //endregion
