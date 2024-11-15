@@ -365,6 +365,9 @@ public class IntegrationTests
         assertEquals(expected, actual);
     }
 
+    /**
+     * tests the CapitalReport method of the reports class
+     */
     @Test
     void CapitalReport()
     {
