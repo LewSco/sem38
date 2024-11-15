@@ -33,11 +33,11 @@ public class Report
         //initialise list of results
         List<String> reports = new ArrayList<>();
 
-        // get the results from the database using provided query
-        ResultSet results = _database.Query(query);
-
         try
         {
+            // get the results from the database using provided query
+            ResultSet results = _database.Query(query);
+
             // this moves through the results until there are no more
             while (results.next())
             {
@@ -111,11 +111,11 @@ public class Report
         //initialise list of results
         List<String> reports = new ArrayList<>();
 
-        // get the results from the database using provided query
-        ResultSet results = _database.Query(query);
-
         try
         {
+            // get the results from the database using provided query
+            ResultSet results = _database.Query(query);
+
             // this moves through the results until there are no more
             while (results.next())
             {
