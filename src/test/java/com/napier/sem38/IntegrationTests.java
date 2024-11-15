@@ -18,6 +18,7 @@ public class IntegrationTests
     static CountryList _countryList;
     static CityList _cityList;
     static PopulationSum _populationSum;
+    static  Report _report;
 
     /**
      * initialise the database and classes for testing
@@ -31,6 +32,7 @@ public class IntegrationTests
         _countryList = new CountryList(_database);
         _cityList = new CityList(_database);
         _populationSum = new PopulationSum(_database);
+        _report = new Report(_database);
     }
 
     //region Country
@@ -318,6 +320,29 @@ public class IntegrationTests
         Long expected = 9208281L;
 
         //check actual = expected
+        assertEquals(expected, actual);
+    }
+
+    //endregion
+
+    //region Reports
+
+    /**
+     * Test checks if the correct report is returned for the supplied country name.
+     */
+    @Test
+    void CountryReport()
+    {
+        String actual = _report.CountryReport("Belarus");
+        String expected =
+                "\n\tCode: BLR" +
+                        "\n\t" + "Name: Belarus" +
+                        "\n\t" + "Continent: Europe" +
+                        "\n\t" + "Region: Eastern Europe" +
+                        "\n\t" + "Population: 10236000" +
+                        "\n\t" + "Capital: Minsk"
+                ;
+
         assertEquals(expected, actual);
     }
 
