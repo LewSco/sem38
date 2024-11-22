@@ -272,13 +272,43 @@ public class IntegrationTests
     //region Population
 
     /**
+     * testing get population with an empty query
+     */
+    @Test
+    void PopulationEmptyQuery()
+    {
+        _populationSum.GetPopulation("");
+    }
+
+    /**
+     * testing get population with a null query
+     */
+    @Test
+    void PopulationNullQuery()
+    {
+        _populationSum.GetPopulation(null);
+    }
+
+    /**
+     * testing get population with a bad syntax query
+     */
+    @Test
+    void PopulationBadSyntaxQuery()
+    {
+        _populationSum.GetPopulation(
+                "Select SUM(Population) " +
+                        "FROM world " +
+                        "WHERE population = NULL;");
+    }
+
+    /**
      * test checks GetWorldPop() returns the expected results
      */
     @Test
-    void GetWorldPop()
+    void WorldPop()
     {
         //Get the world population
-        Long actual = _populationSum.GetWorldPop();
+        Long actual = _populationSum.WorldPop();
 
         //Expected output for the world population
         Long expected = 6078749450L;
@@ -291,10 +321,10 @@ public class IntegrationTests
      * test checks GetContinentPop() returns the expected results
      */
     @Test
-    void GetContinentPop()
+    void ContinentPopExpected()
     {
         //Get the world population
-        Long actual = _populationSum.GetContinentPop("Asia");
+        Long actual = _populationSum.ContinentPop("Asia");
 
         //Expected output for the continent population
         Long expected = 3705025700L;
@@ -303,14 +333,16 @@ public class IntegrationTests
         assertEquals(expected, actual);
     }
 
+
+
     /**
      * test checks GetCountryPop() returns the expected results
      */
     @Test
-    void GetCountryPop()
+    void CountryPopExpected()
     {
         //Get the Country population
-        Long actual = _populationSum.GetCountryPop("France");
+        Long actual = _populationSum.CountryPop("France");
 
         //Expected output for the Country population
         Long expected = 59225700L;
@@ -323,10 +355,10 @@ public class IntegrationTests
      * test checks GetRegionPop() returns the expected results
      */
     @Test
-    void GetRegionPop()
+    void RegionPopExpected()
     {
-        //Get the Region popualtion
-        Long actual = _populationSum.GetRegionPop("Caribbean");
+        //Get the Region population
+        Long actual = _populationSum.RegionPop("Caribbean");
 
         //Expected output for the Region population
         Long expected = 38140000L;
@@ -339,10 +371,10 @@ public class IntegrationTests
      * test checks GetRegionPop() returns the expected results
      */
     @Test
-    void GetDistrictPop()
+    void DistrictPopExpected()
     {
         //Get the District popualtion
-        Long actual = _populationSum.GetDistrictPop("Texas");
+        Long actual = _populationSum.DistrictPop("Texas");
 
         //Expected output for the District population
         Long expected = 9208281L;
