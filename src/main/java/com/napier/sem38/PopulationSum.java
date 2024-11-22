@@ -60,24 +60,8 @@ public class PopulationSum
                 "SELECT SUM(Population) AS pop " +
                         "FROM country;";
 
-        try
-        {
-            //get results from database
-            pop = GetPopulation(query);
-
-            // check for error code
-            if (pop == -1)
-                throw new Exception("Error Code: -1");
-        }
-        catch(Exception exception)
-        {
-            // print error messages
-            System.out.println("Failed to retrieve world population!");
-            System.out.println(exception.getMessage());
-
-            // return -1 in case pop = nothing
-            return -1L;
-        }
+        //get results from database
+        pop = GetPopulation(query);
 
         return pop;
     }
