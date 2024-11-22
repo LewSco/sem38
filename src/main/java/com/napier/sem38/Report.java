@@ -28,7 +28,7 @@ public class Report
      * @param query the query to send to the database to get the countries report.
      * @return a list of strings containing the resulting city report/s.
      */
-    private List<String> GetCountryReport(String query)
+    public List<String> GetCountryReport(String query)
     {
         //initialise list of results
         List<String> reports = new ArrayList<>();
@@ -106,7 +106,7 @@ public class Report
      * @param query the query to send to the database to get the city's report.
      * @return a list of strings containing the resulting city report/s.
      */
-    private List<String> GetCityReport(String query)
+    public List<String> GetCityReport(String query)
     {
         //initialise list of results
         List<String> reports = new ArrayList<>();
@@ -167,7 +167,7 @@ public class Report
      * @param query the query to send to the database to get the capital report.
      * @return a list of strings containing the resulting capital report.
      */
-    private String GetCapitalReport(String query)
+    public String GetCapitalReport(String query)
     {
         //initialise list of results
         List<String> reports = new ArrayList<>();
@@ -193,6 +193,21 @@ public class Report
             // print error messages
             System.out.println(exception.getMessage());
             System.out.println("Error retrieving data from ResultSet!");
+        }
+
+        // to make sure we don't try to check an index the list doesn't have
+        try
+        {
+            if (reports.isEmpty())
+                throw new Exception("Reports list is Empty!");
+        }
+        catch (Exception exception)
+        {
+            // print error messages
+            System.out.println(exception.getMessage());
+            System.out.println("No reports found!");
+
+            return "";
         }
 
         // return the resulting list

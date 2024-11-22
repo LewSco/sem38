@@ -14,11 +14,12 @@ import static org.junit.jupiter.api.Assertions.*;
 public class IntegrationTests
 {
     // instances of classes
+    static Main _main;
     static Database _database;
     static CountryList _countryList;
     static CityList _cityList;
     static PopulationSum _populationSum;
-    static  Report _report;
+    static Report _report;
 
     /**
      * initialise the database and classes for testing
@@ -26,6 +27,8 @@ public class IntegrationTests
     @BeforeAll
     public static void Initialise()
     {
+        _main = new Main();
+
         _database = new Database();
         _database.Connect("localhost:33060", 30000);
 
@@ -33,7 +36,32 @@ public class IntegrationTests
         _cityList = new CityList(_database);
         _populationSum = new PopulationSum(_database);
         _report = new Report(_database);
+
     }
+
+    //region Main
+
+    /**
+     * runs main without arguments
+     */
+    @Test
+    void RunMainWithEmptyArguments()
+    {
+        String[] args = new String[0];
+        _main.main(args);
+    }
+
+    /**
+     * runs main with arguments
+     */
+    @Test
+    void RunMainWithArguments()
+    {
+        String[] args = new String[] { "localhost:33060", "30000" };
+        _main.main(args);
+    }
+
+    //endregion
 
     //region Country
 
@@ -244,13 +272,43 @@ public class IntegrationTests
     //region Population
 
     /**
+     * testing get population with an empty query
+     */
+    @Test
+    void PopulationEmptyQuery()
+    {
+        _populationSum.GetPopulation("");
+    }
+
+    /**
+     * testing get population with a null query
+     */
+    @Test
+    void PopulationNullQuery()
+    {
+        _populationSum.GetPopulation(null);
+    }
+
+    /**
+     * testing get population with a bad syntax query
+     */
+    @Test
+    void PopulationBadSyntaxQuery()
+    {
+        _populationSum.GetPopulation(
+                "Select SUM(Population) " +
+                        "FROM world " +
+                        "WHERE population = NULL;");
+    }
+
+    /**
      * test checks GetWorldPop() returns the expected results
      */
     @Test
-    void GetWorldPop()
+    void WorldPop()
     {
         //Get the world population
-        Long actual = _populationSum.GetWorldPop();
+        Long actual = _populationSum.WorldPop();
 
         //Expected output for the world population
         Long expected = 6078749450L;
@@ -263,10 +321,10 @@ public class IntegrationTests
      * test checks GetContinentPop() returns the expected results
      */
     @Test
-    void GetContinentPop()
+    void ContinentPopExpected()
     {
-        //Get the world population
-        Long actual = _populationSum.GetContinentPop("Asia");
+        //Get the continent population
+        Long actual = _populationSum.ContinentPop("Asia");
 
         //Expected output for the continent population
         Long expected = 3705025700L;
@@ -276,13 +334,44 @@ public class IntegrationTests
     }
 
     /**
+     * tests an invalid input to get a continent population
+     */
+    @Test
+    void ContinentPopInvalidInput()
+    {
+        // Get the continent population
+        Long actual = _populationSum.ContinentPop("The Roman Empire");
+    }
+
+    /**
+     * tests a null input to get a continent population
+     */
+    @Test
+    void ContinentPopNullInput()
+    {
+        // Get the continent population
+        Long actual = _populationSum.ContinentPop(null);
+    }
+
+    /**
+     * tests an empty input to get a continent population
+     */
+    @Test
+    void ContinentPopEmptyInput()
+    {
+        // Get the continent population
+        Long actual = _populationSum.ContinentPop("");
+    }
+
+
+    /**
      * test checks GetCountryPop() returns the expected results
      */
     @Test
-    void GetCountryPop()
+    void CountryPopExpected()
     {
         //Get the Country population
-        Long actual = _populationSum.GetCountryPop("France");
+        Long actual = _populationSum.CountryPop("France");
 
         //Expected output for the Country population
         Long expected = 59225700L;
@@ -292,13 +381,43 @@ public class IntegrationTests
     }
 
     /**
+     * tests an invalid input to get a country population
+     */
+    @Test
+    void CountryPopInvalidInput()
+    {
+        // Get the continent population
+        Long actual = _populationSum.CountryPop("Jamie's dad's car");
+    }
+
+    /**
+     * tests a null input to get a country population
+     */
+    @Test
+    void CountryPopNullInput()
+    {
+        // Get the continent population
+        Long actual = _populationSum.CountryPop(null);
+    }
+
+    /**
+     * tests an empty input to get a country population
+     */
+    @Test
+    void CountryPopEmptyInput()
+    {
+        // Get the continent population
+        Long actual = _populationSum.CountryPop("");
+    }
+
+    /**
      * test checks GetRegionPop() returns the expected results
      */
     @Test
-    void GetRegionPop()
+    void RegionPopExpected()
     {
-        //Get the Region popualtion
-        Long actual = _populationSum.GetRegionPop("Caribbean");
+        //Get the Region population
+        Long actual = _populationSum.RegionPop("Caribbean");
 
         //Expected output for the Region population
         Long expected = 38140000L;
@@ -308,19 +427,79 @@ public class IntegrationTests
     }
 
     /**
+     * tests an invalid input to get a region population
+     */
+    @Test
+    void RegionPopInvalidInput()
+    {
+        // Get the continent population
+        Long actual = _populationSum.RegionPop("the dish washer");
+    }
+
+    /**
+     * tests a null input to get a region population
+     */
+    @Test
+    void RegionPopNullInput()
+    {
+        // Get the continent population
+        Long actual = _populationSum.RegionPop(null);
+    }
+
+    /**
+     * tests an empty input to get a region population
+     */
+    @Test
+    void RegionPopEmptyInput()
+    {
+        // Get the continent population
+        Long actual = _populationSum.RegionPop("");
+    }
+
+    /**
      * test checks GetRegionPop() returns the expected results
      */
     @Test
-    void GetDistrictPop()
+    void DistrictPopExpected()
     {
-        //Get the District popualtion
-        Long actual = _populationSum.GetDistrictPop("Texas");
+        //Get the District population
+        Long actual = _populationSum.DistrictPop("Texas");
 
         //Expected output for the District population
         Long expected = 9208281L;
 
         //check actual = expected
         assertEquals(expected, actual);
+    }
+
+    /**
+     * tests an invalid input to get a district population
+     */
+    @Test
+    void DistrictPopInvalidInput()
+    {
+        // Get the continent population
+        Long actual = _populationSum.DistrictPop("the dish washer");
+    }
+
+    /**
+     * tests a null input to get a district population
+     */
+    @Test
+    void DistrictPopNullInput()
+    {
+        // Get the continent population
+        Long actual = _populationSum.DistrictPop(null);
+    }
+
+    /**
+     * tests an empty input to get a district population
+     */
+    @Test
+    void DistrictPopEmptyInput()
+    {
+        // Get the continent population
+        Long actual = _populationSum.DistrictPop("");
     }
 
     //endregion
@@ -381,6 +560,33 @@ public class IntegrationTests
 
         // check the actual and expected are equal
         assertEquals(expected, actual);
+    }
+
+    /**
+     * tests the country report with an empty query
+     */
+    @Test
+    void GetCountryReportEmptyQuery()
+    {
+        _report.GetCountryReport("");
+    }
+
+    /**
+     * tests the city report with an empty query
+     */
+    @Test
+    void GetCityReportEmptyQuery()
+    {
+        _report.GetCityReport("");
+    }
+
+    /**
+     * tests the capital report with an empty query
+     */
+    @Test
+    void GetCapitalReportEmptyQuery()
+    {
+        _report.GetCapitalReport("");
     }
     //endregion
 
