@@ -39,6 +39,8 @@ public class IntegrationTests
 
     }
 
+    //region Main
+
     /**
      * runs main without arguments
      */
@@ -50,7 +52,7 @@ public class IntegrationTests
     }
 
     /**
-     * runs main without arguments
+     * runs main with arguments
      */
     @Test
     void RunMainWithArguments()
@@ -58,6 +60,8 @@ public class IntegrationTests
         String[] args = new String[] { "localhost:33060", "30000" };
         _main.main(args);
     }
+
+    //endregion
 
     //region Country
 
