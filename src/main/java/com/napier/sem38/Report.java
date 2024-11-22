@@ -195,6 +195,21 @@ public class Report
             System.out.println("Error retrieving data from ResultSet!");
         }
 
+        // to make sure we don't try to check an index the list doesn't have
+        try
+        {
+            if (reports.isEmpty())
+                throw new Exception("Reports list is Empty!");
+        }
+        catch (Exception exception)
+        {
+            // print error messages
+            System.out.println(exception.getMessage());
+            System.out.println("No reports found!");
+
+            return "";
+        }
+
         // return the resulting list
         return reports.get(0);
     }

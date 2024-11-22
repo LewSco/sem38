@@ -411,19 +411,27 @@ public class IntegrationTests
         assertEquals(expected, actual);
     }
 
-
+    /**
+     * tests the country report with an empty query
+     */
     @Test
     void GetCountryReportEmptyQuery()
     {
         _report.GetCountryReport("");
     }
 
+    /**
+     * tests the city report with an empty query
+     */
     @Test
     void GetCityReportEmptyQuery()
     {
         _report.GetCityReport("");
     }
 
+    /**
+     * tests the capital report with an empty query
+     */
     @Test
     void GetCapitalReportEmptyQuery()
     {
