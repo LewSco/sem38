@@ -40,12 +40,22 @@ public class IntegrationTests
     }
 
     /**
-     * added running main to integration testing
+     * runs main without arguments
      */
     @Test
-    void RunMain()
+    void RunMainWithEmptyArguments()
     {
         String[] args = new String[0];
+        _main.main(args);
+    }
+
+    /**
+     * runs main without arguments
+     */
+    @Test
+    void RunMainWithArguments()
+    {
+        String[] args = new String[] { "localhost:33060", "30000" };
         _main.main(args);
     }
 
