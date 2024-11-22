@@ -61,7 +61,7 @@ public class Main {
 
         // print world population
         _display.Show("World Population",
-                _populationSum.GetWorldPop().toString());
+                _populationSum.WorldPop().toString());
 
         //Issue 14 GitHub
         // Get and display cities in a continent (e.g., "Asia") ordered by population
@@ -79,25 +79,25 @@ public class Main {
         //Get and display the population in a continent
         _name = "Asia";
         _display.Show("Population of the Continent " + _name,
-                _populationSum.GetContinentPop(_name).toString());
+                _populationSum.ContinentPop(_name).toString());
 
         //GitIssue 35
         // Get and Display the population of a country
         _name = "France";
         _display.Show("Population of the Country " + _name,
-                _populationSum.GetCountryPop(_name).toString());
+                _populationSum.CountryPop(_name).toString());
 
         //GitIssue 34
         // Get and Display the population of a Region
         _name = "Caribbean";
         _display.Show("Population of the Region " + _name,
-                _populationSum.GetRegionPop(_name).toString());
+                _populationSum.RegionPop(_name).toString());
 
         //GitIssue 36
         //Get and Display the population of a district
         _name = "Texas";
         _display.Show("Population of the District " + _name,
-                _populationSum.GetDistrictPop(_name).toString());
+                _populationSum.DistrictPop(_name).toString());
 
         // Retrieve and display the top N populated capitals
         _number = 10;

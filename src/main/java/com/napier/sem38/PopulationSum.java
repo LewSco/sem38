@@ -20,23 +20,12 @@ public class PopulationSum
         _database = database; // store the database reference
     }
 
-    //region World Functions
-    /**
-     * Queries the database to find world population.
-     * @return world population as a Long int.
-     */
-    public Long GetWorldPop()
+    public Long GetPopulation(String query)
     {
         long pop = -1;
 
-        // set up our query statement
-        String query =
-                "SELECT SUM(Population) AS WorldPop " +
-                        "FROM country;";
-
         try
         {
-
             //get results from database
             ResultSet results = _database.Query(query);
 
@@ -50,10 +39,46 @@ public class PopulationSum
         catch(Exception exception)
         {
             // print error messages
+            System.out.println("Error retrieving result from database!");
             System.out.println(exception.getMessage());
         }
 
-        //if errored when receiving data, return 0
+        return pop;
+    }
+
+    //region World Functions
+    /**
+     * Queries the database to find world population.
+     * @return world population as a Long int.
+     */
+    public Long WorldPop()
+    {
+        long pop;
+
+        // set up our query statement
+        String query =
+                "SELECT SUM(Population) AS WorldPop " +
+                        "FROM country;";
+
+        try
+        {
+            //get results from database
+            pop = GetPopulation(query);
+
+            // check for error code
+            if (pop == -1)
+                throw new Exception("Error Code: -1");
+        }
+        catch(Exception exception)
+        {
+            // print error messages
+            System.out.println("Failed to retrieve world population!");
+            System.out.println(exception.getMessage());
+
+            // return -1 in case pop = nothing
+            return -1L;
+        }
+
         return pop;
     }
     //endregion
@@ -65,9 +90,9 @@ public class PopulationSum
      * @param continent the continent for which to calculate the population sum
      * @return the total population of the specified continent as a long integer
      */
-    public Long GetContinentPop(String continent)
+    public Long ContinentPop(String continent)
     {
-        long pop = -1;
+        long pop;
 
         // SQL query to calculate the population of a continent
         String query = "SELECT SUM(Population) AS ContinentPop " +
@@ -76,20 +101,21 @@ public class PopulationSum
 
         try
         {
-            // Get results from database
-            ResultSet results = _database.Query(query);
+            //get results from database
+            pop = GetPopulation(query);
 
-            // Parse results
-            if (results.next())
-            {
-                pop = results.getLong("ContinentPop");
-            }
+            // check for error code
+            if (pop == -1)
+                throw new Exception("Error Code: -1");
         }
-        catch (Exception exception)
+        catch(Exception exception)
         {
-            // Print error messages
+            // print error messages
+            System.out.println("Failed to retrieve " + continent + " population!");
             System.out.println(exception.getMessage());
-            System.out.println("Error retrieving continent population data!");
+
+            // return -1 in case pop = nothing
+            return -1L;
         }
 
         return pop;
@@ -102,7 +128,7 @@ public class PopulationSum
      * @param country the country for which to calculate the population
      * @return the total population of the specified country as a long integer
      */
-    public Long GetCountryPop(String country)
+    public Long CountryPop(String country)
     {
         long pop = -1;
 
@@ -113,20 +139,21 @@ public class PopulationSum
 
         try
         {
-            // Get results from database
-            ResultSet results = _database.Query(query);
+            //get results from database
+            pop = GetPopulation(query);
 
-            // Parse results
-            if (results.next())
-            {
-                pop = results.getLong("CountryPop");
-            }
+            // check for error code
+            if (pop == -1)
+                throw new Exception("Error Code: -1");
         }
-        catch (Exception exception)
+        catch(Exception exception)
         {
-            // Print error messages
+            // print error messages
+            System.out.println("Failed to retrieve " + country + " population!");
             System.out.println(exception.getMessage());
-            System.out.println("Error retrieving country population data!");
+
+            // return -1 in case pop = nothing
+            return -1L;
         }
 
         return pop;
@@ -139,7 +166,7 @@ public class PopulationSum
      * @param district the country for which to calculate the population
      * @return the total population of the specified district as a long integer
      */
-    public Long GetDistrictPop(String district)
+    public Long DistrictPop(String district)
     {
         long pop = -1;
 
@@ -150,20 +177,21 @@ public class PopulationSum
 
         try
         {
-            // Get results from database
-            ResultSet results = _database.Query(query);
+            //get results from database
+            pop = GetPopulation(query);
 
-            // Parse results
-            if (results.next())
-            {
-                pop = results.getLong("DistrictPop");
-            }
+            // check for error code
+            if (pop == -1)
+                throw new Exception("Error Code: -1");
         }
-        catch (Exception exception)
+        catch(Exception exception)
         {
-            // Print error messages
+            // print error messages
+            System.out.println("Failed to retrieve " + district + " population!");
             System.out.println(exception.getMessage());
-            System.out.println("Error retrieving country population data!");
+
+            // return -1 in case pop = nothing
+            return -1L;
         }
 
         return pop;
@@ -176,9 +204,9 @@ public class PopulationSum
      * @param region the region for which to calculate the population sum
      * @return the total population of the specified region as a long integer
      */
-    public Long GetRegionPop(String region)
+    public Long RegionPop(String region)
     {
-        long pop = -1;
+        long pop;
 
         // SQL query to calculate the population of a region
         String query = "SELECT SUM(Population) AS RegionPop " +
@@ -187,23 +215,25 @@ public class PopulationSum
 
         try
         {
-            // Get results from database
-            ResultSet results = _database.Query(query);
+            //get results from database
+            pop = GetPopulation(query);
 
-            // Parse results
-            if (results.next())
-            {
-                pop = results.getLong("RegionPop");
-            }
+            // check for error code
+            if (pop == -1)
+                throw new Exception("Error Code: -1");
         }
-        catch (Exception exception)
+        catch(Exception exception)
         {
-            // Print error messages
+            // print error messages
+            System.out.println("Failed to retrieve world population!");
             System.out.println(exception.getMessage());
-            System.out.println("Error retrieving country population data!");
+
+            // return -1 in case pop = nothing
+            return -1L;
         }
 
         return pop;
     }
+
     //endregion
 }
