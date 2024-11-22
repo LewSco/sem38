@@ -410,6 +410,25 @@ public class IntegrationTests
         // check the actual and expected are equal
         assertEquals(expected, actual);
     }
+
+
+    @Test
+    void GetCountryReportEmptyQuery()
+    {
+        _report.GetCountryReport("");
+    }
+
+    @Test
+    void GetCityReportEmptyQuery()
+    {
+        _report.GetCityReport("");
+    }
+
+    @Test
+    void GetCapitalReportEmptyQuery()
+    {
+        _report.GetCapitalReport("");
+    }
     //endregion
 
 }
