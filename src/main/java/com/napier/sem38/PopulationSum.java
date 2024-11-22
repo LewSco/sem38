@@ -32,7 +32,7 @@ public class PopulationSum
             //add results to list
             while (results.next())
             {
-                pop = Long.parseLong(results.getString("WorldPop"));
+                pop = Long.parseLong(results.getString("pop"));
             }
 
         }
@@ -57,7 +57,7 @@ public class PopulationSum
 
         // set up our query statement
         String query =
-                "SELECT SUM(Population) AS WorldPop " +
+                "SELECT SUM(Population) AS pop " +
                         "FROM country;";
 
         try
@@ -95,7 +95,7 @@ public class PopulationSum
         long pop;
 
         // SQL query to calculate the population of a continent
-        String query = "SELECT SUM(Population) AS ContinentPop " +
+        String query = "SELECT SUM(Population) AS pop " +
                 "FROM country " +
                 "WHERE Continent = '" + continent + "';";
 
@@ -133,7 +133,7 @@ public class PopulationSum
         long pop = -1;
 
         // SQL query to calculate the population of a country
-        String query = "SELECT Population AS CountryPop " +
+        String query = "SELECT Population AS pop " +
                 "FROM country " +
                 "WHERE Name = '" + country + "';";
 
@@ -171,7 +171,7 @@ public class PopulationSum
         long pop = -1;
 
         // SQL query to calculate the population of a District
-        String query = "SELECT SUM(Population) AS DistrictPop " +
+        String query = "SELECT SUM(Population) AS pop " +
                 "FROM city " +
                 "WHERE district = '" + district + "';";
 
@@ -209,7 +209,7 @@ public class PopulationSum
         long pop;
 
         // SQL query to calculate the population of a region
-        String query = "SELECT SUM(Population) AS RegionPop " +
+        String query = "SELECT SUM(Population) AS pop " +
                 "FROM country " +
                 "WHERE Region = '" + region + "';";
 
