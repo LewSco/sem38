@@ -177,4 +177,39 @@ public class CityList
 
         return list;
     }
+
+    /**
+     * Function for getting a list of all capital cities, sorted by largest to smallest population
+     * @return a list of capital cities, largest to smallest pop.
+     */
+    public List<String> CapitalMostLeastPop()
+    {
+        List<String> list = new ArrayList<>();
+
+        // SQL query to get capital cities and sort by population
+        String query = "SELECT city.Name, city.Population " +
+                "FROM city " +
+                "JOIN country ON city.ID = country.Capital " +
+                "ORDER BY city.Population DESC";
+
+        // Execute the query and retrieve results
+        ResultSet results = _database.Query(query);
+
+        try
+        {
+            // Iterate through the results
+            while (results.next()) {
+                // Get the city name and population, and add it to the list
+                String cityName = results.getString("Name");
+                int population = results.getInt("Population");
+                list.add(cityName + " - Population: " + population);
+            }
+        } catch (Exception exception) {
+            // Print error messages if any
+            System.out.println(exception.getMessage());
+            System.out.println("Error retrieving data from ResultSet!");
+        }
+
+        return list;
+    }
 }
