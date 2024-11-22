@@ -14,11 +14,12 @@ import static org.junit.jupiter.api.Assertions.*;
 public class IntegrationTests
 {
     // instances of classes
+    static Main _main;
     static Database _database;
     static CountryList _countryList;
     static CityList _cityList;
     static PopulationSum _populationSum;
-    static  Report _report;
+    static Report _report;
 
     /**
      * initialise the database and classes for testing
@@ -26,6 +27,8 @@ public class IntegrationTests
     @BeforeAll
     public static void Initialise()
     {
+        _main = new Main();
+
         _database = new Database();
         _database.Connect("localhost:33060", 30000);
 
@@ -33,6 +36,17 @@ public class IntegrationTests
         _cityList = new CityList(_database);
         _populationSum = new PopulationSum(_database);
         _report = new Report(_database);
+
+    }
+
+    /**
+     * added running main to integration testing
+     */
+    @Test
+    void RunMain()
+    {
+        String[] args = new String[0];
+        _main.main(args);
     }
 
     //region Country
