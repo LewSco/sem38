@@ -212,4 +212,36 @@ public class CityList
 
         return list;
     }
+
+    public List<String> TopNPopCitiesInDistrict(int n, String district)
+    {
+        List<String> list = new ArrayList<>();
+
+        // SQL query to get capital cities and sort by population
+        String query = "SELECT city.Name, city.Population " +
+                "FROM city " +
+                "WHERE city.District = '" + district + "' " +
+                "ORDER BY city.Population DESC " +
+                "LIMIT " + n;
+
+        // Execute the query and retrieve results
+        ResultSet results = _database.Query(query);
+
+        try
+        {
+            // Iterate through the results
+            while (results.next()) {
+                // Get the city name and population, and add it to the list
+                String cityName = results.getString("Name");
+                int population = results.getInt("Population");
+                list.add(cityName + " - Population: " + population);
+            }
+        } catch (Exception exception) {
+            // Print error messages if any
+            System.out.println(exception.getMessage());
+            System.out.println("Error retrieving data from ResultSet!");
+        }
+
+        return list;
+    }
 }

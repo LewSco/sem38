@@ -221,6 +221,22 @@ public class IntegrationTests
         assertEquals(expected, actual);
     }
 
+    @Test
+    void TopNPopCitiesInDistrictTest(){
+
+        //get function output
+        List<String> result = _cityList.TopNPopCitiesInDistrict(3, "Rio de Janeiro");
+
+        // set expected output
+        List<String> expected = new ArrayList<>();
+        expected.add("Rio de Janeiro - Population: 5598953");
+        expected.add("São Gonçalo - Population: 869254");
+        expected.add("Nova Iguaçu - Population: 862225");
+
+        // check actual = expected
+        assertEquals(expected, result);
+    }
+
     /**
      * test checks CitiesInRegionLargetoSmallTest() returns the expected number of capital cities.
      */

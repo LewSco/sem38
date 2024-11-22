@@ -121,6 +121,11 @@ public class Main {
         //GitIssue23
         _display.Show("List of all capitals by population", _cityList.CapitalMostLeastPop());
 
+        //GitIssue22
+        _number = 3;
+        _name = "Rio de Janeiro";
+        _display.Show(String.format("Top %d %s",_number, _name), _cityList.TopNPopCitiesInDistrict(_number, _name));
+
         // disconnect from database
         _database.Disconnect();
     }
