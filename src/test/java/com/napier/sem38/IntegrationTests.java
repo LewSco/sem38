@@ -333,8 +333,6 @@ public class IntegrationTests
         assertEquals(expected, actual);
     }
 
-
-
     /**
      * test checks GetCountryPop() returns the expected results
      */
@@ -373,7 +371,7 @@ public class IntegrationTests
     @Test
     void DistrictPopExpected()
     {
-        //Get the District popualtion
+        //Get the District population
         Long actual = _populationSum.DistrictPop("Texas");
 
         //Expected output for the District population

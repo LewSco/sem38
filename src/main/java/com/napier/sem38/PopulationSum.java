@@ -22,7 +22,7 @@ public class PopulationSum
 
     public Long GetPopulation(String query)
     {
-        long pop = -1;
+        long pop = 0;
 
         try
         {
