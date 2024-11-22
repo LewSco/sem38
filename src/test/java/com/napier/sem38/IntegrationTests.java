@@ -198,6 +198,29 @@ public class IntegrationTests
 
     }
 
+    @Test
+    void CaptialMostLeastPopTest()
+    {
+        //get output
+        var outList = _cityList.CapitalMostLeastPop();
+
+        //set actual result
+        List<String> actual = new ArrayList<>();
+        for (int i = 0; i < 3; i++)
+        {
+            actual.add(outList.get(i));
+        }
+
+        //set expected result
+        List<String> expected = new ArrayList<>();
+        expected.add("Seoul - Population: 9981619");
+        expected.add("Jakarta - Population: 9604900");
+        expected.add("Ciudad de México - Population: 8591309");
+
+        //check whether actual == expected
+        assertEquals(expected, actual);
+    }
+
     /**
      * test checks CitiesInRegionLargetoSmallTest() returns the expected number of capital cities.
      */
