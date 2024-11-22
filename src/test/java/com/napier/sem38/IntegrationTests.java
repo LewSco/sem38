@@ -590,4 +590,21 @@ public class IntegrationTests
     }
     //endregion
 
+    /**
+     * tests citiesInRegionLaregtoSmall with Invalid Data to test the catch exception
+     */
+    @Test
+    void citiesInRegionLargetoSmallInvalidRegionTest()
+    {
+        // Provide a non-existent region to trigger the catch block
+        String invalidRegion = "MadeUpRegion";
+
+        // Attempt to get cities in the non-existent region
+        List<String> result = _cityList.citiesInRegionLargetoSmall(invalidRegion);
+
+        // Assert that the list is empty because the region doesn't exist
+        assertNotNull(result); // Ensure result is not null
+        assertTrue(result.isEmpty(), "The result should be empty for a non-existent region");
+    }
+
 }
