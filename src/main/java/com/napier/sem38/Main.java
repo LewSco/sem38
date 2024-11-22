@@ -118,6 +118,9 @@ public class Main {
         // GitIssue41
         _display.Show("Brazil Capital Report", _report.CapitalReport("Brazil"));
 
+        //GitIssue23
+        _display.Show("List of all capitals by population", _cityList.CapitalMostLeastPop());
+
         // disconnect from database
         _database.Disconnect();
     }
