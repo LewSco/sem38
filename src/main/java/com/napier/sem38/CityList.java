@@ -64,6 +64,8 @@ public class CityList
      * @param region the region to search
      * @return a list of the cities largest to small in population
      */
+
+    //Split these into two different functions, one getting and storing the country
     public List<String> citiesInRegionLargetoSmall(String region)
     {
         // initialise the return list

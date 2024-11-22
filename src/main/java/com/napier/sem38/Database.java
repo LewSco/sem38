@@ -13,6 +13,9 @@ public class Database
     /**
      * Connect to the MySQL database.
      */
+
+    // Can test these, could be driver or anything (two tests with the driver)
+    // copy the driver line and put it in a test
     public void Connect(String location, int delay)
     {
         try
