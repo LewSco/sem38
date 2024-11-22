@@ -22,7 +22,7 @@ public class PopulationSum
 
     public Long GetPopulation(String query)
     {
-        long pop = 0;
+        long pop = -1;
 
         try
         {
@@ -130,7 +130,7 @@ public class PopulationSum
      */
     public Long CountryPop(String country)
     {
-        long pop = -1;
+        long pop;
 
         // SQL query to calculate the population of a country
         String query = "SELECT Population AS pop " +
@@ -168,7 +168,7 @@ public class PopulationSum
      */
     public Long DistrictPop(String district)
     {
-        long pop = -1;
+        long pop;
 
         // SQL query to calculate the population of a District
         String query = "SELECT SUM(Population) AS pop " +
@@ -225,7 +225,7 @@ public class PopulationSum
         catch(Exception exception)
         {
             // print error messages
-            System.out.println("Failed to retrieve world population!");
+            System.out.println("Failed to retrieve " + region + " population!");
             System.out.println(exception.getMessage());
 
             // return -1 in case pop = nothing
