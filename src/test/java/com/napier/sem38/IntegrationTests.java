@@ -269,7 +269,7 @@ public class IntegrationTests
      * Checks whether TopNPopCapitalInContinent() returns expected output
      */
     @Test
-    void TopNPopCapitalInContinent(){
+    void TopNPopCapitalInContinentTest(){
 
         //get function output
         List<String> result = _cityList.TopNPopCapitalInContinent(3, "Asia");
@@ -279,6 +279,26 @@ public class IntegrationTests
         expected.add("Seoul - Population: 9981619");
         expected.add("Jakarta - Population: 9604900");
         expected.add("Tokyo - Population: 7980230");
+
+        // check actual = expected
+        assertEquals(expected, result);
+    }
+
+    /**
+     * Gitissue28
+     * Checks whether TopNPopCapitalInRegion() returns expected output
+     */
+    @Test
+    void TopNPopCapitalInRegionTest(){
+
+        //get function output
+        List<String> result = _cityList.TopNPopCapitalInRegion(3, "Middle East");
+
+        // set expected output
+        List<String> expected = new ArrayList<>();
+        expected.add("Baghdad - Population: 4336000");
+        expected.add("Riyadh - Population: 3324000");
+        expected.add("Ankara - Population: 3038159");
 
         // check actual = expected
         assertEquals(expected, result);

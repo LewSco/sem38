@@ -136,6 +136,11 @@ public class Main {
         _name = "Asia";
         _display.Show(String.format("Top %d %s",_number, _name), _cityList.TopNPopCapitalInContinent(_number, _name));
 
+        //GitIssue28
+        _number = 3;
+        _name = "Middle East";
+        _display.Show(String.format("Top %d %s",_number, _name), _cityList.TopNPopCapitalInRegion(_number, _name));
+
         // disconnect from database
         _database.Disconnect();
     }
