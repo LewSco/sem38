@@ -731,4 +731,34 @@ public class IntegrationTests
         //check actual = expected
         assertEquals(expected, actual);
     }
+
+    /**
+     * tests an invalid input to get a city population
+     */
+    @Test
+    void CityPopInvalidInput()
+    {
+        // Get the continent population
+        Long actual = _populationSum.CityPop("Shangrla");
+    }
+
+    /**
+     * tests a null input to get a city population
+     */
+    @Test
+    void CityPopNullInput()
+    {
+        // Get the continent population
+        Long actual = _populationSum.ContinentPop(null);
+    }
+
+    /**
+     * tests an empty input to get a continent population
+     */
+    @Test
+    void CityPopEmptyInput()
+    {
+        // Get the continent population
+        Long actual = _populationSum.ContinentPop("");
+    }
 }
