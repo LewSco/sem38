@@ -199,7 +199,7 @@ public class IntegrationTests
     }
 
     /**
-     * tests whether Ca[italMostLeastPop() returns expected output
+     * tests whether CapitalMostLeastPop() returns expected output
      */
     @Test
     void CaptialMostLeastPopTest()
@@ -239,6 +239,26 @@ public class IntegrationTests
         expected.add("Rio de Janeiro - Population: 5598953");
         expected.add("São Gonçalo - Population: 869254");
         expected.add("Nova Iguaçu - Population: 862225");
+
+        // check actual = expected
+        assertEquals(expected, result);
+    }
+
+    /**
+     * Gitissue21
+     * Checks whether TopNPopCitiesInCountry() returns expected output
+     */
+    @Test
+    void TopNPopCitiesInCountryTest(){
+
+        //get function output
+        List<String> result = _cityList.TopNPopCitiesInDistrict(3, "Spain");
+
+        // set expected output
+        List<String> expected = new ArrayList<>();
+        expected.add("Madrid - Population: 2879052");
+        expected.add("Barcelona - Population: 1503451");
+        expected.add("Valencia - Population: 739412");
 
         // check actual = expected
         assertEquals(expected, result);
