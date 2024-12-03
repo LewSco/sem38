@@ -265,6 +265,26 @@ public class IntegrationTests
     }
 
     /**
+     * Gitissue27
+     * Checks whether TopNPopCapitalInContinent() returns expected output
+     */
+    @Test
+    void TopNPopCapitalInContinent(){
+
+        //get function output
+        List<String> result = _cityList.TopNPopCapitalInContinent(3, "Asia");
+
+        // set expected output
+        List<String> expected = new ArrayList<>();
+        expected.add("Seoul - Population: 9981619");
+        expected.add("Jakarta - Population: 9604900");
+        expected.add("Tokyo - Population: 7980230");
+
+        // check actual = expected
+        assertEquals(expected, result);
+    }
+
+    /**
      * test checks CitiesInRegionLargetoSmallTest() returns the expected number of capital cities.
      */
     @Test
