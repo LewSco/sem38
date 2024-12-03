@@ -144,6 +144,12 @@ public class Main {
         //GitIssue29
         _display.Show("City Per Continent Distribs", _populationSum.PopCityDistribContinent());
 
+        //GitIssue37
+        //Get and display the population of a city
+        _name = "Edinburgh";
+        _display.Show("Population of the " + _name,
+                _populationSum.CityPop(_name).toString());
+
         // disconnect from database
         _database.Disconnect();
     }

@@ -287,5 +287,41 @@ public class PopulationSum
         return pop;
     }
 
+    //region City Population
+    /**
+     * Queries the database to find the population of a specific city.
+     * @param city the country for which to calculate the population
+     * @return the total population of the specified country as a long integer
+     */
+    public Long CityPop(String city)
+    {
+        long pop;
+
+        // SQL query to calculate the population of a city
+        String query = "SELECT Population AS pop " +
+                "FROM city " +
+                "WHERE Name = '" + city + "';";
+
+        try
+        {
+            //get results from database
+            pop = GetPopulation(query);
+
+            // check for error code
+            if (pop == -1)
+                throw new Exception("Error Code: -1");
+        }
+        catch(Exception exception)
+        {
+            // print error messages
+            System.out.println("Failed to retrieve " + city + " population!");
+            System.out.println(exception.getMessage());
+
+            // return -1 in case pop = nothing
+            return -1L;
+        }
+
+        return pop;
+    }
     //endregion
 }
