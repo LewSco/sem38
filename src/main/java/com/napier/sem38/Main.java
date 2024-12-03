@@ -126,6 +126,11 @@ public class Main {
         _name = "Rio de Janeiro";
         _display.Show(String.format("Top %d %s",_number, _name), _cityList.TopNPopCitiesInDistrict(_number, _name));
 
+        //GitIssue21
+        _number = 3;
+        _name = "Spain";
+        _display.Show(String.format("Top %d %s",_number, _name), _cityList.TopNPopCitiesInCountry(_number, _name));
+
         // disconnect from database
         _database.Disconnect();
     }

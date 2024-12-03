@@ -250,17 +250,17 @@ public class CityList
     }
 
     /**
-     * Function for getting top N populated cities in a provided district
-     * @return a list of top N populated cities from specified district
+     * Function for getting top N populated cities in a provided country
+     * @return a list of top N populated cities from specified country
      */
     public List<String> TopNPopCitiesInCountry(int n, String country)
     {
         List<String> list = new ArrayList<>();
 
-        // SQL query to get capital cities and sort by population
+        // get string for sql query
         String query = "SELECT city.Name, city.Population " +
                 "FROM city " +
-                "WHERE city.CountryCode = (SELECT Code FROM Country WHERE Name = " + country + ") " +
+                "WHERE city.CountryCode = (SELECT Code FROM country WHERE Name = '" + country + "') " +
                 "ORDER BY city.Population DESC " +
                 "LIMIT " + n;
 
