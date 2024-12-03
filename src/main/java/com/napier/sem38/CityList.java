@@ -213,6 +213,10 @@ public class CityList
         return list;
     }
 
+    /**
+     * Function for getting top N populated cities in a provided district
+     * @return a list of top N populated cities from specified district
+     */
     public List<String> TopNPopCitiesInDistrict(int n, String district)
     {
         List<String> list = new ArrayList<>();
