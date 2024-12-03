@@ -1,6 +1,8 @@
 package com.napier.sem38;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class for retrieving population data from the world database
@@ -18,6 +20,30 @@ public class PopulationSum
     public PopulationSum(Database database)
     {
         _database = database; // store the database reference
+    }
+
+    /**
+     * Formats long numbers to string and injects a space every 3 characters
+     * @param num - The number you want to format
+     * @return The formated string
+     *
+     */
+    public String FormatLong(Long num)
+    {
+        String convert = num.toString();
+        String out = "";
+
+        int offset = convert.length() - (int)(convert.length()/3)*3;
+        offset = 3 - offset;
+
+        for (int i = 0; i < convert.length(); i++)
+        {
+            out += convert.charAt(i);
+            if (i+1 != convert.length() && (i + 1 + offset)%3 == 0)
+                out += " ";
+        }
+
+        return out;
     }
 
     public Long GetPopulation(String query)
@@ -103,6 +129,47 @@ public class PopulationSum
         }
 
         return pop;
+    }
+
+    public List<String> PopCityDistribContinent()
+    {
+        List<String> list = new ArrayList<>();
+
+        // get string for sql query
+        /*
+        SELECT Country.Continent, SUM(citySum), SUM(Country.Population)
+        FROM (SELECT SUM(Population) as citySum, Country FROM City GROUP BY Country) c
+        JOIN Country ON c.Country = Country.Name
+        GROUP BY Country.Continent;
+        */
+        String query = "SELECT country.Continent AS cont, SUM(country.Population) AS total, SUM(CountSum) AS cityPop, (SUM(country.Population) - SUM(CountSum)) as nonCityPop " +
+                "FROM (SELECT SUM(Population) as CountSum, CountryCode FROM city GROUP BY CountryCode) c " +
+                "JOIN country ON country.Code = c.CountryCode " +
+                "GROUP BY country.Continent";
+
+        // Execute the query and retrieve results
+        ResultSet results = _database.Query(query);
+
+        try
+        {
+            // Iterate through the results
+            while (results.next())
+            {
+                // Get the city name and population, and add it to the list
+                String continent = results.getString("cont");
+                long totalPop = results.getLong("total");
+                long cityPop = results.getLong("cityPop");
+                long nonCityPop = results.getLong("nonCityPop");
+                list.add(continent + "\n\tTotal Population: " + FormatLong(totalPop) + "\n\tCity Population: " + FormatLong(cityPop) + "\n\tNonCityPop: " + FormatLong(nonCityPop));
+            }
+
+        } catch (Exception exception) {
+            // Print error messages if any
+            System.out.println(exception.getMessage());
+            System.out.println("Error retrieving data from ResultSet!");
+        }
+
+        return list;
     }
     //endregion
 
