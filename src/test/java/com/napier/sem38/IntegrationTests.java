@@ -172,6 +172,26 @@ public class IntegrationTests
 
     //region City
 
+    @Test
+    void CapitalContinentListWrongInput()
+    {
+
+    }
+
+    @Test
+    void CapitalContinentListEmptyInput()
+    {
+
+    }
+
+    @Test
+    void CapitalContinentListNullInput()
+    {
+
+    }
+
+
+
     /**
      * test checks GetTopNPopulatedCapitals() returns the expected number of capital cities.
      */
@@ -252,7 +272,7 @@ public class IntegrationTests
     void TopNPopCitiesInCountryTest(){
 
         //get function output
-        List<String> result = _cityList.TopNPopCitiesInDistrict(3, "Spain");
+        List<String> result = _cityList.TopNPopCitiesInCountry(3, "Spain");
 
         // set expected output
         List<String> expected = new ArrayList<>();
