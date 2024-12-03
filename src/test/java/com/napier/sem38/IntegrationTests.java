@@ -191,6 +191,18 @@ public class IntegrationTests
     }
 
 
+    @Test
+    void GetTopNPopCitiesInRegionTest()
+    {
+        var results = _cityList.TopNPopCitiesInRegion(3, "Middle East");
+
+        List<String> expected = new ArrayList<>();
+        expected.add("Istanbul - Population: 8787958");
+        expected.add("Baghdad - Population: 4336000");
+        expected.add("Riyadh - Population: 3324000");
+
+        assertEquals(expected, results);
+    }
 
     /**
      * test checks GetTopNPopulatedCapitals() returns the expected number of capital cities.
@@ -396,6 +408,32 @@ public class IntegrationTests
     //endregion
 
     //region Population
+
+    @Test
+    void RegionCityDistributionTest()
+    {
+        var results = _populationSum.PopCityDistribRegion();
+
+        var expected = "Caribbean\n" +
+                "\tTotal Population: 38 140 000\n" +
+                "\tCity Population: 11 067 550\n" +
+                "\tNonCityPop: 27 072 450";
+
+        assertEquals(expected, results.get(0));
+    }
+
+    @Test
+    void ContinentCityDistributionTest()
+    {
+        var results = _populationSum.PopCityDistribContinent();
+
+        String expected1 = "North America\n" +
+                "\tTotal Population: 482 993 000\n" +
+                "\tCity Population: 168 250 381\n" +
+                "\tNonCityPop: 314 742 619";
+
+        assertEquals(expected1, results.get(0));
+    }
 
     /**
      * testing get population with an empty query

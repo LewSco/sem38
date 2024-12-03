@@ -142,6 +142,9 @@ public class Main {
         _name = "Middle East";
         _display.Show(String.format("Top %d populated capital cities in %s",_number, _name), _cityList.TopNPopCapitalInRegion(_number, _name));
 
+        //GitIssue29
+        _display.Show("City Per Continent Distribs", _populationSum.PopCityDistribContinent());
+
         //GitIssue37
         //Get and display the population of a city
         _name = "Edinburgh";
@@ -154,6 +157,14 @@ public class Main {
         _display.Show("\nList of the most populated cities up to " + _number,
                 _cityList.GetTopNPopulatedCities(_number));
 
+
+        //Gitissue20
+        _name = "Middle East";
+        _number = 3;
+        _display.Show(String.format("Top %d populated cities in %s",_number, _name), _cityList.TopNPopCitiesInRegion(_number, _name));
+
+        //Gitissue30
+        _display.Show("City per Region Distribution", _populationSum.PopCityDistribRegion());
 
         // disconnect from database
         _database.Disconnect();
