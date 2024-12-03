@@ -221,7 +221,7 @@ public class PopulationSum
         return pop;
     }
 
-    //region Country Population
+    //region City Population
     /**
      * Queries the database to find the population of a specific city.
      * @param city the country for which to calculate the population
