@@ -150,6 +150,11 @@ public class Main {
         _display.Show("Population of the " + _name,
                 _populationSum.CityPop(_name).toString());
 
+        //Gitissue20
+        _name = "Middle East";
+        _number = 3;
+        _display.Show(String.format("Top %d populated cities in %s",_number, _name), _cityList.TopNPopCitiesInRegion(_number, _name));
+
         // disconnect from database
         _database.Disconnect();
     }

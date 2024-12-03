@@ -191,6 +191,18 @@ public class IntegrationTests
     }
 
 
+    @Test
+    void GetTopNPopCitiesInRegionTest()
+    {
+        var results = _cityList.TopNPopCitiesInRegion(3, "Middle East");
+
+        List<String> expected = new ArrayList<>();
+        expected.add("Istanbul - Population: 8787958");
+        expected.add("2024-12-03T14:36:30.696954893Z Baghdad - Population: 4336000");
+        expected.add("2024-12-03T14:36:30.696963335Z Riyadh - Population: 3324000");
+
+        assertEquals(expected, results);
+    }
 
     /**
      * test checks GetTopNPopulatedCapitals() returns the expected number of capital cities.
