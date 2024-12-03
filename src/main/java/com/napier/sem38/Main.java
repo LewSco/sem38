@@ -131,6 +131,11 @@ public class Main {
         _name = "Spain";
         _display.Show(String.format("Top %d %s",_number, _name), _cityList.TopNPopCitiesInCountry(_number, _name));
 
+        //GitIssue27
+        _number = 3;
+        _name = "Asia";
+        _display.Show(String.format("Top %d %s",_number, _name), _cityList.TopNPopCapitalInContinent(_number, _name));
+
         // disconnect from database
         _database.Disconnect();
     }

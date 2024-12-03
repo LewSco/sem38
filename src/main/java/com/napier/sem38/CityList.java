@@ -284,4 +284,40 @@ public class CityList
 
         return list;
     }
+
+    /**
+     * Function for getting top n populated capital cities on a continent
+     * @return a list of top n populated capital cities on a continent
+     */
+    public List<String> TopNPopCapitalInContinent(int n, String continent)
+    {
+        List<String> list = new ArrayList<>();
+
+        // get string for sql query
+        String query = "SELECT city.Name, city.Population " +
+                "FROM city " +
+                "WHERE city.ID IN (SELECT Capital FROM country WHERE Continent = '" + continent + "') " +
+                "ORDER BY city.Population DESC " +
+                "LIMIT " + n;
+
+        // Execute the query and retrieve results
+        ResultSet results = _database.Query(query);
+
+        try
+        {
+            // Iterate through the results
+            while (results.next()) {
+                // Get the city name and population, and add it to the list
+                String cityName = results.getString("Name");
+                int population = results.getInt("Population");
+                list.add(cityName + " - Population: " + population);
+            }
+        } catch (Exception exception) {
+            // Print error messages if any
+            System.out.println(exception.getMessage());
+            System.out.println("Error retrieving data from ResultSet!");
+        }
+
+        return list;
+    }
 }
