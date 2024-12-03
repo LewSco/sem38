@@ -356,4 +356,40 @@ public class CityList
 
         return list;
     }
+
+    /**
+     * a function for listing the cities largest to smallest in population up to specified number.
+     * @param n the number of cities the list will display.
+     * @return a list of the cities largest to small in population.
+     */
+    public List<String> GetTopNPopulatedCities(int n)
+    {
+        List<String> list = new ArrayList<>();
+
+        // SQL query to get the top N populated cities
+        String query = "SELECT city.Name, city.Population " +
+                "FROM city " +
+                "ORDER BY city.Population DESC " +
+                "LIMIT " + n;
+
+        // Execute the query and retrieve results
+        ResultSet results = _database.Query(query);
+
+        try
+        {
+            // Iterate through the results
+            while (results.next()) {
+                // Get the city name and population, and add it to the list
+                String cityName = results.getString("Name");
+                int population = results.getInt("Population");
+                list.add(cityName + " - Population: " + population);
+            }
+        } catch (Exception exception) {
+            // Print error messages if any
+            System.out.println(exception.getMessage());
+            System.out.println("Error retrieving data from ResultSet!");
+        }
+
+        return list;
+    }
 }

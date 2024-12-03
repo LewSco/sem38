@@ -761,4 +761,61 @@ public class IntegrationTests
         // Get the continent population
         Long actual = _populationSum.ContinentPop("");
     }
+
+    /**
+     * test checks GetTopNPopulatedCities works as intended with no params
+     */
+    @Test
+    void GetTopNPopulatedCitiesExpected()
+    {
+        // get function output
+        List<String> result = _cityList.GetWorldList();
+
+        // store top 4 countries
+        List<String> actual = new ArrayList<>();
+        actual.add(result.get(0));
+        actual.add(result.get(1));
+        actual.add(result.get(2));
+        actual.add(result.get(3));
+
+        // set expected output
+        List<String> expected = new ArrayList<>();
+        expected.add("Mumbai (Bombay) - Population: 10500000");
+        expected.add("Seoul - Population: 9981619");
+        expected.add("São Paulo - Population: 9968485");
+        expected.add("Shanghai - Population: 9696300");
+
+        // check actual = expected
+        assertEquals(expected, actual);
+    }
+
+    /**
+     * tests an invalid input to get a city population
+     */
+    @Test
+    void GetTopNPopulatedCitiesInput()
+    {
+        // Get the continent population
+        Long actual = _populationSum.CityPop("Hello");
+    }
+
+    /**
+     * tests a null input to get a city population
+     */
+    @Test
+    void GetTopNPopulatedCitiesNullInput()
+    {
+        // Get the continent population
+        Long actual = _populationSum.ContinentPop(null);
+    }
+
+    /**
+     * tests an empty input to get a continent population
+     */
+    @Test
+    void GetTopNPopulatedCitiesEmptyInput()
+    {
+        // Get the continent population
+        Long actual = _populationSum.ContinentPop("");
+    }
 }

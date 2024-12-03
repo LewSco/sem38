@@ -147,6 +147,13 @@ public class Main {
         _display.Show("Population of the " + _name,
                 _populationSum.CityPop(_name).toString());
 
+        //GitIssue18
+        _number = 4;
+        // display results
+        _display.Show("\nList of the most populated cities up to " + _number,
+                _cityList.GetTopNPopulatedCities(_number));
+
+
         // disconnect from database
         _database.Disconnect();
     }
