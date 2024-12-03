@@ -696,4 +696,19 @@ public class IntegrationTests
     }
     //endregion
 
+    /**
+     * test checks CityPopEpected() returns the expected results
+     */
+    @Test
+    void CityPopExpected()
+    {
+        //Get the Region population
+        Long actual = _populationSum.CityPop("Edinburgh");
+
+        //Expected output for the Region population
+        Long expected = 450180L;
+
+        //check actual = expected
+        assertEquals(expected, actual);
+    }
 }
