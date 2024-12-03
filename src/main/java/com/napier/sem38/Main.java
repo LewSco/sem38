@@ -22,6 +22,7 @@ public class Main {
         CityList _cityList = new CityList(_database);
         Report _report = new Report(_database);
 
+
         // variables for storing names and numbers
         int _number;
         String _name;

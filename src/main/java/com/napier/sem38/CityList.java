@@ -384,6 +384,7 @@ public class CityList
                 int population = results.getInt("Population");
                 list.add(cityName + " - Population: " + population);
             }
+
         } catch (Exception exception) {
             // Print error messages if any
             System.out.println(exception.getMessage());
