@@ -155,6 +155,9 @@ public class Main {
         _number = 3;
         _display.Show(String.format("Top %d populated cities in %s",_number, _name), _cityList.TopNPopCitiesInRegion(_number, _name));
 
+        //Gitissue30
+        _display.Show("City per Region Distribution", _populationSum.PopCityDistribRegion());
+
         // disconnect from database
         _database.Disconnect();
     }

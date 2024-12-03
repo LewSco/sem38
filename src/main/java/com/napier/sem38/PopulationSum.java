@@ -175,6 +175,45 @@ public class PopulationSum
     //endregion
 
     //region Country Population
+
+    /**
+     * Get the distribution of people living in and out of cities per region
+     * @return string with all the region and their population distributions
+     */
+    public List<String> PopCityDistribRegion()
+    {
+        List<String> list = new ArrayList<>();
+
+        String query = "SELECT country.Region AS reg, SUM(country.Population) AS total, SUM(regSum) AS cityPop, (SUM(country.Population) - SUM(regSum)) as nonCityPop " +
+                "FROM (SELECT SUM(Population) as regSum, CountryCode FROM city GROUP BY CountryCode) c " +
+                "JOIN country ON country.Code = c.CountryCode " +
+                "GROUP BY country.Region";
+
+        // Execute the query and retrieve results
+        ResultSet results = _database.Query(query);
+
+        try
+        {
+            // Iterate through the results
+            while (results.next())
+            {
+                // Get the city name and population, and add it to the list
+                String continent = results.getString("reg");
+                long totalPop = results.getLong("total");
+                long cityPop = results.getLong("cityPop");
+                long nonCityPop = results.getLong("nonCityPop");
+                list.add(continent + "\n\tTotal Population: " + FormatLong(totalPop) + "\n\tCity Population: " + FormatLong(cityPop) + "\n\tNonCityPop: " + FormatLong(nonCityPop));
+            }
+
+        } catch (Exception exception) {
+            // Print error messages if any
+            System.out.println(exception.getMessage());
+            System.out.println("Error retrieving data from ResultSet!");
+        }
+
+        return list;
+    }
+
     /**
      * Queries the database to find the population of a specific country.
      * @param country the country for which to calculate the population

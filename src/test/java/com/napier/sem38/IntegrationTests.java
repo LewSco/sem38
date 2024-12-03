@@ -410,6 +410,19 @@ public class IntegrationTests
     //region Population
 
     @Test
+    void RegionCityDistributionTest()
+    {
+        var results = _populationSum.PopCityDistribRegion();
+
+        var expected = "Caribbean\n" +
+                "\tTotal Population: 38 140 000\n" +
+                "\tCity Population: 11 067 550\n" +
+                "\tNonCityPop: 27 072 450";
+
+        assertEquals(expected, results.get(0));
+    }
+
+    @Test
     void ContinentCityDistributionTest()
     {
         var results = _populationSum.PopCityDistribContinent();
