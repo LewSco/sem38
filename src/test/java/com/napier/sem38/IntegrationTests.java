@@ -397,6 +397,19 @@ public class IntegrationTests
 
     //region Population
 
+    @Test
+    void ContinentCityDistributionTest()
+    {
+        var results = _populationSum.PopCityDistribContinent();
+
+        String expected1 = "North America\n" +
+                "\tTotal Population: 482 993 000\n" +
+                "\tCity Population: 168 250 381\n" +
+                "\tNonCityPop: 314 742 619";
+
+        assertEquals(expected1, results.get(0));
+    }
+
     /**
      * testing get population with an empty query
      */
