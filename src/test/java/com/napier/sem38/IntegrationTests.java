@@ -198,6 +198,9 @@ public class IntegrationTests
 
     }
 
+    /**
+     * tests whether Ca[italMostLeastPop() returns expected output
+     */
     @Test
     void CaptialMostLeastPopTest()
     {
@@ -221,7 +224,10 @@ public class IntegrationTests
         assertEquals(expected, actual);
     }
 
-    //gitissue 22
+    /**
+     * Gitissue22
+     * Checks whether TopNPopCitiesInDistrict() returns expected output
+     */
     @Test
     void TopNPopCitiesInDistrictTest(){
 
