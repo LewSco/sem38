@@ -141,6 +141,12 @@ public class Main {
         _name = "Middle East";
         _display.Show(String.format("Top %d populated capital cities in %s",_number, _name), _cityList.TopNPopCapitalInRegion(_number, _name));
 
+        //GitIssue37
+        //Get and display the popualtion of a city
+        _name = "Edinburgh";
+        _display.Show("Population of the " + _name,
+                _populationSum.CityPop(_name).toString());
+
         // disconnect from database
         _database.Disconnect();
     }
