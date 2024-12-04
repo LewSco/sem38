@@ -214,6 +214,10 @@ public class PopulationSum
         return list;
     }
 
+    /**
+     * Method for receiving non-city and city population numbers per country
+     * @return A list of city and non-city population per country
+     */
     public List<String> PopCityDistribCountry()
     {
         List<String> list = new ArrayList<>();
