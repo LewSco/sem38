@@ -410,6 +410,19 @@ public class IntegrationTests
     //region Population
 
     @Test
+    void CountryCityDistributionTest()
+    {
+        var results = _populationSum.PopCityDistribCountry();
+
+        var expected = "Aruba\n" +
+                "\tTotal Population: 103 000\n" +
+                "\tCity Population: 29 034\n" +
+                "\tNonCityPop: 73 966";
+
+        assertEquals(expected, results.get(0));
+    }
+
+    @Test
     void RegionCityDistributionTest()
     {
         var results = _populationSum.PopCityDistribRegion();
