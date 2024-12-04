@@ -2,7 +2,6 @@ package com.napier.sem38;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -694,6 +693,31 @@ public class IntegrationTests
     //endregion
 
     //region Reports
+
+    /**
+     * Test to check whether receiving expected output from GetPopDistribReport();
+     */
+    @Test
+    void PopDistribReportTest()
+    {
+        var result = _report.GetPopDistribReport("France");
+
+        List<String> expected = new ArrayList<>();
+        expected.add("Continent - Europe\n" +
+                "\ttotal: 730 074 600\n" +
+                "\tcityPop: 241 942 813 (33%)\n" +
+                "\tnonCityPop: 488 131 787 (67%)");
+        expected.add("Region - Western Europe\n" +
+                "\ttotal: 183 247 600\n" +
+                "\tcityPop: 45 683 298 (25%)\n" +
+                "\tnonCityPop: 137 564 302 (75%)");
+        expected.add("Country - France\n" +
+                "\ttotal: 59 225 700\n" +
+                "\tcityPop: 9 244 494 (16%)\n" +
+                "\tnonCityPop: 49 981 206 (84%)");
+
+        assertEquals(expected, result);
+    }
 
     /**
      * Test checks if the correct report is returned for the supplied country name.

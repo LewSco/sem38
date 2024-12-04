@@ -1,7 +1,5 @@
 package com.napier.sem38;
 
-import java.util.List;
-
 public class Main {
     /**
      * Main method for the application.
@@ -176,7 +174,7 @@ public class Main {
 
         //Gitissue42
         _name = "France";
-        _display.Show("Population Distribution Report for " + _name, _report.PopDistribReport(_name));
+        _display.Show("Population Distribution Report for " + _name, _report.GetPopDistribReport(_name));
 
         // disconnect from database
         _database.Disconnect();

@@ -72,7 +72,7 @@ public class Report
      * @param country - The country the user wants a report for
      * @return List<String> which will be printed through display
      */
-    public List<String> PopDistribReport(String country)
+    public List<String> GetPopDistribReport(String country)
     {
         var out = new ArrayList<String>();
 
