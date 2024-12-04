@@ -184,8 +184,8 @@ public class PopulationSum
     {
         List<String> list = new ArrayList<>();
 
-        String query = "SELECT country.Region AS reg, SUM(country.Population) AS total, SUM(regSum) AS cityPop, (SUM(country.Population) - SUM(regSum)) as nonCityPop " +
-                "FROM (SELECT SUM(Population) as regSum, CountryCode FROM city GROUP BY CountryCode) c " +
+        String query = "SELECT country.Region AS reg, SUM(country.Population) AS total, SUM(countSum) AS cityPop, (SUM(country.Population) - SUM(countSum)) as nonCityPop " +
+                "FROM (SELECT SUM(Population) as countSum, CountryCode FROM city GROUP BY CountryCode) c " +
                 "JOIN country ON country.Code = c.CountryCode " +
                 "GROUP BY country.Region";
 
@@ -198,11 +198,44 @@ public class PopulationSum
             while (results.next())
             {
                 // Get the city name and population, and add it to the list
-                String continent = results.getString("reg");
+                String region = results.getString("reg");
                 long totalPop = results.getLong("total");
                 long cityPop = results.getLong("cityPop");
                 long nonCityPop = results.getLong("nonCityPop");
-                list.add(continent + "\n\tTotal Population: " + FormatLong(totalPop) + "\n\tCity Population: " + FormatLong(cityPop) + "\n\tNonCityPop: " + FormatLong(nonCityPop));
+                list.add(region + "\n\tTotal Population: " + FormatLong(totalPop) + "\n\tCity Population: " + FormatLong(cityPop) + "\n\tNonCityPop: " + FormatLong(nonCityPop));
+            }
+
+        } catch (Exception exception) {
+            // Print error messages if any
+            System.out.println(exception.getMessage());
+            System.out.println("Error retrieving data from ResultSet!");
+        }
+
+        return list;
+    }
+
+    public List<String> PopCityDistribCountry()
+    {
+        List<String> list = new ArrayList<>();
+
+        String query = "SELECT country.Name AS count, country.Population AS total, cityPop, (country.Population - cityPop) as nonCityPop " +
+                "FROM (SELECT SUM(Population) as cityPop, CountryCode FROM city GROUP BY CountryCode) c " +
+                "JOIN country ON country.Code = c.CountryCode ";
+
+        // Execute the query and retrieve results
+        ResultSet results = _database.Query(query);
+
+        try
+        {
+            // Iterate through the results
+            while (results.next())
+            {
+                // Get the city name and population, and add it to the list
+                String country = results.getString("count");
+                long totalPop = results.getLong("total");
+                long cityPop = results.getLong("cityPop");
+                long nonCityPop = results.getLong("nonCityPop");
+                list.add(country + "\n\tTotal Population: " + FormatLong(totalPop) + "\n\tCity Population: " + FormatLong(cityPop) + "\n\tNonCityPop: " + FormatLong(nonCityPop));
             }
 
         } catch (Exception exception) {

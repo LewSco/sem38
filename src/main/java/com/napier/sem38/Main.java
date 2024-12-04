@@ -166,6 +166,9 @@ public class Main {
         //Gitissue30
         _display.Show("City per Region Distribution", _populationSum.PopCityDistribRegion());
 
+        //Gitissue31
+        _display.Show("City per Country Distribution", _populationSum.PopCityDistribCountry());
+
         // disconnect from database
         _database.Disconnect();
     }
