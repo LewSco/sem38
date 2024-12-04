@@ -174,6 +174,10 @@ public class Main {
         _number = 3;
         _display.Show(String.format("Top %d populated cities in %s", _number, _name), _cityList.TopNPopCitiesInContinent(_number, _name));
 
+        //Gitissue42
+        _name = "France";
+        _display.Show("Population Distribution Report for " + _name, _report.PopDistribReport(_name));
+
         // disconnect from database
         _database.Disconnect();
     }

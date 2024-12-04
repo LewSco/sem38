@@ -28,7 +28,7 @@ public class PopulationSum
      * @return The formated string
      *
      */
-    public String FormatLong(Long num)
+    public static String FormatLong(Long num)
     {
         //create output string and convert long to string
         String convert = num.toString();
