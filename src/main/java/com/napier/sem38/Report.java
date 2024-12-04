@@ -21,6 +21,48 @@ public class Report
 
     //region Country
 
+    public List<String> PopDistribReport(String country)
+    {
+        var out = new ArrayList<String>();
+
+        try
+        {
+            String curQuery = "SELECT country.Population AS total, cityPop, (country.Population - cityPop) as nonCityPop " +
+                    "FROM (SELECT SUM(Population) as cityPop, CountryCode FROM city GROUP BY CountryCode) c " +
+                    "JOIN country ON country.Code = c.CountryCode " +
+                    "WHERE country.Name = '" + country + "'";
+
+            var countResults = _database.Query(curQuery);
+
+            curQuery = "SELECT country.Region as reg, SUM(country.Population) AS total, SUM(countSum) AS cityPop, (SUM(country.Population) - SUM(countSum)) as nonCityPop " +
+                    "FROM (SELECT SUM(Population) as countSum, CountryCode FROM city GROUP BY CountryCode) c " +
+                    "JOIN country ON country.Code = c.CountryCode " +
+                    "GROUP BY country.Region " +
+                    "WHERE country.Region = (SELECT Region FROM country WHERE Name = '" + country + "')";
+
+            var regResults = _database.Query(curQuery);
+
+            curQuery = "SELECT country.Continent AS cont, SUM(country.Population) AS total, SUM(CountSum) AS cityPop, (SUM(country.Population) - SUM(CountSum)) as nonCityPop " +
+                    "FROM (SELECT SUM(Population) as CountSum, CountryCode FROM city GROUP BY CountryCode) c " +
+                    "JOIN country ON country.Code = c.CountryCode " +
+                    "GROUP BY country.Continent " +
+                    "WHERE country.Continent = (SELECT Continent FROM country WHERE Name = '" + country + "')";
+
+            var contResults = _database.Query(curQuery);
+
+            contResults.next();
+            out.add("Continent - " + contResults.getString("cont") +
+                    "\n\ttotal: " + contResults.getString("total") +
+                    "\n\tcityPop: " + contResults.getString("cityPop") +
+                    "\n\tnonCityPop: " + contResults.getString("nonCityPop"));
+        }catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Error retrieving data from the database.");
+        }
+        return  out;
+    }
+
     /**
      * Queries the database to find code, name, continent, region,
      * population and capital of specified country.
