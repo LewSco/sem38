@@ -6,7 +6,7 @@
 
     <groupId>com.napier.sem38</groupId>
     <artifactId>sem38</artifactId>
-    <version>0.1.0.12</version>
+    <version>0.1.0.13</version>
 
     <dependencies>
         <dependency>
@@ -30,6 +30,18 @@
 
     <build>
         <plugins>
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <id>default-jar</id>
+                        <!-- skip building the default-jar-->
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
