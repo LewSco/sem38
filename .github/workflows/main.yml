@@ -1,5 +1,9 @@
 name: A workflow for my Hello World App
-on: push
+on:
+  push:
+    branches:
+      - main
+      - develop
 
 jobs:
   UnitTests:
@@ -18,7 +22,7 @@ jobs:
       - name: Unit Tests
         run: mvn -Dtest=com.napier.sem38.UnitTests test
       - name: CodeCov
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v4.0.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }} # now required for public repos
           directory: ./target/site/jacoco

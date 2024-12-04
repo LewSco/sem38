@@ -3,6 +3,7 @@ package com.napier.sem38;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Report
 {
@@ -20,6 +21,100 @@ public class Report
     }
 
     //region Country
+
+    /**
+     * This function is exclusively used in PopDistribReport() to create string for each entry
+     * @param results - the result of a given query on the databse
+     * @param type - the type of entry this is
+     * @param entry - if type name isnt in resultset type it in, otherwise leave as blank
+     * @return String to add to the output list in PopDistribReport()
+     */
+    private String GetDistribReportEntry(ResultSet results, String type, String entry)
+    {
+        //create string
+        String out = "";
+        try
+        {
+            //set to first result and acquire entries
+            results.next();
+            Long total = results.getLong("total");
+            Long cityPop = results.getLong("cityPop");
+            Long nonCityPop = results.getLong("nonCityPop");
+
+            //if empty get first column, otherwise use what was provided
+            if(Objects.equals(entry, ""))
+            {
+                out = type + " - " + results.getNString(1);
+            }
+            else
+            {
+                out = type + " - " + entry;
+            }
+
+            //add all the otehr columns to report, and calculate percentages
+            out +=
+                    "\n\ttotal: " + PopulationSum.FormatLong(total) +
+                    "\n\tcityPop: " + PopulationSum.FormatLong(cityPop) + " (" + Math.round(cityPop.floatValue()/total.floatValue()*100) + "%)" +
+                    "\n\tnonCityPop: " + PopulationSum.FormatLong(nonCityPop) + " (" + Math.round(nonCityPop.floatValue()/total.floatValue()*100) + "%)";
+        }
+        catch(Exception e)
+        {
+            //print error
+            System.out.println(e.getMessage());
+            System.out.println("Error while retrieving data");
+        }
+        return out;
+    }
+
+    /***
+     * Returns a report showing the city and noncity population distribution for
+     * a given country (along with that countries region and continent)
+     * @param country - The country the user wants a report for
+     * @return List<String> which will be printed through display
+     */
+    public List<String> GetPopDistribReport(String country)
+    {
+        var out = new ArrayList<String>();
+
+        try
+        {
+            //get resultsets for all necessary queries
+            String curQuery = "SELECT country.Population AS total, cityPop, (country.Population - cityPop) as nonCityPop " +
+                    "FROM (SELECT SUM(Population) as cityPop, CountryCode FROM city GROUP BY CountryCode) c " +
+                    "JOIN country ON country.Code = c.CountryCode " +
+                    "WHERE country.Name = '" + country + "'";
+
+            var countResults = _database.Query(curQuery);
+
+            curQuery = "SELECT country.Region as reg, SUM(country.Population) AS total, SUM(countSum) AS cityPop, (SUM(country.Population) - SUM(countSum)) as nonCityPop " +
+                    "FROM (SELECT SUM(Population) as countSum, CountryCode FROM city GROUP BY CountryCode) c " +
+                    "JOIN country ON country.Code = c.CountryCode " +
+                    "WHERE country.Region = (SELECT Region FROM country WHERE Name = '" + country + "') " +
+                    "GROUP BY country.Region ";
+
+            var regResults = _database.Query(curQuery);
+
+            curQuery = "SELECT country.Continent AS cont, SUM(country.Population) AS total, SUM(CountSum) AS cityPop, (SUM(country.Population) - SUM(CountSum)) as nonCityPop " +
+                    "FROM (SELECT SUM(Population) as CountSum, CountryCode FROM city GROUP BY CountryCode) c " +
+                    "JOIN country ON country.Code = c.CountryCode " +
+                    "WHERE country.Continent = (SELECT Continent FROM country WHERE Name = '" + country + "') " +
+                    "GROUP BY country.Continent ";
+
+            var contResults = _database.Query(curQuery);
+
+            //add all reports to out list
+            out.add(GetDistribReportEntry(contResults, "Continent", ""));
+            out.add(GetDistribReportEntry(regResults, "Region", ""));
+            out.add(GetDistribReportEntry(countResults, "Country", country));
+        }catch(Exception e)
+        {
+            //print error
+            System.out.println(e.getMessage());
+            System.out.println("Error retrieving data from the database.");
+        }
+        //return list
+        return  out;
+    }
 
     /**
      * Queries the database to find code, name, continent, region,

@@ -1,7 +1,5 @@
 package com.napier.sem38;
 
-import java.util.List;
-
 public class Main {
     /**
      * Main method for the application.
@@ -21,6 +19,7 @@ public class Main {
         PopulationSum _populationSum = new PopulationSum(_database);
         CityList _cityList = new CityList(_database);
         Report _report = new Report(_database);
+
 
         // variables for storing names and numbers
         int _number;
@@ -117,6 +116,65 @@ public class Main {
 
         // GitIssue41
         _display.Show("Brazil Capital Report", _report.CapitalReport("Brazil"));
+
+        //GitIssue23
+        _display.Show("List of all capitals by population", _cityList.CapitalMostLeastPop());
+
+        //GitIssue22
+        _number = 3;
+        _name = "Rio de Janeiro";
+        _display.Show(String.format("Top %d populated cities in %s district",_number, _name), _cityList.TopNPopCitiesInDistrict(_number, _name));
+
+        //GitIssue21
+        _number = 3;
+        _name = "Spain";
+        _display.Show(String.format("Top %d populated cities in %s",_number, _name), _cityList.TopNPopCitiesInCountry(_number, _name));
+
+        //GitIssue27
+        _number = 3;
+        _name = "Asia";
+        _display.Show(String.format("Top %d populated capital cities in %s",_number, _name), _cityList.TopNPopCapitalInContinent(_number, _name));
+
+        //GitIssue28
+        _number = 3;
+        _name = "Middle East";
+        _display.Show(String.format("Top %d populated capital cities in %s",_number, _name), _cityList.TopNPopCapitalInRegion(_number, _name));
+
+        //GitIssue29
+        _display.Show("City Per Continent Distribs", _populationSum.PopCityDistribContinent());
+
+        //GitIssue37
+        //Get and display the population of a city
+        _name = "Edinburgh";
+        _display.Show("Population of the " + _name,
+                _populationSum.CityPop(_name).toString());
+
+        //GitIssue18
+        _number = 4;
+        // display results
+        _display.Show("\nList of the most populated cities up to " + _number,
+                _cityList.GetTopNPopulatedCities(_number));
+
+
+        //Gitissue20
+        _name = "Middle East";
+        _number = 3;
+        _display.Show(String.format("Top %d populated cities in %s",_number, _name), _cityList.TopNPopCitiesInRegion(_number, _name));
+
+        //Gitissue30
+        _display.Show("City per Region Distribution", _populationSum.PopCityDistribRegion());
+
+        //Gitissue31
+        _display.Show("City per Country Distribution", _populationSum.PopCityDistribCountry());
+
+        //Gitissue19
+        _name = "Asia";
+        _number = 3;
+        _display.Show(String.format("Top %d populated cities in %s", _number, _name), _cityList.TopNPopCitiesInContinent(_number, _name));
+
+        //Gitissue42
+        _name = "France";
+        _display.Show("Population Distribution Report for " + _name, _report.GetPopDistribReport(_name));
 
         // disconnect from database
         _database.Disconnect();
