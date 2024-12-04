@@ -44,7 +44,7 @@ public class Report
             //if empty get first column, otherwise use what was provided
             if(Objects.equals(entry, ""))
             {
-                out = type + " - " + results.getNString(0);
+                out = type + " - " + results.getNString(1);
             }
             else
             {
