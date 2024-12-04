@@ -169,6 +169,11 @@ public class Main {
         //Gitissue31
         _display.Show("City per Country Distribution", _populationSum.PopCityDistribCountry());
 
+        //Gitissue19
+        _name = "Asia";
+        _number = 3;
+        _display.Show(String.format("Top %d populated cities in %s", _number, _name), _cityList.TopNPopCitiesInContinent(_number, _name));
+
         // disconnect from database
         _database.Disconnect();
     }
