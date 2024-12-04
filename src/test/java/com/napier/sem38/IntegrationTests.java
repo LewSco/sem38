@@ -190,6 +190,18 @@ public class IntegrationTests
 
     }
 
+    @Test
+    void GetTopNPopCitiesInContinentTest()
+    {
+        var results = _cityList.TopNPopCitiesInContinent(3, "Asia");
+
+        var expected = new ArrayList<>();
+        expected.add("Mumbai (Bombay) - Population: 10500000");
+        expected.add("Seoul - Population: 9981619");
+        expected.add("Shanghai - Population: 9696300");
+
+        assertEquals(expected, results);
+    }
 
     @Test
     void GetTopNPopCitiesInRegionTest()
