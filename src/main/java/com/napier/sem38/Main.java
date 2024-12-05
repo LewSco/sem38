@@ -42,9 +42,8 @@ public class Main {
         }
 
         // GitIssue7
-        cells.add(_countryList.GetWorldList()); // add table cells
         _display.OutputFile(new String[]{"World Countries"},
-                cells ,
+                _countryList.GetWorldList() ,
                 "List of the worlds countries by population");
 
 

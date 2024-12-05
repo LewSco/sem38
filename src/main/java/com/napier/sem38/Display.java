@@ -90,7 +90,7 @@ public class Display
      * @param headings the table headings
      * @param cells the values of the cells of the table
      */
-    public void OutputFile(String[] headings, List<List<String>> cells, String fileName)
+    public void OutputFile(String[] headings, List<String> cells, String fileName)
     {
 
         StringBuilder sb = new StringBuilder();
@@ -107,20 +107,19 @@ public class Display
         sb.append(strHead1).append("|\r\n");
         sb.append(strHead2).append("|\r\n");
 
-        for (List<String> row : cells)
+        for(int i = 0; i < cells.size(); i++)
         {
-            for (String cell : row)
-            {
-                sb.append("| ").append(cell).append(" ");
-            }
+            sb.append("| ").append(cells.get(i)).append(" ");
 
-            sb.append("|\r\n");
+            if (i % headings.length == 0)
+                sb.append("|\r\n");
         }
 
         try
         {
             new File("./outputs/").mkdir();
-            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./outputs/" + fileName)));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File(
+                    "./outputs/" + fileName + ".md")));
             writer.write(sb.toString());
             writer.close();
         }
