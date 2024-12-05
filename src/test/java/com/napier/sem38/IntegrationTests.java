@@ -965,4 +965,55 @@ public class IntegrationTests
 
         List<String> result = _countryList.GetTopNPopulatedCountriesInContinent(continent, n);
     }
+
+    /**
+     * Tests that the method retrieves the expected top N populated countries in a region.
+     */
+    @Test
+    void GetTopNPopulatedCountriesInRegionExpectedTest() {
+        // Define input
+        String region = "Caribbean";
+        int n = 5;
+
+        // Call the method
+        List<String> result = _countryList.GetTopNPopulatedCountriesInRegion(region, n);
+
+        // Expected output
+        List<String> expected = new ArrayList<>();
+        expected.add("Cuba - Population: 11201000");
+        expected.add("Dominican Republic - Population: 8495000");
+        expected.add("Haiti - Population: 8222000");
+        expected.add("Puerto Rico - Population: 3869000");
+        expected.add("Jamaica - Population: 2583000");
+
+        // Assert that the result matches the expected output
+        assertEquals(expected, result);
+    }
+
+    /**
+     * Tests that the method handles an empty input for the region parameter
+     */
+    @Test
+    void GetTopNPopulatedCountriesInRegionEmptyInputTest() {
+        List<String> result = _countryList.GetTopNPopulatedCountriesInRegion("", 5);
+    }
+
+    /**
+     * Tests that the method handles a null input for the region parameter
+     */
+    @Test
+    void GetTopNPopulatedCountriesInRegionNullInputTest()
+    {
+        // Call the method with null region
+        List<String> result = _countryList.GetTopNPopulatedCountriesInRegion(null, 5);
+    }
+
+    /**
+     * Tests that the method handles an invalid value for the N parameter
+     */
+    @Test
+    void GetTopNPopulatedCountriesInRegionInvalidNTest() {
+        // Call the method with invalid N
+        List<String> result = _countryList.GetTopNPopulatedCountriesInRegion("Caribbean", -1);
+    }
 }

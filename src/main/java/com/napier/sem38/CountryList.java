@@ -240,5 +240,43 @@ public class CountryList
         return list;
     }
 
+    /**
+     * Queries the database to find the top N most populated countries in a region.
+     * @param region the region to search
+     * @param n the number of countries to retrieve
+     * @return a list of the top N populated countries in the region
+     */
+    public List<String> GetTopNPopulatedCountriesInRegion(String region, int n) {
+        // Initialise the return list
+        List<String> list = new ArrayList<>();
+
+        // SQL query to get the top N populated countries in a region
+        String query = "SELECT Name, Population " +
+                "FROM country " +
+                "WHERE Region = '" + region + "' " +
+                "ORDER BY Population DESC " +
+                "LIMIT " + n;
+
+        // Execute the query
+        ResultSet results = _database.Query(query);
+
+        try {
+            // Iterate through the results
+            while (results.next()) {
+                // Add each country to the list
+                String countryName = results.getString("Name");
+                int population = results.getInt("Population");
+                list.add(countryName + " - Population: " + population);
+            }
+        } catch (Exception exception) {
+            // Print error messages
+            System.out.println(exception.getMessage());
+            System.out.println("Error retrieving data from ResultSet!");
+        }
+
+        return list;
+    }
+
+
     //endregion
 }

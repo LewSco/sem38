@@ -212,6 +212,12 @@ public class Main {
         _display.Show("Top " + _number + " Populated Countries in " + _name,
                 _countryList.GetTopNPopulatedCountriesInContinent(_name, _number));
 
+        // Get and display the top N populated countries in a region
+        _name = "Caribbean";
+        _number = 5;
+        _display.Show("Top " + _number + " populated countries in the region " + _name,
+                _countryList.GetTopNPopulatedCountriesInRegion(_name, _number));
+
         // disconnect from database
         _database.Disconnect();
     }
