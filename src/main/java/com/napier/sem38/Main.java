@@ -2,6 +2,8 @@ package com.napier.sem38;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Arrays;
+
 
 public class Main {
     /**
@@ -9,8 +11,7 @@ public class Main {
      * Instantiates, runs and displays all of the currently existing classes.
      * @param args arguments
      */
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         // initialize database connection
         Database _database = new Database();
 
@@ -32,18 +33,15 @@ public class Main {
         String _name;
 
         // connect to database
-        if (args.length < 1)
-        {
+        if (args.length < 1) {
             _database.Connect("localhost:33060", 30000);
-        }
-        else
-        {
+        } else {
             _database.Connect(args[0], Integer.parseInt(args[1]));
         }
 
         // GitIssue7
         _display.OutputFile(new String[]{"World Countries"},
-                _countryList.GetWorldList() ,
+                _countryList.GetWorldList(),
                 "List of the worlds countries by population");
 
 
@@ -117,7 +115,7 @@ public class Main {
         _display.Show("All Country Reports", _report.CountryReportList());
 
         // GitIssue13
-        _display.Show("List of the Worlds cities by population",_cityList.GetWorldList());
+        _display.Show("List of the Worlds cities by population", _cityList.GetWorldList());
 
         // GitIssue40
         _display.Show("Petare City Report", _report.CityReport("Petare"));
@@ -131,22 +129,22 @@ public class Main {
         //GitIssue22
         _number = 3;
         _name = "Rio de Janeiro";
-        _display.Show(String.format("Top %d populated cities in %s district",_number, _name), _cityList.TopNPopCitiesInDistrict(_number, _name));
+        _display.Show(String.format("Top %d populated cities in %s district", _number, _name), _cityList.TopNPopCitiesInDistrict(_number, _name));
 
         //GitIssue21
         _number = 3;
         _name = "Spain";
-        _display.Show(String.format("Top %d populated cities in %s",_number, _name), _cityList.TopNPopCitiesInCountry(_number, _name));
+        _display.Show(String.format("Top %d populated cities in %s", _number, _name), _cityList.TopNPopCitiesInCountry(_number, _name));
 
         //GitIssue27
         _number = 3;
         _name = "Asia";
-        _display.Show(String.format("Top %d populated capital cities in %s",_number, _name), _cityList.TopNPopCapitalInContinent(_number, _name));
+        _display.Show(String.format("Top %d populated capital cities in %s", _number, _name), _cityList.TopNPopCapitalInContinent(_number, _name));
 
         //GitIssue28
         _number = 3;
         _name = "Middle East";
-        _display.Show(String.format("Top %d populated capital cities in %s",_number, _name), _cityList.TopNPopCapitalInRegion(_number, _name));
+        _display.Show(String.format("Top %d populated capital cities in %s", _number, _name), _cityList.TopNPopCapitalInRegion(_number, _name));
 
         //GitIssue29
         _display.Show("City Per Continent Distribs", _populationSum.PopCityDistribContinent());
@@ -167,7 +165,7 @@ public class Main {
         //Gitissue20
         _name = "Middle East";
         _number = 3;
-        _display.Show(String.format("Top %d populated cities in %s",_number, _name), _cityList.TopNPopCitiesInRegion(_number, _name));
+        _display.Show(String.format("Top %d populated cities in %s", _number, _name), _cityList.TopNPopCitiesInRegion(_number, _name));
 
         //Gitissue30
         _display.Show("City per Region Distribution", _populationSum.PopCityDistribRegion());
@@ -218,6 +216,16 @@ public class Main {
         _display.Show("Top " + _number + " populated countries in the region " + _name,
                 _countryList.GetTopNPopulatedCountriesInRegion(_name, _number));
 
+        // List of languages to query
+        List<String> languages = Arrays.asList("Chinese", "English", "Hindi", "Spanish", "Arabic");
+
+        // Display the total speakers for each language
+        for (String language : languages)
+        {
+            Long totalSpeakers = _populationSum.getLanguageSpeakers(language);
+            _display.Show(language + " Speakers", totalSpeakers.toString());
+
+        }
         // disconnect from database
         _database.Disconnect();
     }
