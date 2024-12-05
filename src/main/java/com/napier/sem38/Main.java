@@ -197,6 +197,13 @@ public class Main {
         _display.Show("List of cities in the district " + _name + " by population:",
                 _cityList.citiesInDistrictLargetoSmall(_name));
 
+        //GitIssue16
+        // Get and display cities in a country ordered by population
+        _name = "United States";
+        _display.Show("List of cities in the country " + _name + " by population:",
+                _cityList.citiesInCountryLargetoSmall(_name));
+
+
         // disconnect from database
         _database.Disconnect();
     }

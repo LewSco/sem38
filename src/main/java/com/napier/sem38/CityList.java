@@ -545,5 +545,47 @@ public class CityList
         return list;
     }
 
+    /**
+     * Produces a list of all the cities in a country organized by largest population to smallest.
+     * @param country the name of the country to search
+     * @return a list of the cities in the country sorted by population
+     */
+    public List<String> citiesInCountryLargetoSmall(String country)
+    {
+        // Initialize the return list
+        List<String> list = new ArrayList<>();
+
+        // SQL query to get cities in a country ordered by population
+        String query = "SELECT city.Name, city.Population " +
+                "FROM city " +
+                "JOIN country ON city.CountryCode = country.Code " +
+                "WHERE country.Name = '" + country + "' " +
+                "ORDER BY city.Population DESC";
+
+        // Execute the query and retrieve results
+        ResultSet results = _database.Query(query);
+
+        try
+        {
+            // Iterate through the results
+            while (results.next())
+            {
+                // Add city name and population to the list
+                String city = results.getString("Name");
+                int population = results.getInt("Population");
+                list.add(city + " - Population: " + population);
+            }
+        }
+        catch (Exception exception)
+        {
+            // Print error messages if any
+            System.out.println(exception.getMessage());
+            System.out.println("Error retrieving data from ResultSet!");
+        }
+
+        return list;
+    }
+
+
 
 }

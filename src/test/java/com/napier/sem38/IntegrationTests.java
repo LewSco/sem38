@@ -828,4 +828,61 @@ public class IntegrationTests
         // Attempt to get cities with an empty string as the region
         List<String> result = _cityList.citiesInRegionLargetoSmall("");
     }
+
+    /**
+     * Test to check citiesInCountryLargetoSmall() returns the expected results for a country.
+     */
+    @Test
+    void citiesInCountryLargetoSmallTest()
+    {
+        // Get function output
+        List<String> result = _cityList.citiesInCountryLargetoSmall("United States");
+
+        // Store the top 3 cities
+        List<String> actual = new ArrayList<>();
+        actual.add(result.get(0));
+        actual.add(result.get(1));
+        actual.add(result.get(2));
+
+        // Expected output
+        List<String> expected = new ArrayList<>();
+        expected.add("New York - Population: 8008278");
+        expected.add("Los Angeles - Population: 3694820");
+        expected.add("Chicago - Population: 2896016");
+
+        // Check actual = expected
+        assertEquals(expected, actual);
+    }
+
+    /**
+     * Test citiesInCountryLargetoSmall() with null input
+     */
+    @Test
+    void citiesInCountryLargetoSmallTestNullInput()
+    {
+        // Call the function with null input
+        List<String> result = _cityList.citiesInCountryLargetoSmall(null);
+    }
+
+    /**
+     * Test citiesInCountryLargetoSmall() with empty input
+     */
+    @Test
+    void citiesInCountryLargetoSmallTestEmptyInput()
+    {
+        // Call the function with an empty string
+        List<String> result = _cityList.citiesInCountryLargetoSmall("");
+    }
+
+    /**
+     * Test citiesInCountryLargetoSmall() with an invalid country name
+     */
+    @Test
+    void citiesInCountryLargetoSmallTestInvalidInput()
+    {
+        // Call the function with an invalid country name
+        List<String> result = _cityList.citiesInCountryLargetoSmall("InvalidCountry");
+    }
+
+
 }
