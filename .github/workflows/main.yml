@@ -1,9 +1,5 @@
-name: Sem38 Workflow
-on:
-  push:
-    branches:
-      - main
-
+name: Sem38 Develop Workflow
+on: push
 jobs:
   UnitTests:
     name: Unit Tests
@@ -60,7 +56,7 @@ jobs:
           slug: LewSco/sem38
 
   build:
-    name: Build Run in Docker and Deploy Release
+    name: Build and Start Using docker compose
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
