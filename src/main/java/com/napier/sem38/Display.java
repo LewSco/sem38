@@ -1,5 +1,10 @@
 package com.napier.sem38;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -77,6 +82,51 @@ public class Display
         for (String thing : list) // foreach (String thing in _list)
         {
             System.out.println(thing);  // Console.WriteLine(thing);
+        }
+    }
+
+    /**
+     * Outputs a table to Markdown
+     * @param headings the table headings
+     * @param cells the values of the cells of the table
+     */
+    public void OutputFile(ArrayList<String> headings, ArrayList<String[]> cells, String fileName)
+    {
+
+        StringBuilder sb = new StringBuilder();
+
+        StringBuilder strHead1 = new StringBuilder();
+        StringBuilder strHead2 = new StringBuilder();
+
+        for (String heading : headings)
+        {
+            strHead1.append("| ").append(heading).append(" ");
+            strHead2.append("| --- ");
+        }
+
+        sb.append(strHead1).append("|\r\n");
+        sb.append(strHead2).append("|\r\n");
+
+        for (String[] row : cells)
+        {
+            for (String cell : row)
+            {
+                sb.append("| ").append(cell).append(" ");
+            }
+
+            sb.append("|\r\n");
+        }
+
+        try
+        {
+            new File("./outputs/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./outputs/" + fileName)));
+            writer.write(sb.toString());
+            writer.close();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
         }
     }
 }
