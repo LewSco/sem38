@@ -1,5 +1,8 @@
 package com.napier.sem38;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     /**
      * Main method for the application.
@@ -20,6 +23,9 @@ public class Main {
         CityList _cityList = new CityList(_database);
         Report _report = new Report(_database);
 
+        // cells for output table
+        List<List<String>> cells = new ArrayList<>();
+
 
         // variables for storing names and numbers
         int _number;
@@ -35,9 +41,12 @@ public class Main {
             _database.Connect(args[0], Integer.parseInt(args[1]));
         }
 
-        // display the list
-        _display.Show("\nList of the worlds countries by population",
-                _countryList.GetWorldList());
+        // GitIssue7
+        cells.add(_countryList.GetWorldList()); // add table cells
+        _display.OutputFile(new String[]{"World Countries"},
+                cells ,
+                "List of the worlds countries by population");
+
 
         // get world list of countries ordered by population up to n number of countries
         _number = 4;

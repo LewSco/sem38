@@ -90,7 +90,7 @@ public class Display
      * @param headings the table headings
      * @param cells the values of the cells of the table
      */
-    public void OutputFile(ArrayList<String> headings, ArrayList<String[]> cells, String fileName)
+    public void OutputFile(String[] headings, List<List<String>> cells, String fileName)
     {
 
         StringBuilder sb = new StringBuilder();
@@ -107,7 +107,7 @@ public class Display
         sb.append(strHead1).append("|\r\n");
         sb.append(strHead2).append("|\r\n");
 
-        for (String[] row : cells)
+        for (List<String> row : cells)
         {
             for (String cell : row)
             {
