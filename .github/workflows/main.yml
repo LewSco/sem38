@@ -83,3 +83,10 @@ jobs:
           automatic_release_tag: "latest"
           files: |
             ./target/*.jar
+      - name: Copy Output
+        run: docker container cp sem38_main_1:./tmp/reports ./
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4.2.5
+        with:
+          branch: outputs # The branch the action should deploy to.
+          folder: outputs # The folder we are copying
