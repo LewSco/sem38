@@ -41,17 +41,18 @@ public class Main {
             _database.Connect(args[0], Integer.parseInt(args[1]));
         }
 
-        // GitIssue7
+        // GitIssue 7
         _display.OutputFile(new String[]{"World Countries"},
                 _countryList.GetWorldList() ,
                 "List of the worlds countries by population");
 
 
-        // get world list of countries ordered by population up to n number of countries
+        // GitIssue 10
         _number = 4;
         // display results
-        _display.Show("\nList of the worlds countries by population up to " + _number,
-                _countryList.GetWorldList(_number));
+        _display.OutputFile(new String[]{"World Countries"},
+                _countryList.GetWorldList(_number) ,
+                "List of the worlds countries by population up to " + _number);
 
         // get continent list of countries ordered by population
         _name = "Asia";
