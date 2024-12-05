@@ -172,6 +172,13 @@ public class Main {
         //Gitissue30
         _display.Show("City per Region Distribution", _populationSum.PopCityDistribRegion());
 
+        //GitIssue25
+        // Get and display the capital cities in a region ordered by population
+        _name = "Caribbean";
+        _display.Show("Capital Cities in the Region " + _name + " by Population",
+                _cityList.GetCapitalCitiesInRegionLargetoSmall(_name));
+
+
         //Gitissue31
         _display.Show("City per Country Distribution", _populationSum.PopCityDistribCountry());
 

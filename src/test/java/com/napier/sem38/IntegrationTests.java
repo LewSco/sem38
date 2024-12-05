@@ -709,4 +709,65 @@ public class IntegrationTests
         // Get the continent population
         Long actual = _populationSum.ContinentPop("");
     }
+
+    /**
+     * test checks GetCapitalCitiesInRegionLargetoSmallTest works with the expected results
+     */
+    @Test
+    void GetCapitalCitiesInRegionLargetoSmallTest()
+    {
+        // Provide a valid region for the test
+        String region = "Caribbean";
+
+        // Get the result from the method
+        List<String> result = _cityList.GetCapitalCitiesInRegionLargetoSmall(region);
+
+        // Check that the result is not empty and contains expected data
+        assertNotNull(result, "The result should not be null");
+        assertTrue(result.size() > 0, "The result should contain data");
+
+        // Store actual output for comparison
+        List<String> actual = new ArrayList<>();
+        actual.add(result.get(0));
+        actual.add(result.get(1));
+
+        // Expected output for verification
+        List<String> expected = new ArrayList<>();
+        expected.add("La Habana - Population: 2256000");
+        expected.add("Santo Domingo de Guzmán - Population: 1609966");
+
+        // Verify actual matches expected
+        assertEquals(expected, actual);
+    }
+
+    /**
+     * tests an invalid input to get a city population
+     */
+    @Test
+    void GetCapitalCitiesInRegionLargetoSmallTestInput()
+    {
+        // Get the continent population
+        Long actual = _populationSum.CityPop("Yellow");
+    }
+
+    /**
+     * tests a null input to get a city population
+     */
+    @Test
+    void GetCapitalCitiesInRegionLargetoSmallTestNullInput()
+    {
+        // Get the continent population
+        Long actual = _populationSum.ContinentPop(null);
+    }
+
+    /**
+     * tests an empty input to get a continent population
+     */
+    @Test
+    void GetCapitalCitiesInRegionLargetoSmallTestEmptyInput()
+    {
+        // Get the continent population
+        Long actual = _populationSum.ContinentPop("");
+    }
+
 }
