@@ -770,4 +770,62 @@ public class IntegrationTests
         Long actual = _populationSum.ContinentPop("");
     }
 
+
+    /**
+     * tests to see if we get the expected results of the CitiesInDistrictLargetoSmallTest
+     */
+    @Test
+    void CitiesInDistrictLargetoSmallTest() {
+        // Get function output
+        String district = "Texas";
+        List<String> result = _cityList.citiesInDistrictLargetoSmall(district);
+
+        // Ensure the result is not empty
+        assertNotNull(result);
+        assertTrue(result.size() > 0, "The result should contain at least one city.");
+
+        // Validate the first city in the list
+        String firstCity = result.get(0);
+        assertTrue(firstCity.contains("Population:"), "The first city should have a population field.");
+
+        // Example expected output for validation
+        List<String> expected = new ArrayList<>();
+        expected.add("Houston - Population: 1953631");
+        expected.add("Dallas - Population: 1188580");
+        expected.add("San Antonio - Population: 1144646");
+
+        // Validate the expected results with the actual
+        assertEquals(expected.get(0), result.get(0), "The first city should be Houston.");
+    }
+
+    /**
+     * Tests an invalid input to get capital cities in a region.
+     */
+    @Test
+    void GetCapitalCitiesInRegionLargetoSmallInvalidInput()
+    {
+        // Attempt to get cities for an invalid region name
+        List<String> result = _cityList.citiesInRegionLargetoSmall("Smelly");
+
+    }
+
+    /**
+     * Tests a null input to get capital cities in a region.
+     */
+    @Test
+    void GetCapitalCitiesInRegionLargetoSmallNullInput()
+    {
+        // Attempt to get cities with a null region
+        List<String> result = _cityList.citiesInRegionLargetoSmall(null);
+    }
+
+    /**
+     * Tests an empty input to get capital cities in a region.
+     */
+    @Test
+    void GetCapitalCitiesInRegionLargetoSmallEmptyInput()
+    {
+        // Attempt to get cities with an empty string as the region
+        List<String> result = _cityList.citiesInRegionLargetoSmall("");
+    }
 }

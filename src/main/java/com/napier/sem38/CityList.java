@@ -510,4 +510,40 @@ public class CityList
         return list;
     }
 
+    /**
+     * Produce a list of all the cities in a district organized by largest population to smallest.
+     * @param district the district to search
+     * @return a list of the cities largest to small in population
+     */
+    public List<String> citiesInDistrictLargetoSmall(String district) {
+        // Initialize the return list
+        List<String> list = new ArrayList<>();
+
+        // SQL query to get cities in a district ordered by population
+        String query = "SELECT Name, Population " +
+                "FROM city " +
+                "WHERE District = '" + district + "' " +
+                "ORDER BY Population DESC;";
+
+        // Get the results from the database
+        ResultSet results = _database.Query(query);
+
+        try {
+            // Iterate through the results
+            while (results.next()) {
+                // Add city name and population to the list
+                String city = results.getString("Name");
+                int population = results.getInt("Population");
+                list.add(city + " - Population: " + population);
+            }
+        } catch (Exception exception) {
+            // Print error messages
+            System.out.println(exception.getMessage());
+            System.out.println("Error retrieving data from ResultSet!");
+        }
+
+        return list;
+    }
+
+
 }

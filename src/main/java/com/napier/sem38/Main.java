@@ -191,6 +191,12 @@ public class Main {
         _name = "France";
         _display.Show("Population Distribution Report for " + _name, _report.GetPopDistribReport(_name));
 
+        //GitIssue17
+        // Get and display the list of cities in a district ordered by population
+        _name = "Texas";
+        _display.Show("List of cities in the district " + _name + " by population:",
+                _cityList.citiesInDistrictLargetoSmall(_name));
+
         // disconnect from database
         _database.Disconnect();
     }
