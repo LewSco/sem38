@@ -200,5 +200,45 @@ public class CountryList
         return list;
     }
 
+    /**
+     * Get the top N populated countries in a specific continent.
+     * @param continent the continent to search
+     * @param n the number of top populated countries to return
+     * @return a list of top N populated countries in the continent
+     */
+    public List<String> GetTopNPopulatedCountriesInContinent(String continent, int n)
+    {
+        // Initialize the return list
+        List<String> list = new ArrayList<>();
+
+        // SQL query to get top N populated countries in a continent
+        String query = "SELECT Name, Population " +
+                "FROM country " +
+                "WHERE Continent = '" + continent + "' " +
+                "ORDER BY Population DESC " +
+                "LIMIT " + n;
+
+        // Execute the query
+        ResultSet results = _database.Query(query);
+
+        try
+        {
+            // Iterate through the results
+            while (results.next())
+            {
+                String country = results.getString("Name");
+                int population = results.getInt("Population");
+                list.add(country + " - Population: " + population);
+            }
+        }
+        catch (Exception exception)
+        {
+            // Handle errors
+            System.out.println("Error: " + exception.getMessage());
+        }
+
+        return list;
+    }
+
     //endregion
 }

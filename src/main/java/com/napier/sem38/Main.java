@@ -203,6 +203,14 @@ public class Main {
         _display.Show("List of cities in the country " + _name + " by population:",
                 _cityList.citiesInCountryLargetoSmall(_name));
 
+        //GitIssue11
+        // Specify the continent and N
+        _name = "Asia";
+        _number = 5;
+
+        // Display the results
+        _display.Show("Top " + _number + " Populated Countries in " + _name,
+                _countryList.GetTopNPopulatedCountriesInContinent(_name, _number));
 
         // disconnect from database
         _database.Disconnect();

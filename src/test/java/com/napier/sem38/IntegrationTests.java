@@ -884,5 +884,85 @@ public class IntegrationTests
         List<String> result = _cityList.citiesInCountryLargetoSmall("InvalidCountry");
     }
 
+    /**
+     * Test to check GetTopNPopulatedCountriesInContinentExpectedResultsTest() returns the expected results for a country.
+     */
+    @Test
+    void GetTopNPopulatedCountriesInContinentExpectedResultsTest()
+    {
+        // Specify the continent and number of results
+        String continent = "Asia";
+        int n = 5;
 
+        // Call the function
+        List<String> actual = _countryList.GetTopNPopulatedCountriesInContinent(continent, n);
+
+        // Define the expected result
+        List<String> expected = new ArrayList<>();
+        expected.add("China - Population: 1277558000");
+        expected.add("India - Population: 1013662000");
+        expected.add("Indonesia - Population: 212107000");
+        expected.add("Pakistan - Population: 156483000");
+        expected.add("Bangladesh - Population: 129155000");
+
+        // Assert that the actual and expected results are the same
+        assertEquals(expected, actual, "The actual list does not match the expected list of top countries in Asia.");
+    }
+
+    /**
+     * Test to check GetTopNPopulatedCountriesInContinentLargeNTest() is larger than the amount of country
+     */
+    @Test
+    void GetTopNPopulatedCountriesInContinentLargeNTest()
+    {
+        String continent = "Asia";
+        int n = 55;
+
+        List<String> result = _countryList.GetTopNPopulatedCountriesInContinent(continent, n);
+
+        // Result should not exceed the actual number of countries in Asia
+        assertNotNull(result);
+        assertTrue(result.size() <= 55);
+    }
+
+    /**
+     * Test to check GetTopNPopulatedCountriesInContinentNullInputTest() if it has a null input
+     */
+    @Test
+    void GetTopNPopulatedCountriesInContinentNullInputTest()
+    {
+        String continent = null;
+        int n = 5;
+
+        List<String> result = _countryList.GetTopNPopulatedCountriesInContinent(continent, n);
+    }
+
+    /**
+     * Test to check GetTopNPopulatedCountriesInContinentInvalidInputTest() if it has a null input
+     */
+    @Test
+    void GetTopNPopulatedCountriesInContinentInvalidInputTest()
+    {
+        String continent = "InvalidContinent";
+        int n = 5;
+
+        List<String> result = _countryList.GetTopNPopulatedCountriesInContinent(continent, n);
+
+        // Result should be empty
+        assertNotNull(result);
+        assertTrue(result.isEmpty());
+    }
+
+    /**
+     * Test to check GetTopNPopulatedCountriesInContinentEmptyInputTest() if it has a null input
+     */
+    @Test
+    void GetTopNPopulatedCountriesInContinentEmptyInputTest()
+    {
+        // Specify empty input for continent and a valid N
+        String continent = "";
+        int n = 5;
+
+        List<String> result = _countryList.GetTopNPopulatedCountriesInContinent(continent, n);
+    }
 }
