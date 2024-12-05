@@ -73,11 +73,7 @@ jobs:
           mvn package -DskipTests
           docker compose up --abort-on-container-exit
       - name: Copy Output
-        run: |
-          mvn package -DskipTests
-          docker compose up
-          docker container cp main:./tmp/outputs ./
-          --abort
+        run: docker container cp sem38_main:./tmp/outputs ./
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
