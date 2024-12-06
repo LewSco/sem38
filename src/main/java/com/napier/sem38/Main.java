@@ -57,8 +57,10 @@ public class Main {
         // get continent list of countries ordered by population
         _name = "Asia";
         // display results
-        _display.Show("\nList of countries in " + _name + " by population",
-                _countryList.GetContinentList(_name));
+        _display.OutputFile(new String[]{"continent list of countries by population"},
+                _countryList.GetContinentList(_name) ,
+                "List of countries in " + _name + " by population");
+
 
         // get region list of countries ordered by population
         _name = "Caribbean";
@@ -67,21 +69,26 @@ public class Main {
         _display.Show("List of countries in " + _name + " by population:",
                 _countryList.GetRegionList(_name));
 
+
         // print world population
         _display.Show("World Population",
                 _populationSum.WorldPop().toString());
 
+
         //Issue 14 GitHub
+
         // Get and display cities in a continent (e.g., "Asia") ordered by population
         _name = "Asia";
-        _display.Show("List of cities in " + _name + " by population:",
-                _cityList.citiesInContinentLargetoSmall(_name));
+        _display.OutputFile(new String[]{"cities In Continent Large to Small"},
+                _cityList.citiesInContinentLargetoSmall(_name),
+                "List of cities in "+ _name +" by population:");
 
         //Issue 15 GitHub
         //Get and display the cities in a region ordered by population
         _name = "Caribbean";
-        _display.Show("List of cities in " + _name + " by population:",
-                _cityList.citiesInRegionLargetoSmall(_name));
+        _display.OutputFile(new String[]{"cities in a region ordered by population"},
+                _cityList.citiesInRegionLargetoSmall(_name),
+                "List of cities in " + _name + " by population:");
 
         //GitIssue 33
         //Get and display the population in a continent
@@ -123,6 +130,7 @@ public class Main {
         // GitIssue40
         _display.Show("Petare City Report", _report.CityReport("Petare"));
 
+
         // GitIssue41
         _display.Show("Brazil Capital Report", _report.CapitalReport("Brazil"));
 
@@ -161,8 +169,9 @@ public class Main {
         //GitIssue18
         _number = 4;
         // display results
-        _display.Show("\nList of the most populated cities up to " + _number,
-                _cityList.GetTopNPopulatedCities(_number));
+        _display.OutputFile(new String[]{"populated cities"},
+                _cityList.GetTopNPopulatedCities(_number) ,
+                "List of the most populated cities up to " + _number);
 
 
         //Gitissue20
@@ -171,9 +180,14 @@ public class Main {
         _display.Show(String.format("Top %d populated cities in %s",_number, _name), _cityList.TopNPopCitiesInRegion(_number, _name));
 
         //Gitissue30
+
         _display.Show("City per Region Distribution", _populationSum.PopCityDistribRegion());
 
         //GitIssue25
+        _display.OutputFile(new String[]{"populated cities"},
+                _cityList.GetTopNPopulatedCities(_number) ,
+                "List of the most populated cities up to " + _number);
+
         // Get and display the capital cities in a region ordered by population
         _name = "Caribbean";
         _display.Show("Capital Cities in the Region " + _name + " by Population",
