@@ -1,6 +1,5 @@
-| populated cities |
+| populated cities in |
 | --- |
 | Mumbai (Bombay) |
 | Seoul |
-| São Paulo |
 | Shanghai |
