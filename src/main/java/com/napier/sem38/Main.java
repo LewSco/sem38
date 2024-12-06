@@ -180,7 +180,7 @@ public class Main {
         //GitIssue 28
         _number = 3;
         _name = "Middle East";
-        _display.OutputFile(new String[]{"Top populated capital cities of " + _name +"region" },
+        _display.OutputFile(new String[]{"Top populated capital cities of " + _name + "region" },
                 _cityList.TopNPopCapitalInRegion(_number, _name) ,
                 String.format("Top %d populated capital cities in %s",_number, _name));
 
@@ -239,7 +239,9 @@ public class Main {
 
         //GitIssue 42
         _name = "France";
-        _display.Show("Population Distribution Report for " + _name, _report.GetPopDistribReport(_name));
+        _display.OutputFile(new String[]{"Population Distribution Report for " + _name,},
+                _report.GetPopDistribReport(_name) ,
+                "City per Country Distribution");
 
         //GitIssue 17
         // Get and display the list of cities in a district ordered by population
