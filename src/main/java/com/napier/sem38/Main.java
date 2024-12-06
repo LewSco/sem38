@@ -159,7 +159,9 @@ public class Main {
         //GitIssue 22
         _number = 3;
         _name = "Rio de Janeiro";
-        _display.Show(String.format("Top %d populated cities in %s district",_number, _name), _cityList.TopNPopCitiesInDistrict(_number, _name));
+        _display.OutputFile(new String[]{"populated cities in district"},
+                _cityList.TopNPopCitiesInDistrict(_number, _name) ,
+                "Top %d populated cities in %s district");
 
         //GitIssue 21
         _number = 3;
