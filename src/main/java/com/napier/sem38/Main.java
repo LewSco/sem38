@@ -24,7 +24,7 @@ public class Main {
         Report _report = new Report(_database);
 
         // cells for output table
-        List<List<String>> cells = new ArrayList<>();
+        List<String> cells = new ArrayList<>();
 
 
         // variables for storing names and numbers
@@ -76,12 +76,20 @@ public class Main {
 
 
         //Issue 14 GitHub
-
         // Get and display cities in a continent (e.g., "Asia") ordered by population
         _name = "Asia";
-        _display.OutputFile(new String[]{"cities In Continent Large to Small"},
-                _cityList.citiesInContinentLargetoSmall(_name),
-                "List of cities in "+ _name +" by population:");
+        List<String> cities = _cityList.citiesInContinentLargetoSmall(_name);
+        cells = new ArrayList<>();
+
+        for (String city : cities)
+        {
+            List<String> repo = _report.CityReport(city);
+
+            cells.addAll(repo);
+        }
+        _display.OutputFile(new String[]{"Name", "Country", "District", "Population"},
+                cells,
+                "All the cities in a continent organised by largest population to smallest.");
 
         //Issue 15 GitHub
         //Get and display the cities in a region ordered by population

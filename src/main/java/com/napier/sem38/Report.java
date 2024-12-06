@@ -215,12 +215,10 @@ public class Report
             while (results.next())
             {
                 // add country data to list
-                reports.add(
-                        "\n\t" + "Name: " + results.getString("Name") +
-                                "\n\t" + "Country: " + results.getString("Country") +
-                                "\n\t" + "District: " + results.getString("District") +
-                                "\n\t" + "Population: " + results.getString("Population")
-                );
+                reports.add(results.getString("Name"));
+                reports.add(results.getString("Country"));
+                reports.add(results.getString("District"));
+                reports.add(results.getString("Population"));
             }
         }
         catch(Exception exception)
@@ -237,9 +235,9 @@ public class Report
     /**
      * sets up a query using a supplied city name to get a report from the database.
      * @param cityName the name of the city you want a report on.
-     * @return a string containing the city report.
+     * @return a List<String> containing the city report.
      */
-    public String CityReport(String cityName)
+    public List<String> CityReport(String cityName)
     {
         // SQL query to get the country
         String query = "SELECT city.Name, country.Name AS Country, city.District, city.Population " +
@@ -248,7 +246,7 @@ public class Report
                 "WHERE city.Name = '" + cityName  + "';";
 
         //return resulting list
-        return GetCityReport(query).get(0);
+        return GetCityReport(query);
     }
 
     //endregion

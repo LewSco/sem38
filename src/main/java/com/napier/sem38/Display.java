@@ -111,7 +111,7 @@ public class Display
         {
             sb.append("| ").append(cells.get(i)).append(" ");
 
-            if (i % headings.length == 0)
+            if ((i + 1) % headings.length == 0)
                 sb.append("|\r\n");
         }
 

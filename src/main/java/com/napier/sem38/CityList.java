@@ -31,7 +31,7 @@ public class CityList
 
         // set up our query statement
         String query =
-                "SELECT Name, Population " +
+                "SELECT Name " +
                         "FROM city " +
                         "ORDER BY Population DESC;";
 
@@ -44,9 +44,7 @@ public class CityList
             while (results.next())
             {
                 // add each city to the list
-                list.add(results.getString("Name") +
-                        " - Population: " +
-                        results.getString("Population"));
+                list.add(results.getString("Name"));
             }
         }
         catch(Exception exception)
@@ -72,7 +70,7 @@ public class CityList
         List<String> list = new ArrayList<>();
 
         // SQL query to get cities in a region ordered by population, joining city and country tables
-        String query = "SELECT city.Name, city.Population " +
+        String query = "SELECT city.Name " +
                 "FROM country " +
                 "JOIN city ON country.Code = city.CountryCode " +
                 "WHERE country.Region = '" + region + "' " +
@@ -87,9 +85,7 @@ public class CityList
             while (results.next())
             {
                 // Add city name and population to the list
-                String city = results.getString("Name");
-                int population = results.getInt("Population");
-                list.add(city + " - Population: " + population);
+                list.add(results.getString("Name"));
             }
         }
         catch (Exception exception)
@@ -117,7 +113,7 @@ public class CityList
                 "FROM country " +
                 "JOIN city ON country.Code = city.CountryCode " +
                 "WHERE country.Continent = '" + continent + "' " +
-                "ORDER BY city.Population DESC";
+                "ORDER BY city.Population DESC;";
 
         // Get the results from the database
         ResultSet results = _database.Query(query);
@@ -128,9 +124,7 @@ public class CityList
             while (results.next())
             {
                 // Add city name and population to the list
-                String city = results.getString("Name");
-                int population = results.getInt("Population");
-                list.add(city + " - Population: " + population);
+                list.add(results.getString("Name"));
             }
         }
         catch (Exception exception)
@@ -153,7 +147,7 @@ public class CityList
         List<String> list = new ArrayList<>();
 
         // SQL query to get the top N populated capital cities
-        String query = "SELECT city.Name, city.Population " +
+        String query = "SELECT city.Name " +
                 "FROM city " +
                 "JOIN country ON city.ID = country.Capital " +
                 "ORDER BY city.Population DESC " +
@@ -167,9 +161,7 @@ public class CityList
             // Iterate through the results
             while (results.next()) {
                 // Get the city name and population, and add it to the list
-                String cityName = results.getString("Name");
-                int population = results.getInt("Population");
-                list.add(cityName + " - Population: " + population);
+                list.add(results.getString("Name"));
             }
         } catch (Exception exception) {
             // Print error messages if any
@@ -189,7 +181,7 @@ public class CityList
         List<String> list = new ArrayList<>();
 
         // SQL query to get capital cities and sort by population
-        String query = "SELECT city.Name, city.Population " +
+        String query = "SELECT city.Name " +
                 "FROM city " +
                 "JOIN country ON city.ID = country.Capital " +
                 "ORDER BY city.Population DESC";
@@ -202,9 +194,7 @@ public class CityList
             // Iterate through the results
             while (results.next()) {
                 // Get the city name and population, and add it to the list
-                String cityName = results.getString("Name");
-                int population = results.getInt("Population");
-                list.add(cityName + " - Population: " + population);
+                list.add(results.getString("Name"));
             }
         } catch (Exception exception) {
             // Print error messages if any
@@ -224,7 +214,7 @@ public class CityList
         List<String> list = new ArrayList<>();
 
         // Get string for sql query
-        String query = "SELECT city.Name, city.Population " +
+        String query = "SELECT city.Name " +
                 "FROM city " +
                 "WHERE city.District = '" + district + "' " +
                 "ORDER BY city.Population DESC " +
@@ -238,9 +228,7 @@ public class CityList
             // Iterate through the results
             while (results.next()) {
                 // Get the city name and population, and add it to the list
-                String cityName = results.getString("Name");
-                int population = results.getInt("Population");
-                list.add(cityName + " - Population: " + population);
+                list.add(results.getString("Name"));
             }
         } catch (Exception exception) {
             // Print error messages if any
@@ -260,7 +248,7 @@ public class CityList
         List<String> list = new ArrayList<>();
 
         // Get string for sql query
-        String query = "SELECT city.Name, city.Population " +
+        String query = "SELECT city.Name " +
                 "FROM city " +
                 "JOIN country ON country.Code = city.CountryCode " +
                 "WHERE country.Continent = '" + continent + "' " +
@@ -275,9 +263,7 @@ public class CityList
             // Iterate through the results
             while (results.next()) {
                 // Get the city name and population, and add it to the list
-                String cityName = results.getString("Name");
-                int population = results.getInt("Population");
-                list.add(cityName + " - Population: " + population);
+                list.add(results.getString("Name"));
             }
         } catch (Exception exception) {
             // Print error messages if any
@@ -297,7 +283,7 @@ public class CityList
         List<String> list = new ArrayList<>();
 
         // get string for sql query
-        String query = "SELECT city.Name, city.Population " +
+        String query = "SELECT city.Name " +
                 "FROM city " +
                 "WHERE city.CountryCode = (SELECT Code FROM country WHERE Name = '" + country + "') " +
                 "ORDER BY city.Population DESC " +
@@ -311,9 +297,7 @@ public class CityList
             // Iterate through the results
             while (results.next()) {
                 // Get the city name and population, and add it to the list
-                String cityName = results.getString("Name");
-                int population = results.getInt("Population");
-                list.add(cityName + " - Population: " + population);
+                list.add(results.getString("Name"));
             }
         } catch (Exception exception) {
             // Print error messages if any
@@ -333,7 +317,7 @@ public class CityList
         List<String> list = new ArrayList<>();
 
         // get string for sql query
-        String query = "SELECT city.Name, city.Population " +
+        String query = "SELECT city.Name " +
                 "FROM city " +
                 "WHERE city.ID IN (SELECT Capital FROM country WHERE Continent = '" + continent + "') " +
                 "ORDER BY city.Population DESC " +
@@ -347,9 +331,7 @@ public class CityList
             // Iterate through the results
             while (results.next()) {
                 // Get the city name and population, and add it to the list
-                String cityName = results.getString("Name");
-                int population = results.getInt("Population");
-                list.add(cityName + " - Population: " + population);
+                list.add(results.getString("Name"));
             }
         } catch (Exception exception) {
             // Print error messages if any
@@ -369,7 +351,7 @@ public class CityList
         List<String> list = new ArrayList<>();
 
         // get string for sql query
-        String query = "SELECT city.Name, city.Population " +
+        String query = "SELECT city.Name " +
                 "FROM city " +
                 "WHERE city.ID IN (SELECT Capital FROM country WHERE Region = '" + region + "') " +
                 "ORDER BY city.Population DESC " +
@@ -383,9 +365,7 @@ public class CityList
             // Iterate through the results
             while (results.next()) {
                 // Get the city name and population, and add it to the list
-                String cityName = results.getString("Name");
-                int population = results.getInt("Population");
-                list.add(cityName + " - Population: " + population);
+                list.add(results.getString("Name"));
             }
         } catch (Exception exception) {
             // Print error messages if any
@@ -405,7 +385,7 @@ public class CityList
         List<String> list = new ArrayList<>();
 
         // get string for sql query
-        String query = "SELECT city.Name, city.Population " +
+        String query = "SELECT city.Name " +
                 "FROM city " +
                 "WHERE city.CountryCode IN (SELECT Code FROM country WHERE Region = '" + region + "') " +
                 "ORDER BY city.Population DESC " +
@@ -419,9 +399,7 @@ public class CityList
             // Iterate through the results
             while (results.next()) {
                 // Get the city name and population, and add it to the list
-                String cityName = results.getString("Name");
-                int population = results.getInt("Population");
-                list.add(cityName + " - Population: " + population);
+                list.add(results.getString("Name"));
             }
         } catch (Exception exception) {
             // Print error messages if any
@@ -442,7 +420,7 @@ public class CityList
         List<String> list = new ArrayList<>();
 
         // SQL query to get the top N populated cities
-        String query = "SELECT city.Name, city.Population " +
+        String query = "SELECT city.Name " +
                 "FROM city " +
                 "ORDER BY city.Population DESC " +
                 "LIMIT " + n;
@@ -455,9 +433,7 @@ public class CityList
             // Iterate through the results
             while (results.next()) {
                 // Get the city name and population, and add it to the list
-                String cityName = results.getString("Name");
-                int population = results.getInt("Population");
-                list.add(cityName + " - Population: " + population);
+                list.add(results.getString("Name"));
             }
 
         } catch (Exception exception) {
@@ -480,7 +456,7 @@ public class CityList
         List<String> list = new ArrayList<>();
 
         // SQL query to get capital cities in a region ordered by population
-        String query = "SELECT city.Name, city.Population " +
+        String query = "SELECT city.Name " +
                 "FROM city " +
                 "JOIN country ON city.ID = country.Capital " +
                 "WHERE country.Region = '" + region + "' " +
@@ -495,9 +471,7 @@ public class CityList
             while (results.next())
             {
                 // Add city name and population to the list
-                String city = results.getString("Name");
-                int population = results.getInt("Population");
-                list.add(city + " - Population: " + population);
+                list.add(results.getString("Name"));
             }
         }
         catch (Exception exception)
@@ -520,7 +494,7 @@ public class CityList
         List<String> list = new ArrayList<>();
 
         // SQL query to get cities in a district ordered by population
-        String query = "SELECT Name, Population " +
+        String query = "SELECT Name " +
                 "FROM city " +
                 "WHERE District = '" + district + "' " +
                 "ORDER BY Population DESC;";
@@ -532,9 +506,7 @@ public class CityList
             // Iterate through the results
             while (results.next()) {
                 // Add city name and population to the list
-                String city = results.getString("Name");
-                int population = results.getInt("Population");
-                list.add(city + " - Population: " + population);
+                list.add(results.getString("Name"));
             }
         } catch (Exception exception) {
             // Print error messages
@@ -556,7 +528,7 @@ public class CityList
         List<String> list = new ArrayList<>();
 
         // SQL query to get cities in a country ordered by population
-        String query = "SELECT city.Name, city.Population " +
+        String query = "SELECT city.Name " +
                 "FROM city " +
                 "JOIN country ON city.CountryCode = country.Code " +
                 "WHERE country.Name = '" + country + "' " +
@@ -571,9 +543,7 @@ public class CityList
             while (results.next())
             {
                 // Add city name and population to the list
-                String city = results.getString("Name");
-                int population = results.getInt("Population");
-                list.add(city + " - Population: " + population);
+                list.add(results.getString("Name"));
             }
         }
         catch (Exception exception)
@@ -585,7 +555,4 @@ public class CityList
 
         return list;
     }
-
-
-
 }

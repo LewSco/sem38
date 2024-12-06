@@ -532,13 +532,13 @@ public class IntegrationTests
     void CityReport()
     {
         // get report
-        String actual = _report.CityReport("Petare");
+        List<String> actual = _report.CityReport("Petare");
         // set expected result
-        String expected =
-                "\n\t" + "Name: Petare" +
-                        "\n\t" + "Country: Venezuela" +
-                        "\n\t" + "District: Miranda" +
-                        "\n\t" + "Population: 488868";
+        List<String> expected = new ArrayList<>();
+        expected.add("Petare");
+        expected.add("Venezuela");
+        expected.add("Miranda");
+        expected.add("488868");
 
         // check the actual and expected are equal
         assertEquals(expected, actual);
