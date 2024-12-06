@@ -1,2 +1,2 @@
-| Countries by population |
-| --- |
+| Code | Name | Continent | Region | Population | Capital |
+| --- | --- | --- | --- | --- | --- |
