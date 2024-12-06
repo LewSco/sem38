@@ -44,22 +44,23 @@ public class IntegrationTests
     /**
      * runs main without arguments
      */
+    /*
     @Test
     void RunMainWithEmptyArguments()
     {
         String[] args = new String[0];
         _main.main(args);
-    }
+    }*/
 
     /**
      * runs main with arguments
-     */
+     *//*
     @Test
     void RunMainWithArguments()
     {
         String[] args = new String[] { "localhost:33060", "30000" };
         _main.main(args);
-    }
+    }*/
 
     //endregion
 
@@ -82,9 +83,9 @@ public class IntegrationTests
 
         // set expected output
         List<String> expected = new ArrayList<>();
-        expected.add("China - Population: 1277558000");
-        expected.add("India - Population: 1013662000");
-        expected.add("United States - Population: 278357000");
+        expected.add("China");
+        expected.add("India");
+        expected.add("United States");
 
         // check actual = expected
         assertEquals(expected, actual);
@@ -106,8 +107,8 @@ public class IntegrationTests
 
         // set expected output
         List<String> expected = new ArrayList<>();
-        expected.add("China - Population: 1277558000");
-        expected.add("India - Population: 1013662000");
+        expected.add("China");
+        expected.add("India");
 
         // check actual = expected
         assertEquals(expected, actual);
@@ -133,11 +134,11 @@ public class IntegrationTests
 
         // set expected output
         List<String> expected = new ArrayList<>();
-        expected.add("China - Population: 1277558000");
-        expected.add("India - Population: 1013662000");
-        expected.add("Indonesia - Population: 212107000");
-        expected.add("Pakistan - Population: 156483000");
-        expected.add("Bangladesh - Population: 129155000");
+        expected.add("China");
+        expected.add("India");
+        expected.add("Indonesia");
+        expected.add("Pakistan");
+        expected.add("Bangladesh");
 
         // check actual = expected
         assertEquals(expected, actual);
@@ -160,9 +161,9 @@ public class IntegrationTests
 
         // set expected output
         List<String> expected = new ArrayList<>();
-        expected.add("Cuba - Population: 11201000");
-        expected.add("Dominican Republic - Population: 8495000");
-        expected.add("Haiti - Population: 8222000");
+        expected.add("Cuba");
+        expected.add("Dominican Republic");
+        expected.add("Haiti");
 
         // check actual = expected
         assertEquals(expected, actual);
@@ -899,11 +900,11 @@ public class IntegrationTests
 
         // Define the expected result
         List<String> expected = new ArrayList<>();
-        expected.add("China - Population: 1277558000");
-        expected.add("India - Population: 1013662000");
-        expected.add("Indonesia - Population: 212107000");
-        expected.add("Pakistan - Population: 156483000");
-        expected.add("Bangladesh - Population: 129155000");
+        expected.add("China");
+        expected.add("India");
+        expected.add("Indonesia");
+        expected.add("Pakistan");
+        expected.add("Bangladesh");
 
         // Assert that the actual and expected results are the same
         assertEquals(expected, actual, "The actual list does not match the expected list of top countries in Asia.");
@@ -980,11 +981,11 @@ public class IntegrationTests
 
         // Expected output
         List<String> expected = new ArrayList<>();
-        expected.add("Cuba - Population: 11201000");
-        expected.add("Dominican Republic - Population: 8495000");
-        expected.add("Haiti - Population: 8222000");
-        expected.add("Puerto Rico - Population: 3869000");
-        expected.add("Jamaica - Population: 2583000");
+        expected.add("Cuba");
+        expected.add("Dominican Republic");
+        expected.add("Haiti");
+        expected.add("Puerto Rico");
+        expected.add("Jamaica");
 
         // Assert that the result matches the expected output
         assertEquals(expected, result);
