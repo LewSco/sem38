@@ -74,6 +74,13 @@ public class Main {
                 _countryList.GetTopNPopulatedCountriesInContinent(_name, _number) ,
                 "Top Populated Countries in " + _name);
 
+        // GitIssue 12
+        _name = "Caribbean";
+        _number = 5;
+        _display.OutputFile(new String[]{"Top " + _number + " populated countries in the region " + _name,},
+                _countryList.GetTopNPopulatedCountriesInRegion(_name, _number) ,
+                "Top Populated Countries in " + _name);
+
         // GitIssue 13
         _display.OutputFile(new String[]{"Worlds cities"},
                 _cityList.GetWorldList() ,
@@ -147,7 +154,7 @@ public class Main {
                 _cityList.CapitalMostLeastPop() ,
                 "List of all capitals by population");
 
-        //GitIssue25
+        //GitIssue 25
         _display.OutputFile(new String[]{"populated cities"},
                 _cityList.GetTopNPopulatedCities(_number) ,
                 "List of the most populated cities up to " + _number);
@@ -269,23 +276,11 @@ public class Main {
                 _report.GetPopDistribReport(_name) ,
                 "City per Country Distribution");
 
-        // Get and display the capital cities in a region ordered by population
+        //GitIssue 25
         _name = "Caribbean";
         _display.OutputFile(new String[]{"Capital Cities in the Region"},
                 _cityList.GetCapitalCitiesInRegionLargetoSmall(_name) ,
                 "Capital Cities in the Region " + _name + " by Population");
-
-
-        // Get and display the top N populated countries in a region
-        _name = "Caribbean";
-        _number = 5;
-        _display.OutputFile(new String[]{"Top " + _number + " populated countries in the region " + _name,},
-                _countryList.GetTopNPopulatedCountriesInRegion(_name, _number) ,
-                "Top Populated Countries in " + _name);
-
-        _display.OutputFile(new String[]{"Top " + _number + " populated countries in the region " + _name,},
-                _countryList.GetTopNPopulatedCountriesInRegion(_name, _number) ,
-                "Top Populated Countries in " + _name);
 
         // disconnect from database
         _database.Disconnect();
