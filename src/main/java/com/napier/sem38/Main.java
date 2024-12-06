@@ -2,6 +2,8 @@ package com.napier.sem38;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Arrays;
+
 
 public class Main {
     /**
@@ -43,21 +45,21 @@ public class Main {
 
         // GitIssue 7
         _display.OutputFile(new String[]{"World Countries"},
-                _countryList.GetWorldList() ,
+                CountryList.GetCountryReportList(_countryList.GetWorldList(), _report),
                 "List of the worlds countries by population");
 
 
         // GitIssue 10
         _number = 4;
         _display.OutputFile(new String[]{"World Countries"},
-                _countryList.GetWorldList(_number) ,
+                CountryList.GetCountryReportList(_countryList.GetWorldList(_number), _report),
                 "List of the worlds countries by population up to " + _number);
 
         // GitIssue 8
         _name = "Asia";
         // display results
         _display.OutputFile(new String[]{"continent list of countries by population"},
-                _countryList.GetContinentList(_name) ,
+                CountryList.GetCountryReportList(_countryList.GetContinentList(_name),_report) ,
                 "List of countries in " + _name + " by population");
 
 
@@ -282,6 +284,16 @@ public class Main {
                 _countryList.GetTopNPopulatedCountriesInRegion(_name, _number) ,
                 "Top Populated Countries in " + _name);
 
+        // List of languages to query
+        List<String> languages = Arrays.asList("Chinese", "English", "Hindi", "Spanish", "Arabic");
+
+        // Display the total speakers for each language
+        for (String language : languages)
+        {
+            Long totalSpeakers = _populationSum.getLanguageSpeakers(language);
+            _display.Show(language + " Speakers", totalSpeakers.toString());
+
+        }
         // disconnect from database
         _database.Disconnect();
     }
