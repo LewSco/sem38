@@ -205,7 +205,10 @@ public class PopulationSum
                 long totalPop = results.getLong("total");
                 long cityPop = results.getLong("cityPop");
                 long nonCityPop = results.getLong("nonCityPop");
-                list.add(region + "\n\tTotal Population: " + FormatLong(totalPop) + "\n\tCity Population: " + FormatLong(cityPop) + "\n\tNonCityPop: " + FormatLong(nonCityPop));
+                list.add(region);
+                list.add(FormatLong(totalPop));
+                list.add(FormatLong(cityPop));
+                list.add(FormatLong(nonCityPop));
             }
 
         } catch (Exception exception) {
@@ -242,7 +245,10 @@ public class PopulationSum
                 long totalPop = results.getLong("total");
                 long cityPop = results.getLong("cityPop");
                 long nonCityPop = results.getLong("nonCityPop");
-                list.add(country + "\n\tTotal Population: " + FormatLong(totalPop) + "\n\tCity Population: " + FormatLong(cityPop) + "\n\tNonCityPop: " + FormatLong(nonCityPop));
+                list.add(country);
+                list.add(FormatLong(totalPop));
+                list.add(FormatLong(cityPop));
+                list.add(FormatLong(nonCityPop));
             }
 
         } catch (Exception exception) {

@@ -386,7 +386,9 @@ public class Main {
         //GitIssue 30
 
         _display.Show("City per Region Distribution", _populationSum.PopCityDistribRegion());
-
+        _display.OutputFile(new String[]{"Region", "TotalPop", "CityPop", "NonCityPop"},
+                _populationSum.PopCityDistribRegion(),
+                "24");
 
 
         // Get and display the capital cities in a region ordered by population
@@ -397,9 +399,9 @@ public class Main {
 
 
         //GitIssue 31
-        _display.OutputFile(new String[]{"City per Country Distribution"},
+        _display.OutputFile(new String[]{"Country", "TotalPop", "CityPop", "NonCityPop"},
                 _populationSum.PopCityDistribCountry() ,
-                "City per Country Distribution");
+                "25");
 
         //GitIssue 42
         _name = "France";
