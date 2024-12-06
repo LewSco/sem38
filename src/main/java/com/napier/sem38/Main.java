@@ -128,16 +128,19 @@ public class Main {
 
         // GitIssue 26
         _number = 10;
-        List<String> PopCapital = new ArrayList<String>();
-        PopCapital.add(_cityList.GetTopNPopulatedCapitals(_number).toString());
+        List<String> PopCapitalCit = new ArrayList<String>();
+        PopCapitalCit.add(_cityList.GetTopNPopulatedCapitals(_number).toString());
         _display.OutputFile(new String[]{_name + "Population"},
-                PopCapital,
+                PopCapitalCit,
                 "Top " + _number + " Populated Capital Cities");
 
         // GitIssue 39
         _name = "Belgium";
-        _display.Show("Country Report " + _name, _report.CountryReport(_name));
-
+        List<String> contReport = new ArrayList<String>();
+        contReport.add(_report.CountryReport(_name).toString());
+        _display.OutputFile(new String[]{_name + "Country Report"},
+                contReport,
+                "Country Report " + _name);
 
         // GitIssue 13
         _display.OutputFile(new String[]{"Worlds cities"},
@@ -149,7 +152,11 @@ public class Main {
 
 
         // GitIssue 41
-        _display.Show("Brazil Capital Report", _report.CapitalReport("Brazil"));
+        List<String> BrCapRep = new ArrayList<String>();
+        BrCapRep.add(_report.CapitalReport("Brazil"));
+        _display.OutputFile(new String[]{_name + "Country Report"},
+                BrCapRep,
+                "Capital Report" + _name);
 
         //GitIssue 23
         _display.OutputFile(new String[]{"capitals by population"},
@@ -270,6 +277,10 @@ public class Main {
         _number = 5;
         _display.Show("Top " + _number + " populated countries in the region " + _name,
                 _countryList.GetTopNPopulatedCountriesInRegion(_name, _number));
+
+        _display.OutputFile(new String[]{"Top " + _number + " populated countries in the region " + _name,},
+                _countryList.GetTopNPopulatedCountriesInRegion(_name, _number) ,
+                "Top Populated Countries in " + _name);
 
         // disconnect from database
         _database.Disconnect();
