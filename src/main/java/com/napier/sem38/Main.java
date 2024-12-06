@@ -111,14 +111,19 @@ public class Main {
         //GitIssue 34
         // Get and Display the population of a Region
         _name = "Caribbean";
-        _display.Show("Population of the Region " + _name,
-                _populationSum.RegionPop(_name).toString());
+        List<String> PopRegion = new ArrayList<String>();
+        PopRegion.add(_populationSum.RegionPop(_name).toString());
+        _display.OutputFile(new String[]{_name + "Population"},
+                PopRegion,
+                "Population of the Region " + _name);
 
         //GitIssue 36
         //Get and Display the population of a district
         _name = "Texas";
         _display.Show("Population of the District " + _name,
                 _populationSum.DistrictPop(_name).toString());
+
+
 
         // Retrieve and display the top N populated capitals
         _number = 10;
