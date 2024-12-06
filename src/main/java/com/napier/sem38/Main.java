@@ -1,5 +1,6 @@
 package com.napier.sem38;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
@@ -382,6 +383,11 @@ public class Main {
         _name = "Edinburgh";
         _display.Show("Population of the " + _name,
                 _populationSum.CityPop(_name).toString());
+        ArrayList<String> output = new ArrayList<>();
+        output.add(_populationSum.CityPop("Edinburgh").toString());
+        _display.OutputFile(new String[]{"Edinburgh Population"},
+                output,
+                "31");
 
         //GitIssue 30
 
