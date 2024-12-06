@@ -1016,4 +1016,84 @@ public class IntegrationTests
         // Call the method with invalid N
         List<String> result = _countryList.GetTopNPopulatedCountriesInRegion("Caribbean", -1);
     }
+
+    /**
+     * Test to check the total number of Chinese speakers in the world.
+     */
+    @Test
+    void getChineseSpeakersTest() {
+        Long actual = _populationSum.getLanguageSpeakers("Chinese");
+        Long expected = 1968265500L;
+        assertEquals(expected, actual, "The number of Chinese speakers does not match the expected value.");
+    }
+
+    /**
+     * Test to check the total number of English speakers in the world.
+     */
+    @Test
+    void getEnglishSpeakersTest() {
+        Long actual = _populationSum.getLanguageSpeakers("English");
+        Long expected = 627418300L;
+        assertEquals(expected, actual, "The number of English speakers does not match the expected value.");
+    }
+
+    /**
+     * Test to check the total number of Hindi speakers in the world.
+     */
+    @Test
+    void getHindiSpeakersTest() {
+        Long actual = _populationSum.getLanguageSpeakers("Hindi");
+        Long expected = 1046303000L;
+        assertEquals(expected, actual, "The number of Hindi speakers does not match the expected value.");
+    }
+
+    /**
+     * Test to check the total number of Spanish speakers in the world.
+     */
+    @Test
+    void getSpanishSpeakersTest() {
+        Long actual = _populationSum.getLanguageSpeakers("Spanish");
+        Long expected = 750296800L;
+        assertEquals(expected, actual, "The number of Spanish speakers does not match the expected value.");
+    }
+
+    /**
+     * Test to check the total number of Arabic speakers in the world.
+     */
+    @Test
+    void getArabicSpeakersTest() {
+        Long actual = _populationSum.getLanguageSpeakers("Arabic");
+        Long expected = 552045100L;
+        assertEquals(expected, actual, "The number of Arabic speakers does not match the expected value.");
+    }
+
+    /**
+     * Test to check behavior for a language not in the database.
+     */
+    @Test
+    void getNonExistentLanguageSpeakersTest() {
+        Long actual = _populationSum.getLanguageSpeakers("Klingon");
+        Long expected = 0L;
+        assertEquals(expected, actual, "The number of speakers for a non-existent language should be 0.");
+    }
+
+    /**
+     * Test to check behavior for null input.
+     */
+    @Test
+    void getLanguageSpeakersNullTest() {
+        Long actual = _populationSum.getLanguageSpeakers(null);
+        Long expected = 0L;
+        assertEquals(expected, actual, "The result for null input should be 0.");
+    }
+
+    /**
+     * Test to check behavior for empty input.
+     */
+    @Test
+    void getLanguageSpeakersEmptyTest() {
+        Long actual = _populationSum.getLanguageSpeakers("");
+        Long expected = 0L;
+        assertEquals(expected, actual, "The result for empty input should be 0.");
+    }
 }
