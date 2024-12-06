@@ -246,8 +246,9 @@ public class Main {
         //GitIssue 17
         // Get and display the list of cities in a district ordered by population
         _name = "Texas";
-        _display.Show("List of cities in the district " + _name + " by population:",
-                _cityList.citiesInDistrictLargetoSmall(_name));
+        _display.OutputFile(new String[]{"List of cities in the district " + _name + " by population:"},
+                _cityList.citiesInDistrictLargetoSmall(_name) ,
+                "List of cities in the district");
 
         //GitIssue 16
         // Get and display cities in a country ordered by population
