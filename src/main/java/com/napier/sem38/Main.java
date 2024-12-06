@@ -148,8 +148,11 @@ public class Main {
                 "List of the Worlds cities by population");
 
         // GitIssue 40
-        _display.Show("Petare City Report", _report.CityReport("Petare"));
-
+        List<String> PetCitRep = new ArrayList<String>();
+        PetCitRep.add(_report.CityReport("Petare"));
+        _display.OutputFile(new String[]{_name + "City Report"},
+                PetCitRep,
+                "City Report" + _name);
 
         // GitIssue 41
         List<String> BrCapRep = new ArrayList<String>();
@@ -192,8 +195,9 @@ public class Main {
                 String.format("Top %d populated capital cities in %s",_number, _name));
 
         //GitIssue 29
-        _display.Show("City Per Continent Distribs", _populationSum.PopCityDistribContinent());
-
+        _display.OutputFile(new String[]{"City Per Continent Distribs"},
+                _populationSum.PopCityDistribContinent() ,
+                "Customize Toolbar...");
 
         //GitIssue 37
         //Get and display the population of a city
