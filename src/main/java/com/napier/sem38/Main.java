@@ -229,6 +229,35 @@ public class Main {
                 cells,
                 "16");
 
+        //GitIssue 23
+        cities = _cityList.CapitalMostLeastPop();
+        cells = new ArrayList<>();
+
+        for (String city : cities)
+        {
+            List<String> repo = _report.CityReport(city);
+            cells.addAll(repo);
+        }
+        _display.OutputFile(new String[]{"Name", "Country", "District", "Population"},
+                cells,
+                "17");
+
+        //GitIssue24
+
+
+        //GitIssue25
+        cities = _cityList.GetCapitalCitiesInRegionLargetoSmall(_name);
+        cells = new ArrayList<>();
+
+        for (String city : cities)
+        {
+            List<String> repo = _report.CityReport(city);
+            cells.addAll(repo);
+        }
+        _display.OutputFile(new String[]{"Name", "Country", "District", "Population"},
+                cells,
+                "19");
+
         //GitIssue 33
         //Get and display the population in a continent
         _name = "Asia";
@@ -291,10 +320,6 @@ public class Main {
                 BrCapRep,
                 "Capital Report" + _name);
 
-        //GitIssue 23
-        _display.OutputFile(new String[]{"capitals by population"},
-                _cityList.CapitalMostLeastPop() ,
-                "List of all capitals by population");
 
 
 
@@ -326,10 +351,7 @@ public class Main {
 
         _display.Show("City per Region Distribution", _populationSum.PopCityDistribRegion());
 
-        //GitIssue25
-        _display.OutputFile(new String[]{"populated cities"},
-                _cityList.GetTopNPopulatedCities(_number) ,
-                "List of the most populated cities up to " + _number);
+
 
         // Get and display the capital cities in a region ordered by population
         _name = "Caribbean";
