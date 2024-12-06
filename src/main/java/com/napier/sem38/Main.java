@@ -44,22 +44,24 @@ public class Main {
             _database.Connect(args[0], Integer.parseInt(args[1]));
         }
 
+        String[] countryRepHeadings = new String[]{"Code", "Name", "Continent", "Region", "Population", "Capital"};
+
         // GitIssue 7
-        _display.OutputFile(new String[]{"World Countries"},
+        _display.OutputFile(countryRepHeadings,
                 CountryList.GetCountryReportList(_countryList.GetWorldList(), _report),
                 "List of the worlds countries by population");
 
 
         // GitIssue 10
         _number = 4;
-        _display.OutputFile(new String[]{"World Countries"},
+        _display.OutputFile(countryRepHeadings,
                 CountryList.GetCountryReportList(_countryList.GetWorldList(_number), _report),
                 "List of the worlds countries by population up to " + _number);
 
         // GitIssue 8
         _name = "Asia";
         // display results
-        _display.OutputFile(new String[]{"continent list of countries by population"},
+        _display.OutputFile(countryRepHeadings,
                 CountryList.GetCountryReportList(_countryList.GetContinentList(_name),_report) ,
                 "List of countries in " + _name + " by population");
 
@@ -67,8 +69,8 @@ public class Main {
         // // GitIssue 9
         _name = "Caribbean";
         _name = "the " + _name;
-        _display.OutputFile(new String[]{"Countries by population"},
-                _countryList.GetRegionList(_name) ,
+        _display.OutputFile(countryRepHeadings,
+                CountryList.GetCountryReportList(_countryList.GetRegionList(_name),_report) ,
                 "List of countries in " + _name + " by population:");
 
 
