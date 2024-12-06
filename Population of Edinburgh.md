@@ -1,3 +1,0 @@
-| EdinburghPopulation |
-| --- |
-| 450180 |

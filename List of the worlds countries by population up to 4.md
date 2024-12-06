@@ -1,6 +1,26 @@
 | World Countries |
 | --- |
-| China - Population: 1277558000 |
-| India - Population: 1013662000 |
-| United States - Population: 278357000 |
-| Indonesia - Population: 212107000 |
+| CHN |
+| China |
+| Asia |
+| Eastern Asia |
+| 1277558000 |
+| Peking |
+| IND |
+| India |
+| Asia |
+| Southern and Central Asia |
+| 1013662000 |
+| New Delhi |
+| USA |
+| United States |
+| North America |
+| North America |
+| 278357000 |
+| Washington |
+| IDN |
+| Indonesia |
+| Asia |
+| Southeast Asia |
+| 212107000 |
+| Jakarta |
