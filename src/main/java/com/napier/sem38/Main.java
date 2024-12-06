@@ -140,7 +140,9 @@ public class Main {
 
 
         // GitIssue 13
-        _display.Show("List of the Worlds cities by population",_cityList.GetWorldList());
+        _display.OutputFile(new String[]{"Worlds cities"},
+                _cityList.GetWorldList() ,
+                "List of the Worlds cities by population");
 
         // GitIssue 40
         _display.Show("Petare City Report", _report.CityReport("Petare"));
