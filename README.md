@@ -14,10 +14,10 @@
 |----|--------------------------------------------------------------------------------------------------------------------------------------------|------|----------------------------|
 | 1  | All the countries in the world organised by largest population to smallest.                                                                | Yes  | ![img_12.png](img_12.png)  |
 | 2  | All the countries in a continent organised by largest population to smallest.                                                              | Yes  | ![img_13.png](img_13.png)  |
-| 3  | All the countries in a region organised by largest population to smallest.                                                                 |      |                            |
+| 3  | All the countries in a region organised by largest population to smallest.                                                                 | Yes  | ![img_20.png](img_20.png)  |
 | 4  | The top N populated countries in the world where N is provided by the user.                                                                | Yes  | ![img_14.png](img_14.png)  |
 | 5  | The top N populated countries in a continent where N is provided by the user.                                                              | Yes  | ![img_15.png](img_15.png)  |
-| 6  | The top N populated countries in a region where N is provided by the user.                                                                 |      | ![img_16.png](img_16.png)  |
+| 6  | The top N populated countries in a region where N is provided by the user.                                                                 | Yes  | ![img_16.png](img_16.png)  |
 | 7  | All the cities in the world organised by largest population to smallest.                                                                   | Yes  | ![img_3.png](img_3.png)    |
 | 8  | All the cities in a continent organised by largest population to smallest.                                                                 | Yes  | ![img.png](img.png)        |
 | 9  | All the cities in a region organised by largest population to smallest.                                                                    | Yes  | ![img_1.png](img_1.png)    |
@@ -30,10 +30,10 @@
 | 16 | The top N populated cities in a district where N is provided by the user.                                                                  | Yes  | ![img_8.png](img_8.png)    |
 | 17 | All the capital cities in the world organised by largest population to smallest.                                                           | Yes  | ![img_11.png](img_11.png)  |
 | 18 | All the capital cities in a continent organised by largest population to smallest.                                                         |      |                            |
-| 19 | All the capital cities in a region organised by largest to smallest.                                                                       |      |                            |
+| 19 | All the capital cities in a region organised by largest to smallest.                                                                       | Yes  | ![img_21.png](img_21.png)  |
 | 20 | The top N populated capital cities in the world where N is provided by the user.                                                           | Yes  | ![img_17.png](img_17.png)  |
 | 21 | The top N populated capital cities in a continent where N is provided by the user.                                                         | Yes  | ![img_18.png](img_18.png)  |
-| 22 | The top N populated capital cities in a region where N is provided by the user.                                                            |      |                            |
+| 22 | The top N populated capital cities in a region where N is provided by the user.                                                            | Yes  | ![img_19.png](img_19.png)  |
 | 23 | The population of people, people living in cities, and people not living in cities in each continent.                                      |      |                            |
 | 24 | The population of people, people living in cities, and people not living in cities in each region.                                         | No   |                            |
 | 25 | The population of people, people living in cities, and people not living in cities in each country.                                        |      |                            |
