@@ -36,7 +36,7 @@ public class CountryList
 
         for (String country: in)
         {
-            out.add(_report.CountryReport(country));
+            out.addAll(_report.CountryReport(country));
         }
 
         return out;
