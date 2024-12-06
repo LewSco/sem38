@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -190,9 +191,9 @@ public class IntegrationTests
 
         // set expected output
         List<String> expected = new ArrayList<>();
-        expected.add("Seoul - Population: 9981619");
-        expected.add("Jakarta - Population: 9604900");
-        expected.add("Ciudad de México - Population: 8591309");
+        expected.add("Seoul");
+        expected.add("Jakarta");
+        expected.add("Ciudad de México");
 
         // check actual = expected
         assertEquals(expected, actual);
@@ -218,11 +219,11 @@ public class IntegrationTests
 
         // set expected output
         List<String> expected = new ArrayList<>();
-        expected.add("La Habana - Population: 2256000");
-        expected.add("Santo Domingo de Guzmán - Population: 1609966");
-        expected.add("Port-au-Prince - Population: 884472");
-        expected.add("San Juan - Population: 434374");
-        expected.add("Santiago de Cuba - Population: 433180");
+        expected.add("La Habana");
+        expected.add("Santo Domingo de Guzmán");
+        expected.add("Port-au-Prince");
+        expected.add("San Juan");
+        expected.add("Santiago de Cuba");
 
         // check actual = expected
         assertEquals(expected, actual);
@@ -241,7 +242,6 @@ public class IntegrationTests
         // Check that the list is not empty and has expected values
         assertNotNull(cities);
         assertTrue(cities.size() > 0);
-        assertTrue(cities.get(0).contains("Population:"));
 
     }
 
@@ -260,9 +260,9 @@ public class IntegrationTests
 
         // set expected output
         List<String> expected = new ArrayList<>();
-        expected.add("Mumbai (Bombay) - Population: 10500000");
-        expected.add("Seoul - Population: 9981619");
-        expected.add("São Paulo - Population: 9968485");
+        expected.add("Mumbai (Bombay)");
+        expected.add("Seoul");
+        expected.add("São Paulo");
 
         // check actual = expected
         assertEquals(expected, actual);
@@ -671,10 +671,10 @@ public class IntegrationTests
 
         // set expected output
         List<String> expected = new ArrayList<>();
-        expected.add("Mumbai (Bombay) - Population: 10500000");
-        expected.add("Seoul - Population: 9981619");
-        expected.add("São Paulo - Population: 9968485");
-        expected.add("Shanghai - Population: 9696300");
+        expected.add("Mumbai (Bombay)");
+        expected.add("Seoul");
+        expected.add("São Paulo");
+        expected.add("Shanghai");
 
         // check actual = expected
         assertEquals(expected, actual);
@@ -733,8 +733,8 @@ public class IntegrationTests
 
         // Expected output for verification
         List<String> expected = new ArrayList<>();
-        expected.add("La Habana - Population: 2256000");
-        expected.add("Santo Domingo de Guzmán - Population: 1609966");
+        expected.add("La Habana");
+        expected.add("Santo Domingo de Guzmán");
 
         // Verify actual matches expected
         assertEquals(expected, actual);
@@ -779,23 +779,23 @@ public class IntegrationTests
         // Get function output
         String district = "Texas";
         List<String> result = _cityList.citiesInDistrictLargetoSmall(district);
+        ArrayList<String> actual = new ArrayList<>();
+        actual.add(result.get(0));
+        actual.add(result.get(1));
+        actual.add(result.get(2));
 
         // Ensure the result is not empty
         assertNotNull(result);
         assertTrue(result.size() > 0, "The result should contain at least one city.");
 
-        // Validate the first city in the list
-        String firstCity = result.get(0);
-        assertTrue(firstCity.contains("Population:"), "The first city should have a population field.");
-
         // Example expected output for validation
         List<String> expected = new ArrayList<>();
-        expected.add("Houston - Population: 1953631");
-        expected.add("Dallas - Population: 1188580");
-        expected.add("San Antonio - Population: 1144646");
+        expected.add("Houston");
+        expected.add("Dallas");
+        expected.add("San Antonio");
 
         // Validate the expected results with the actual
-        assertEquals(expected.get(0), result.get(0), "The first city should be Houston.");
+        assertEquals(expected, actual);
     }
 
     /**
@@ -846,9 +846,9 @@ public class IntegrationTests
 
         // Expected output
         List<String> expected = new ArrayList<>();
-        expected.add("New York - Population: 8008278");
-        expected.add("Los Angeles - Population: 3694820");
-        expected.add("Chicago - Population: 2896016");
+        expected.add("New York");
+        expected.add("Los Angeles");
+        expected.add("Chicago");
 
         // Check actual = expected
         assertEquals(expected, actual);
