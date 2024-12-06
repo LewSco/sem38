@@ -220,8 +220,9 @@ public class Main {
 
         // Get and display the capital cities in a region ordered by population
         _name = "Caribbean";
-        _display.Show("Capital Cities in the Region " + _name + " by Population",
-                _cityList.GetCapitalCitiesInRegionLargetoSmall(_name));
+        _display.OutputFile(new String[]{"Capital Cities in the Region"},
+                _cityList.GetCapitalCitiesInRegionLargetoSmall(_name) ,
+                "Capital Cities in the Region " + _name + " by Population");
 
 
         //GitIssue 31
