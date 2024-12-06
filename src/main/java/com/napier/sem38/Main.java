@@ -246,6 +246,7 @@ public class Main {
 
 
         //GitIssue25
+        _name = "Middle East";
         cities = _cityList.GetCapitalCitiesInRegionLargetoSmall(_name);
         cells = new ArrayList<>();
 
