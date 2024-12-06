@@ -67,8 +67,7 @@ public class Main {
 
 
         // // GitIssue 9
-        _name = "Caribbean";
-        _name = "the " + _name;
+        _name = "Eastern Europe";
         _display.OutputFile(countryRepHeadings,
                 CountryList.GetCountryReportList(_countryList.GetRegionList(_name),_report) ,
                 "3");
