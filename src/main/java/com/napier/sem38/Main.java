@@ -49,21 +49,21 @@ public class Main {
         // GitIssue 7
         _display.OutputFile(countryRepHeadings,
                 CountryList.GetCountryReportList(_countryList.GetWorldList(), _report),
-                "List of the worlds countries by population");
+                "1");
 
 
         // GitIssue 10
         _number = 4;
         _display.OutputFile(countryRepHeadings,
                 CountryList.GetCountryReportList(_countryList.GetWorldList(_number), _report),
-                "List of the worlds countries by population up to " + _number);
+                "4");
 
         // GitIssue 8
         _name = "Asia";
         // display results
         _display.OutputFile(countryRepHeadings,
                 CountryList.GetCountryReportList(_countryList.GetContinentList(_name),_report) ,
-                "List of countries in " + _name + " by population");
+                "2");
 
 
         // // GitIssue 9
@@ -71,7 +71,7 @@ public class Main {
         _name = "the " + _name;
         _display.OutputFile(countryRepHeadings,
                 CountryList.GetCountryReportList(_countryList.GetRegionList(_name),_report) ,
-                "List of countries in " + _name + " by population:");
+                "3");
 
 
         // GitIssue 32
@@ -375,9 +375,9 @@ public class Main {
         // Specify the continent and N
         _name = "Asia";
         _number = 5;
-        _display.OutputFile(new String[]{"Top " + _number + " Populated Countries in " + _name,},
-                _countryList.GetTopNPopulatedCountriesInContinent(_name, _number) ,
-                "Top Populated Countries in " + _name);
+        _display.OutputFile(countryRepHeadings,
+                CountryList.GetCountryReportList(_countryList.GetTopNPopulatedCountriesInContinent(_name, _number), _report) ,
+                "5");
 
         // Get and display the top N populated countries in a region
         _name = "Caribbean";
@@ -385,9 +385,9 @@ public class Main {
         _display.Show("Top " + _number + " populated countries in the region " + _name,
                 _countryList.GetTopNPopulatedCountriesInRegion(_name, _number));
 
-        _display.OutputFile(new String[]{"Top " + _number + " populated countries in the region " + _name,},
-                _countryList.GetTopNPopulatedCountriesInRegion(_name, _number) ,
-                "Top Populated Countries in " + _name);
+        _display.OutputFile(countryRepHeadings,
+                CountryList.GetCountryReportList(_countryList.GetTopNPopulatedCountriesInRegion(_name, _number),_report),
+                "6");
 
         // List of languages to query
         List<String> languages = Arrays.asList("Chinese", "English", "Hindi", "Spanish", "Arabic");
