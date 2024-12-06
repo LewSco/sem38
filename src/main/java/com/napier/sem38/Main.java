@@ -253,8 +253,9 @@ public class Main {
         //GitIssue 16
         // Get and display cities in a country ordered by population
         _name = "United States";
-        _display.Show("List of cities in the country " + _name + " by population:",
-                _cityList.citiesInCountryLargetoSmall(_name));
+        _display.OutputFile(new String[]{"List of cities in the country " + _name + " by population:"},
+                _cityList.citiesInCountryLargetoSmall(_name) ,
+                "List of cities in the country" + _name);
 
         //GitIssue 11
         // Specify the continent and N
