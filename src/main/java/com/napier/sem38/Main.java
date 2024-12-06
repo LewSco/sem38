@@ -242,7 +242,18 @@ public class Main {
                 "17");
 
         //GitIssue24
+        _name = "Asia";
+        cities = _cityList.GetCapitalCitiesInContinentLargetoSmall(_name);
+        cells = new ArrayList<>();
 
+        for (String city : cities)
+        {
+            List<String> repo = _report.CityReport(city);
+            cells.addAll(repo);
+        }
+        _display.OutputFile(new String[]{"Name", "Country", "District", "Population"},
+                cells,
+                "18");
 
         //GitIssue25
         _name = "Middle East";

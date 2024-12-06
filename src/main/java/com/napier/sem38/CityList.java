@@ -450,6 +450,45 @@ public class CityList
      * @param region the region to search
      * @return a list of capital cities in the specified region, organized by population
      */
+    public List<String> GetCapitalCitiesInContinentLargetoSmall(String continent)
+    {
+        // initialise the return list
+        List<String> list = new ArrayList<>();
+
+        // SQL query to get capital cities in a region ordered by population
+        String query = "SELECT city.Name " +
+                "FROM city " +
+                "JOIN country ON city.ID = country.Capital " +
+                "WHERE country.continent = '" + continent + "' " +
+                "ORDER BY city.Population DESC";
+
+        // Get the results from the database
+        ResultSet results = _database.Query(query);
+
+        try
+        {
+            // Iterate through the results
+            while (results.next())
+            {
+                // Add city name and population to the list
+                list.add(results.getString("Name"));
+            }
+        }
+        catch (Exception exception)
+        {
+            // Print error messages
+            System.out.println(exception.getMessage());
+            System.out.println("Error retrieving data from ResultSet!");
+        }
+
+        return list;
+    }
+
+    /**
+     * Queries the database to find all the capital cities in a region organized by population (largest to smallest).
+     * @param region the region to search
+     * @return a list of capital cities in the specified region, organized by population
+     */
     public List<String> GetCapitalCitiesInRegionLargetoSmall(String region)
     {
         // initialise the return list
