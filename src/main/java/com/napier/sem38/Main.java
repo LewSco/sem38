@@ -93,14 +93,20 @@ public class Main {
         //GitIssue 33
         //Get and display the population in a continent
         _name = "Asia";
-        _display.Show("Population of the Continent " + _name,
-                _populationSum.ContinentPop(_name).toString());
+        List<String> contPop = new ArrayList<String>();
+        contPop.add(_populationSum.ContinentPop(_name).toString());
+        _display.OutputFile(new String[]{_name + "Population"},
+                contPop,
+                "Population of the Continent " + _name);
 
         //GitIssue 35
         // Get and Display the population of a country
         _name = "France";
-        _display.Show("Population of the Country " + _name,
-                _populationSum.CountryPop(_name).toString());
+        List<String> countryPop = new ArrayList<String>();
+        countryPop.add(_populationSum.CountryPop(_name).toString());
+        _display.OutputFile(new String[]{_name + "Population"},
+                countryPop,
+                "Population of the Country " + _name);
 
         //GitIssue 34
         // Get and Display the population of a Region
