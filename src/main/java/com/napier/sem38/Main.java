@@ -181,6 +181,36 @@ public class Main {
                 cells,
                 "14");
 
+        //GitIssue 21
+        _number = 3;
+        _name = "Spain";
+        cities = _cityList.TopNPopCitiesInCountry(_number, _name);
+        cells = new ArrayList<>();
+
+        for (String city : cities)
+        {
+            List<String> repo = _report.CityReport(city);
+            cells.addAll(repo);
+        }
+        _display.OutputFile(new String[]{"Name", "Country", "District", "Population"},
+                cells,
+                "15");
+
+        //GitIssue 22
+        _number = 3;
+        _name = "Rio de Janeiro";
+        cities = _cityList.TopNPopCitiesInDistrict(_number, _name);
+        cells = new ArrayList<>();
+
+        for (String city : cities)
+        {
+            List<String> repo = _report.CityReport(city);
+            cells.addAll(repo);
+        }
+        _display.OutputFile(new String[]{"Name", "Country", "District", "Population"},
+                cells,
+                "16");
+
         //GitIssue 33
         //Get and display the population in a continent
         _name = "Asia";
@@ -248,19 +278,7 @@ public class Main {
                 _cityList.CapitalMostLeastPop() ,
                 "List of all capitals by population");
 
-        //GitIssue 22
-        _number = 3;
-        _name = "Rio de Janeiro";
-        _display.OutputFile(new String[]{"populated cities in district"  + _name},
-                _cityList.TopNPopCitiesInDistrict(_number, _name) ,
-                "Top %d populated cities in %s district");
 
-        //GitIssue 21
-        _number = 3;
-        _name = "Spain";
-        _display.OutputFile(new String[]{"populated cities in district of " + _name},
-                _cityList.TopNPopCitiesInCountry(_number, _name) ,
-                "Top %d populated cities in %s");
 
         //GitIssue 27
         _number = 3;
