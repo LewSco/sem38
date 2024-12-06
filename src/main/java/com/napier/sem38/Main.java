@@ -242,7 +242,18 @@ public class Main {
                 "17");
 
         //GitIssue24
+        _name = "Asia";
+        cities = _cityList.GetCapitalCitiesInContinentLargetoSmall(_name);
+        cells = new ArrayList<>();
 
+        for (String city : cities)
+        {
+            List<String> repo = _report.CityReport(city);
+            cells.addAll(repo);
+        }
+        _display.OutputFile(new String[]{"Name", "Country", "District", "Population"},
+                cells,
+                "18");
 
         //GitIssue25
         _name = "Middle East";
@@ -362,7 +373,9 @@ public class Main {
 
         //GitIssue 29
         _display.Show("City Per Continent Distribs", _populationSum.PopCityDistribContinent());
-
+        _display.OutputFile(new String[]{"Continent", "TotalPop", "CityPop", "NonCityPop"},
+                _populationSum.PopCityDistribContinent(),
+                "23");
 
         //GitIssue 37
         //Get and display the population of a city
