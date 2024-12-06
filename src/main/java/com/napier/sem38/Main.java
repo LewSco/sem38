@@ -152,6 +152,35 @@ public class Main {
                 cells,
                 "11");
 
+        //GitIssue 18
+        _number = 4;
+        cities = _cityList.GetTopNPopulatedCities(_number);
+        cells = new ArrayList<>();
+
+        for (String city : cities)
+        {
+            List<String> repo = _report.CityReport(city);
+            cells.addAll(repo);
+        }
+        _display.OutputFile(new String[]{"Name", "Country", "District", "Population"},
+                cells,
+                "12");
+
+        //GitIssue 20
+        _name = "Middle East";
+        _number = 3;
+        cities = _cityList.TopNPopCitiesInRegion(_number, _name);
+        cells = new ArrayList<>();
+
+        for (String city : cities)
+        {
+            List<String> repo = _report.CityReport(city);
+            cells.addAll(repo);
+        }
+        _display.OutputFile(new String[]{"Name", "Country", "District", "Population"},
+                cells,
+                "14");
+
         //GitIssue 33
         //Get and display the population in a continent
         _name = "Asia";
@@ -256,21 +285,6 @@ public class Main {
         _name = "Edinburgh";
         _display.Show("Population of the " + _name,
                 _populationSum.CityPop(_name).toString());
-
-        //GitIssue 18
-        _number = 4;
-        // display results
-        _display.OutputFile(new String[]{"populated cities"},
-                _cityList.GetTopNPopulatedCities(_number) ,
-                "List of the most populated cities up to " + _number);
-
-
-        //GitIssue 20
-        _name = "Middle East";
-        _number = 3;
-        _display.OutputFile(new String[]{"populated cities"},
-                _cityList.TopNPopCitiesInRegion(_number, _name) ,
-                "Top %d populated cities in %s " + _number + _name);
 
         //GitIssue 30
 
