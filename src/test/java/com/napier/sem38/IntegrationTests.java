@@ -513,15 +513,14 @@ public class IntegrationTests
     @Test
     void CountryReport()
     {
-        String actual = _report.CountryReport("Belarus");
-        String expected =
-                "\n\tCode: BLR" +
-                        "\n\t" + "Name: Belarus" +
-                        "\n\t" + "Continent: Europe" +
-                        "\n\t" + "Region: Eastern Europe" +
-                        "\n\t" + "Population: 10236000" +
-                        "\n\t" + "Capital: Minsk"
-                ;
+        var actual = _report.CountryReport("Belarus");
+        ArrayList<String> expected = new ArrayList<>();
+        expected.add("BLR");
+        expected.add("Belarus");
+        expected.add("Europe");
+        expected.add("Eastern Europe");
+        expected.add("10236000");
+        expected.add("Minsk");
 
         assertEquals(expected, actual);
     }

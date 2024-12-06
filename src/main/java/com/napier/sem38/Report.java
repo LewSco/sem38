@@ -137,14 +137,12 @@ public class Report
             while (results.next())
             {
                 // add country data to list
-                reports.add(
-                        "\n\t" + "Code: " + results.getString("Code") +
-                                "\n\t" + "Name: " + results.getString("Name") +
-                                "\n\t" + "Continent: " + results.getString("Continent") +
-                                "\n\t" + "Region: " + results.getString("Region") +
-                                "\n\t" + "Population: " + results.getString("Population") +
-                                "\n\t" + "Capital: " + results.getString("Capital")
-                );
+                reports.add(results.getString("Code"));
+                reports.add(results.getString("Name"));
+                reports.add(results.getString("Continent"));
+                reports.add(results.getString("Region"));
+                reports.add(results.getString("Population"));
+                reports.add(results.getString("Capital"));
             }
         }
         catch(Exception exception)
@@ -163,7 +161,7 @@ public class Report
      * @param countryName the name of the country you want a report on
      * @return a string containing the country report.
      */
-    public String CountryReport(String countryName)
+    public List<String> CountryReport(String countryName)
     {
         // SQL query to get the country
         String query = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as Capital " +
@@ -172,7 +170,7 @@ public class Report
                 "WHERE country.Name = '" + countryName  + "';";
 
         //return resulting list
-        return GetCountryReport(query).get(0);
+        return GetCountryReport(query);
     }
 
     /**
