@@ -26,7 +26,8 @@ public class Main {
         Report _report = new Report(_database);
 
         // cells for output table
-        List<String> cells = new ArrayList<>();
+        List<String> cells;
+        List<String> cities;
 
 
         // variables for storing names and numbers
@@ -81,25 +82,47 @@ public class Main {
         //GitIssue 14
         // Get and display cities in a continent (e.g., "Asia") ordered by population
         _name = "Asia";
-        List<String> cities = _cityList.citiesInContinentLargetoSmall(_name);
+        cities = _cityList.citiesInContinentLargetoSmall(_name);
         cells = new ArrayList<>();
 
         for (String city : cities)
         {
             List<String> repo = _report.CityReport(city);
-
             cells.addAll(repo);
         }
         _display.OutputFile(new String[]{"Name", "Country", "District", "Population"},
                 cells,
-                "All the cities in a continent organised by largest population to smallest.");
+                "8");
 
         //GitIssue 15
         //Get and display the cities in a region ordered by population
         _name = "Caribbean";
-        _display.OutputFile(new String[]{"cities in a region ordered by population"},
-                _cityList.citiesInRegionLargetoSmall(_name),
-                "List of cities in " + _name + " by population:");
+        cities = _cityList.citiesInRegionLargetoSmall(_name);
+        cells = new ArrayList<>();
+
+        for (String city : cities)
+        {
+            List<String> repo = _report.CityReport(city);
+            cells.addAll(repo);
+        }
+        _display.OutputFile(new String[]{"Name", "Country", "District", "Population"},
+                cells,
+                "9");
+
+        //GitIssue 16
+        // Get and display cities in a country ordered by population
+        _name = "United States";
+        cities = _cityList.citiesInCountryLargetoSmall(_name);
+        cells = new ArrayList<>();
+
+        for (String city : cities)
+        {
+            List<String> repo = _report.CityReport(city);
+            cells.addAll(repo);
+        }
+        _display.OutputFile(new String[]{"Name", "Country", "District", "Population"},
+                cells,
+                "10");
 
         //GitIssue 33
         //Get and display the population in a continent
@@ -268,12 +291,7 @@ public class Main {
                 _cityList.citiesInDistrictLargetoSmall(_name) ,
                 "List of cities in the district");
 
-        //GitIssue 16
-        // Get and display cities in a country ordered by population
-        _name = "United States";
-        _display.OutputFile(new String[]{"List of cities in the country " + _name + " by population:"},
-                _cityList.citiesInCountryLargetoSmall(_name) ,
-                "List of cities in the country" + _name);
+
 
         //GitIssue 11
         // Specify the continent and N
