@@ -258,6 +258,53 @@ public class Main {
                 cells,
                 "19");
 
+        // GitIssue 26
+        _number = 5;
+        cities = _cityList.GetTopNPopulatedCapitals(_number);
+        cells = new ArrayList<>();
+
+        for (String city : cities)
+        {
+            List<String> repo = _report.CityReport(city);
+            cells.addAll(repo);
+        }
+        _display.OutputFile(new String[]{"Name", "Country", "District", "Population"},
+                cells,
+                "20");
+
+        //GitIssue 27
+        _number = 3;
+        _name = "Asia";
+        _display.OutputFile(new String[]{"Top populated capital cities of " + _name},
+                _cityList.TopNPopCapitalInContinent(_number, _name) ,
+                "Top %d populated capital cities in %s");
+        cities = _cityList.TopNPopCapitalInContinent(_number, _name);
+        cells = new ArrayList<>();
+
+        for (String city : cities)
+        {
+            List<String> repo = _report.CityReport(city);
+            cells.addAll(repo);
+        }
+        _display.OutputFile(new String[]{"Name", "Country", "District", "Population"},
+                cells,
+                "21");
+
+        //GitIssue 28
+        _number = 3;
+        _name = "Middle East";
+        cities = _cityList.TopNPopCapitalInRegion(_number, _name);
+        cells = new ArrayList<>();
+
+        for (String city : cities)
+        {
+            List<String> repo = _report.CityReport(city);
+            cells.addAll(repo);
+        }
+        _display.OutputFile(new String[]{"Name", "Country", "District", "Population"},
+                cells,
+                "22");
+
         //GitIssue 33
         //Get and display the population in a continent
         _name = "Asia";
@@ -294,13 +341,7 @@ public class Main {
                 PopDistrict,
                 "Population of the District " + _name);
 
-        // GitIssue 26
-        _number = 10;
-        List<String> PopCapitalCit = new ArrayList<String>();
-        PopCapitalCit.add(_cityList.GetTopNPopulatedCapitals(_number).toString());
-        _display.OutputFile(new String[]{_name + "Population"},
-                PopCapitalCit,
-                "Top " + _number + " Populated Capital Cities");
+
 
         // GitIssue 39
         _name = "Belgium";
@@ -311,8 +352,6 @@ public class Main {
                 "Country Report " + _name);
 
 
-
-
         // GitIssue 41
         List<String> BrCapRep = new ArrayList<String>();
         BrCapRep.add(_report.CapitalReport("Brazil"));
@@ -320,22 +359,6 @@ public class Main {
                 BrCapRep,
                 "Capital Report" + _name);
 
-
-
-
-        //GitIssue 27
-        _number = 3;
-        _name = "Asia";
-        _display.OutputFile(new String[]{"Top populated capital cities of " + _name},
-                _cityList.TopNPopCapitalInContinent(_number, _name) ,
-                "Top %d populated capital cities in %s");
-
-        //GitIssue 28
-        _number = 3;
-        _name = "Middle East";
-        _display.OutputFile(new String[]{"Top populated capital cities of " + _name + "region" },
-                _cityList.TopNPopCapitalInRegion(_number, _name) ,
-                String.format("Top %d populated capital cities in %s",_number, _name));
 
         //GitIssue 29
         _display.Show("City Per Continent Distribs", _populationSum.PopCityDistribContinent());
