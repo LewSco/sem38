@@ -23,6 +23,25 @@ public class CountryList
         _database = database;
     }
 
+    /**
+     *
+     * @param in
+     * @param _report
+     * @return
+     */
+    public static ArrayList<String> GetCountryReportList(List<String> in, Report _report)
+    {
+        //arraylist for reports
+        var out = new ArrayList<String>();
+
+        for (String country: in)
+        {
+            out.add(_report.CountryReport(country));
+        }
+
+        return out;
+    }
+
     //region World Functions
 
     /**
@@ -76,7 +95,7 @@ public class CountryList
 
         // set up our query statement
         String query =
-                "SELECT Name, Population " +
+                "SELECT Name " +
                         "FROM country " +
                         "ORDER BY Population DESC LIMIT " + n;
 
@@ -88,9 +107,7 @@ public class CountryList
             // this moves through the results until there are no more
             while (results.next())
             {
-                list.add(results.getString("Name") +
-                        " - Population: " +
-                        results.getString("Population"));
+                list.add(results.getString("Name"));
             }
         }
         catch(Exception exception)
@@ -120,7 +137,7 @@ public class CountryList
         List<String> list = new ArrayList<>();
 
         // SQL query to get countries in a continent ordered by population
-        String query = "SELECT Name, Population " +
+        String query = "SELECT Name " +
                 "FROM country " +
                 "WHERE Continent = '" + continent + "' " +
                 "ORDER BY Population DESC";
@@ -135,9 +152,7 @@ public class CountryList
             while (results.next())
             {
                 // add each country to the list
-                list.add(results.getString("Name") +
-                        " - Population: " +
-                        results.getString("Population"));
+                list.add(results.getString("Name"));
             }
         }
         catch(Exception exception)
@@ -167,7 +182,7 @@ public class CountryList
         List<String> list = new ArrayList<>();
 
         // SQL query to get countries in a continent ordered by population
-        String query = "SELECT Name, Population " +
+        String query = "SELECT Name " +
                 "FROM country " +
                 "WHERE Region = '" + region + "' " +
                 "ORDER BY Population DESC";
@@ -182,9 +197,7 @@ public class CountryList
             while (results.next())
             {
                 // add each country to the list
-                list.add(results.getString("Name") +
-                        " - Population: " +
-                        results.getString("Population"));
+                list.add(results.getString("Name"));
             }
         }
         catch(Exception exception)
@@ -210,7 +223,7 @@ public class CountryList
         List<String> list = new ArrayList<>();
 
         // SQL query to get top N populated countries in a continent
-        String query = "SELECT Name, Population " +
+        String query = "SELECT Name " +
                 "FROM country " +
                 "WHERE Continent = '" + continent + "' " +
                 "ORDER BY Population DESC " +
@@ -225,8 +238,7 @@ public class CountryList
             while (results.next())
             {
                 String country = results.getString("Name");
-                int population = results.getInt("Population");
-                list.add(country + " - Population: " + population);
+                list.add(country);
             }
         }
         catch (Exception exception)
@@ -249,7 +261,7 @@ public class CountryList
         List<String> list = new ArrayList<>();
 
         // SQL query to get the top N populated countries in a region
-        String query = "SELECT Name, Population " +
+        String query = "SELECT Name " +
                 "FROM country " +
                 "WHERE Region = '" + region + "' " +
                 "ORDER BY Population DESC " +
@@ -263,8 +275,7 @@ public class CountryList
             while (results.next()) {
                 // Add each country to the list
                 String countryName = results.getString("Name");
-                int population = results.getInt("Population");
-                list.add(countryName + " - Population: " + population);
+                list.add(countryName);
             }
         } catch (Exception exception) {
             // Print error messages

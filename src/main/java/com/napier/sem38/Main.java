@@ -1,5 +1,6 @@
 package com.napier.sem38;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
@@ -41,22 +42,21 @@ public class Main {
 
         // GitIssue 7
         _display.OutputFile(new String[]{"World Countries"},
-                _countryList.GetWorldList(),
+                CountryList.GetCountryReportList(_countryList.GetWorldList(), _report),
                 "List of the worlds countries by population");
-
 
         // GitIssue 10
         _number = 4;
         // display results
         _display.OutputFile(new String[]{"World Countries"},
-                _countryList.GetWorldList(_number) ,
+                CountryList.GetCountryReportList(_countryList.GetWorldList(_number), _report),
                 "List of the worlds countries by population up to " + _number);
 
         // get continent list of countries ordered by population
         _name = "Asia";
         // display results
         _display.OutputFile(new String[]{"continent list of countries by population"},
-                _countryList.GetContinentList(_name) ,
+                CountryList.GetCountryReportList(_countryList.GetContinentList(_name),_report) ,
                 "List of countries in " + _name + " by population");
 
 
