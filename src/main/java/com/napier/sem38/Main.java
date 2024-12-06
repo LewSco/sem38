@@ -49,12 +49,11 @@ public class Main {
 
         // GitIssue 10
         _number = 4;
-        // display results
         _display.OutputFile(new String[]{"World Countries"},
                 _countryList.GetWorldList(_number) ,
                 "List of the worlds countries by population up to " + _number);
 
-        // get continent list of countries ordered by population
+        // GitIssue 10
         _name = "Asia";
         // display results
         _display.OutputFile(new String[]{"continent list of countries by population"},
@@ -78,7 +77,6 @@ public class Main {
                 "World Population");
 
         //Issue 14 GitHub
-
         // Get and display cities in a continent (e.g., "Asia") ordered by population
         _name = "Asia";
         _display.OutputFile(new String[]{"cities In Continent Large to Small"},
