@@ -53,7 +53,7 @@ public class Main {
                 _countryList.GetWorldList(_number) ,
                 "List of the worlds countries by population up to " + _number);
 
-        // get continent list of countries ordered by population
+        // GitIssue 8
         _name = "Asia";
         // display results
         _display.OutputFile(new String[]{"continent list of countries by population"},
@@ -61,7 +61,7 @@ public class Main {
                 "List of countries in " + _name + " by population");
 
 
-        // get region list of countries ordered by population
+        // // GitIssue 9
         _name = "Caribbean";
         // display the list
         _name = "the " + _name;
