@@ -137,8 +137,6 @@ public class Main {
         // GitIssue 39
         _name = "Belgium";
         _display.Show("Country Report " + _name, _report.CountryReport(_name));
-        _display.Show("All Country Reports", _report.CountryReportList());
-
 
 
         // GitIssue13
