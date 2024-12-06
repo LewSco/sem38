@@ -226,12 +226,16 @@ public class Main {
 
 
         //GitIssue 31
-        _display.Show("City per Country Distribution", _populationSum.PopCityDistribCountry());
+        _display.OutputFile(new String[]{"City per Country Distribution"},
+                _populationSum.PopCityDistribCountry() ,
+                "City per Country Distribution");
 
         //GitIssue 19
         _name = "Asia";
         _number = 3;
-        _display.Show(String.format("Top %d populated cities in %s", _number, _name), _cityList.TopNPopCitiesInContinent(_number, _name));
+        _display.OutputFile(new String[]{"populated cities in"},
+                _cityList.TopNPopCitiesInContinent(_number, _name) ,
+                "Top %d populated cities in %s" + _number + _name);
 
         //GitIssue 42
         _name = "France";
