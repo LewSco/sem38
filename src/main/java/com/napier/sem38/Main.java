@@ -63,10 +63,10 @@ public class Main {
 
         // // GitIssue 9
         _name = "Caribbean";
-        // display the list
         _name = "the " + _name;
-        _display.Show("List of countries in " + _name + " by population:",
-                _countryList.GetRegionList(_name));
+        _display.OutputFile(new String[]{"Countries by population"},
+                _countryList.GetRegionList(_name) ,
+                "List of countries in " + _name + " by population:");
 
 
         // GitIssue 32
@@ -76,14 +76,14 @@ public class Main {
                 WorldPop,
                 "World Population");
 
-        //Issue 14 GitHub
+        //GitIssue 14
         // Get and display cities in a continent (e.g., "Asia") ordered by population
         _name = "Asia";
         _display.OutputFile(new String[]{"cities In Continent Large to Small"},
                 _cityList.citiesInContinentLargetoSmall(_name),
                 "List of cities in "+ _name +" by population:");
 
-        //Issue 15 GitHub
+        //GitIssue 15
         //Get and display the cities in a region ordered by population
         _name = "Caribbean";
         _display.OutputFile(new String[]{"cities in a region ordered by population"},
@@ -139,49 +139,49 @@ public class Main {
         _display.Show("Country Report " + _name, _report.CountryReport(_name));
 
 
-        // GitIssue13
+        // GitIssue 13
         _display.Show("List of the Worlds cities by population",_cityList.GetWorldList());
 
-        // GitIssue40
+        // GitIssue 40
         _display.Show("Petare City Report", _report.CityReport("Petare"));
 
 
-        // GitIssue41
+        // GitIssue 41
         _display.Show("Brazil Capital Report", _report.CapitalReport("Brazil"));
 
-        //GitIssue23
+        //GitIssue 23
         _display.Show("List of all capitals by population", _cityList.CapitalMostLeastPop());
 
-        //GitIssue22
+        //GitIssue 22
         _number = 3;
         _name = "Rio de Janeiro";
         _display.Show(String.format("Top %d populated cities in %s district",_number, _name), _cityList.TopNPopCitiesInDistrict(_number, _name));
 
-        //GitIssue21
+        //GitIssue 21
         _number = 3;
         _name = "Spain";
         _display.Show(String.format("Top %d populated cities in %s",_number, _name), _cityList.TopNPopCitiesInCountry(_number, _name));
 
-        //GitIssue27
+        //GitIssue 27
         _number = 3;
         _name = "Asia";
         _display.Show(String.format("Top %d populated capital cities in %s",_number, _name), _cityList.TopNPopCapitalInContinent(_number, _name));
 
-        //GitIssue28
+        //GitIssue 28
         _number = 3;
         _name = "Middle East";
         _display.Show(String.format("Top %d populated capital cities in %s",_number, _name), _cityList.TopNPopCapitalInRegion(_number, _name));
 
-        //GitIssue29
+        //GitIssue 29
         _display.Show("City Per Continent Distribs", _populationSum.PopCityDistribContinent());
 
-        //GitIssue37
+        //GitIssue 37
         //Get and display the population of a city
         _name = "Edinburgh";
         _display.Show("Population of the " + _name,
                 _populationSum.CityPop(_name).toString());
 
-        //GitIssue18
+        //GitIssue 18
         _number = 4;
         // display results
         _display.OutputFile(new String[]{"populated cities"},
@@ -189,12 +189,12 @@ public class Main {
                 "List of the most populated cities up to " + _number);
 
 
-        //Gitissue20
+        //GitIssue 20
         _name = "Middle East";
         _number = 3;
         _display.Show(String.format("Top %d populated cities in %s",_number, _name), _cityList.TopNPopCitiesInRegion(_number, _name));
 
-        //Gitissue30
+        //GitIssue 30
 
         _display.Show("City per Region Distribution", _populationSum.PopCityDistribRegion());
 
@@ -209,36 +209,34 @@ public class Main {
                 _cityList.GetCapitalCitiesInRegionLargetoSmall(_name));
 
 
-        //Gitissue31
+        //GitIssue 31
         _display.Show("City per Country Distribution", _populationSum.PopCityDistribCountry());
 
-        //Gitissue19
+        //GitIssue 19
         _name = "Asia";
         _number = 3;
         _display.Show(String.format("Top %d populated cities in %s", _number, _name), _cityList.TopNPopCitiesInContinent(_number, _name));
 
-        //Gitissue42
+        //GitIssue 42
         _name = "France";
         _display.Show("Population Distribution Report for " + _name, _report.GetPopDistribReport(_name));
 
-        //GitIssue17
+        //GitIssue 17
         // Get and display the list of cities in a district ordered by population
         _name = "Texas";
         _display.Show("List of cities in the district " + _name + " by population:",
                 _cityList.citiesInDistrictLargetoSmall(_name));
 
-        //GitIssue16
+        //GitIssue 16
         // Get and display cities in a country ordered by population
         _name = "United States";
         _display.Show("List of cities in the country " + _name + " by population:",
                 _cityList.citiesInCountryLargetoSmall(_name));
 
-        //GitIssue11
+        //GitIssue 11
         // Specify the continent and N
         _name = "Asia";
         _number = 5;
-
-        // Display the results
         _display.Show("Top " + _number + " Populated Countries in " + _name,
                 _countryList.GetTopNPopulatedCountriesInContinent(_name, _number));
 
