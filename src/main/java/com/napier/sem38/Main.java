@@ -79,6 +79,19 @@ public class Main {
                 WorldPop,
                 "World Population");
 
+        // GitIssue 13
+        cities = _cityList.GetWorldList();
+        cells = new ArrayList<>();
+
+        for (String city : cities)
+        {
+            List<String> repo = _report.CityReport(city);
+            cells.addAll(repo);
+        }
+        _display.OutputFile(new String[]{"Name", "Country", "District", "Population"},
+                cells,
+                "7");
+
         //GitIssue 14
         // Get and display cities in a continent (e.g., "Asia") ordered by population
         _name = "Asia";
@@ -123,6 +136,21 @@ public class Main {
         _display.OutputFile(new String[]{"Name", "Country", "District", "Population"},
                 cells,
                 "10");
+
+        //GitIssue 17
+        // Get and display the list of cities in a district ordered by population
+        _name = "Texas";
+        cities = _cityList.citiesInDistrictLargetoSmall(_name);
+        cells = new ArrayList<>();
+
+        for (String city : cities)
+        {
+            List<String> repo = _report.CityReport(city);
+            cells.addAll(repo);
+        }
+        _display.OutputFile(new String[]{"Name", "Country", "District", "Population"},
+                cells,
+                "11");
 
         //GitIssue 33
         //Get and display the population in a continent
@@ -176,13 +204,7 @@ public class Main {
                 contReport,
                 "Country Report " + _name);
 
-        // GitIssue 13
-        _display.OutputFile(new String[]{"Worlds cities"},
-                _cityList.GetWorldList() ,
-                "List of the Worlds cities by population");
 
-        // GitIssue 40
-        _display.Show("Petare City Report", _report.CityReport("Petare"));
 
 
         // GitIssue 41
@@ -284,12 +306,7 @@ public class Main {
                 _report.GetPopDistribReport(_name) ,
                 "City per Country Distribution");
 
-        //GitIssue 17
-        // Get and display the list of cities in a district ordered by population
-        _name = "Texas";
-        _display.OutputFile(new String[]{"List of cities in the district " + _name + " by population:"},
-                _cityList.citiesInDistrictLargetoSmall(_name) ,
-                "List of cities in the district");
+
 
 
 
@@ -321,6 +338,10 @@ public class Main {
             _display.Show(language + " Speakers", totalSpeakers.toString());
 
         }
+
+        // GitIssue 40
+        _display.Show("Petare City Report", _report.CityReport("Petare"));
+
         // disconnect from database
         _database.Disconnect();
     }
