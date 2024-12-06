@@ -399,5 +399,37 @@ public class PopulationSum
 
         return pop;
     }
+
+    /**
+     * Queries the database to calculate the number of people who speak a specific language.
+     * @param language the language to query
+     * @return the total number of speakers as a long
+     */
+    public Long getLanguageSpeakers(String language) {
+        long totalSpeakers = 0;
+
+        // SQL query to calculate total speakers for the given language
+        String query = "SELECT SUM(country.Population) AS TotalSpeakers " +
+                "FROM country " +
+                "JOIN countrylanguage ON country.Code = countrylanguage.CountryCode " +
+                "WHERE countrylanguage.Language = '" + language + "'";
+
+        try {
+            // Execute the query
+            ResultSet results = _database.Query(query);
+
+            // Retrieve the total speakers
+            if (results.next()) {
+                totalSpeakers = results.getLong("TotalSpeakers");
+            }
+        } catch (Exception exception) {
+            // Print error messages if any
+            System.out.println(exception.getMessage());
+            System.out.println("Error retrieving speaker data for language: " + language);
+        }
+
+        return totalSpeakers;
+    }
+
     //endregion
 }
