@@ -120,20 +120,26 @@ public class Main {
         //GitIssue 36
         //Get and Display the population of a district
         _name = "Texas";
-        _display.Show("Population of the District " + _name,
-                _populationSum.DistrictPop(_name).toString());
+        List<String> PopDistrict = new ArrayList<String>();
+        PopDistrict.add(_populationSum.DistrictPop(_name).toString());
+        _display.OutputFile(new String[]{_name + "Population"},
+                PopDistrict,
+                "Population of the District " + _name);
 
-
-
-        // Retrieve and display the top N populated capitals
+        // GitIssue 26
         _number = 10;
-        _display.Show("Top " + _number + " Populated Capital Cities",
-                _cityList.GetTopNPopulatedCapitals(_number).toString());
+        List<String> PopCapital = new ArrayList<String>();
+        PopCapital.add(_cityList.GetTopNPopulatedCapitals(_number).toString());
+        _display.OutputFile(new String[]{_name + "Population"},
+                PopCapital,
+                "Top " + _number + " Populated Capital Cities");
 
-        // GitIssue39
+        // GitIssue 39
         _name = "Belgium";
         _display.Show("Country Report " + _name, _report.CountryReport(_name));
         _display.Show("All Country Reports", _report.CountryReportList());
+
+
 
         // GitIssue13
         _display.Show("List of the Worlds cities by population",_cityList.GetWorldList());
