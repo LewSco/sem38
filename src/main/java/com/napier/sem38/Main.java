@@ -261,8 +261,9 @@ public class Main {
         // Specify the continent and N
         _name = "Asia";
         _number = 5;
-        _display.Show("Top " + _number + " Populated Countries in " + _name,
-                _countryList.GetTopNPopulatedCountriesInContinent(_name, _number));
+        _display.OutputFile(new String[]{"Top " + _number + " Populated Countries in " + _name,},
+                _countryList.GetTopNPopulatedCountriesInContinent(_name, _number) ,
+                "Top Populated Countries in " + _name);
 
         // Get and display the top N populated countries in a region
         _name = "Caribbean";
