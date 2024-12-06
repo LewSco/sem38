@@ -70,10 +70,12 @@ public class Main {
                 _countryList.GetRegionList(_name));
 
 
-        // print world population
-        _display.Show("World Population",
-                _populationSum.WorldPop().toString());
-
+        // GitIssue 32
+        List<String> WorldPop = new ArrayList<String>();
+        WorldPop.add(_populationSum.WorldPop().toString());
+        _display.OutputFile(new String[]{"World Population"},
+                WorldPop,
+                "World Population");
 
         //Issue 14 GitHub
 
