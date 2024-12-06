@@ -205,7 +205,9 @@ public class Main {
         //GitIssue 20
         _name = "Middle East";
         _number = 3;
-        _display.Show(String.format("Top %d populated cities in %s",_number, _name), _cityList.TopNPopCitiesInRegion(_number, _name));
+        _display.OutputFile(new String[]{"populated cities"},
+                _cityList.TopNPopCitiesInRegion(_number, _name) ,
+                "Top %d populated cities in %s " + _number + _name);
 
         //GitIssue 30
 
