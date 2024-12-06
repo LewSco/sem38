@@ -166,7 +166,9 @@ public class Main {
         //GitIssue 21
         _number = 3;
         _name = "Spain";
-        _display.Show(String.format("Top %d populated cities in %s",_number, _name), _cityList.TopNPopCitiesInCountry(_number, _name));
+        _display.OutputFile(new String[]{"populated cities in district"},
+                _cityList.TopNPopCitiesInCountry(_number, _name) ,
+                "Top %d populated cities in %s");
 
         //GitIssue 27
         _number = 3;
