@@ -37,7 +37,7 @@ public class CountryList
 
         // set up our query statement
         String query =
-                "SELECT Name, Population " +
+                "SELECT Name " +
                         "FROM country " +
                         "ORDER BY Population DESC;";
 
@@ -50,9 +50,7 @@ public class CountryList
             while (results.next())
             {
                 // add each country to the list
-                list.add(results.getString("Name") +
-                        " - Population: " +
-                        results.getString("Population"));
+                list.add(results.getString("Name"));
             }
         }
         catch(Exception exception)
