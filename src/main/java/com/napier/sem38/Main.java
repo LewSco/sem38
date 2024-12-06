@@ -168,6 +168,22 @@ public class Main {
                 cells,
                 "12");
 
+        //GitIssue 19
+        _name = "Asia";
+        _number = 3;
+
+        _cityList.TopNPopCitiesInContinent(_number, _name);
+        cells = new ArrayList<>();
+
+        for (String city : cities)
+        {
+            List<String> repo = _report.CityReport(city);
+            cells.addAll(repo);
+        }
+        _display.OutputFile(new String[]{"Name", "Country", "District", "Population"},
+                cells,
+                "13");
+
         //GitIssue 20
         _name = "Middle East";
         _number = 3;
@@ -327,22 +343,11 @@ public class Main {
                 _populationSum.PopCityDistribCountry() ,
                 "City per Country Distribution");
 
-        //GitIssue 19
-        _name = "Asia";
-        _number = 3;
-        _display.OutputFile(new String[]{"populated cities in"},
-                _cityList.TopNPopCitiesInContinent(_number, _name) ,
-                "Top %d populated cities in %s" + _number + _name);
-
         //GitIssue 42
         _name = "France";
         _display.OutputFile(new String[]{"Population Distribution Report for " + _name,},
                 _report.GetPopDistribReport(_name) ,
                 "City per Country Distribution");
-
-
-
-
 
         //GitIssue 11
         // Specify the continent and N
