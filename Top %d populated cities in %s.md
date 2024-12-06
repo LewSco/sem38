@@ -1,5 +1,5 @@
 | populated cities in district of Spain |
 | --- |
-| Madrid |
-| Barcelona |
-| Valencia |
+| Madrid - Population: 2879052 |
+| Barcelona - Population: 1503451 |
+| Valencia - Population: 739412 |
