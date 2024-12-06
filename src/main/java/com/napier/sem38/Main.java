@@ -373,7 +373,9 @@ public class Main {
 
         //GitIssue 29
         _display.Show("City Per Continent Distribs", _populationSum.PopCityDistribContinent());
-
+        _display.OutputFile(new String[]{"Continent", "TotalPop", "CityPop", "NonCityPop"},
+                _populationSum.PopCityDistribContinent(),
+                "23");
 
         //GitIssue 37
         //Get and display the population of a city

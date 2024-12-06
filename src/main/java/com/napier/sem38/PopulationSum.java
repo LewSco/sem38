@@ -161,7 +161,10 @@ public class PopulationSum
                 long totalPop = results.getLong("total");
                 long cityPop = results.getLong("cityPop");
                 long nonCityPop = results.getLong("nonCityPop");
-                list.add(continent + "\n\tTotal Population: " + FormatLong(totalPop) + "\n\tCity Population: " + FormatLong(cityPop) + "\n\tNonCityPop: " + FormatLong(nonCityPop));
+                list.add(continent);
+                list.add(FormatLong(totalPop));
+                list.add(FormatLong(cityPop));
+                list.add(FormatLong(nonCityPop));
             }
 
         } catch (Exception exception) {
