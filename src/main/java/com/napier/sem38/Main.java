@@ -152,7 +152,9 @@ public class Main {
         _display.Show("Brazil Capital Report", _report.CapitalReport("Brazil"));
 
         //GitIssue 23
-        _display.Show("List of all capitals by population", _cityList.CapitalMostLeastPop());
+        _display.OutputFile(new String[]{"capitals by population"},
+                _cityList.CapitalMostLeastPop() ,
+                "List of all capitals by population");
 
         //GitIssue 22
         _number = 3;
